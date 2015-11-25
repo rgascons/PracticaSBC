@@ -1,4 +1,4 @@
-; Wed Nov 25 10:38:56 CET 2015
+; Wed Nov 25 11:57:40 CET 2015
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -156,7 +156,6 @@
 	(single-slot tiempoDisponible
 ;+		(comment "Tiempo disponible que tiene el lector al día, en horas")
 		(type INTEGER)
-		(range 0 %3FVARIABLE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot edad
@@ -256,7 +255,6 @@
 	(single-slot tiempoDisponible
 ;+		(comment "Tiempo disponible que tiene el lector al día, en horas")
 		(type INTEGER)
-		(range 0 %3FVARIABLE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot momento

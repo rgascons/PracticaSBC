@@ -1,4 +1,4 @@
-; Wed Nov 25 10:36:56 CET 2015
+; Wed Nov 25 11:57:40 CET 2015
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -20,9 +20,9 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[PrimeraOntologia_ProjectKB_Class20096]
-		[PrimeraOntologia_ProjectKB_Class20097]
-		[PrimeraOntologia_ProjectKB_Class20098]))
+		[PrimeraOntologia_ProjectKB_Class20102]
+		[PrimeraOntologia_ProjectKB_Class20103]
+		[PrimeraOntologia_ProjectKB_Class20104]))
 
 ([CLSES_TAB] of  Widget
 
@@ -77,9 +77,9 @@
 ([KB_624881_Class1] of  Map
 
 	(entries
-		[PrimeraOntologia_ProjectKB_Class20099]
-		[PrimeraOntologia_ProjectKB_Class20100]
-		[PrimeraOntologia_ProjectKB_Class20101]))
+		[PrimeraOntologia_ProjectKB_Class20105]
+		[PrimeraOntologia_ProjectKB_Class20106]
+		[PrimeraOntologia_ProjectKB_Class20107]))
 
 ([KB_624881_Class119] of  String
 
@@ -340,36 +340,36 @@
 	(boolean_value FALSE)
 	(name "ButtonDisplayed-Delete Instance"))
 
-([PrimeraOntologia_ProjectKB_Class20096] of  String
+([PrimeraOntologia_ProjectKB_Class20102] of  String
 
 	(name ":INSTANCE-ANNOTATION")
 	(string_value "%3AANNOTATION-TEXT"))
 
-([PrimeraOntologia_ProjectKB_Class20097] of  String
+([PrimeraOntologia_ProjectKB_Class20103] of  String
 
 	(name ":PAL-CONSTRAINT")
 	(string_value "%3APAL-NAME"))
 
-([PrimeraOntologia_ProjectKB_Class20098] of  String
+([PrimeraOntologia_ProjectKB_Class20104] of  String
 
 	(name ":META-CLASS")
 	(string_value "%3ANAME"))
 
-([PrimeraOntologia_ProjectKB_Class20099] of  Map_Entry
+([PrimeraOntologia_ProjectKB_Class20105] of  Map_Entry
 
 	(key "add_name_on_instance_form")
 	(key_class "java.lang.String")
 	(value "false")
 	(value_class "java.lang.String"))
 
-([PrimeraOntologia_ProjectKB_Class20100] of  Map_Entry
+([PrimeraOntologia_ProjectKB_Class20106] of  Map_Entry
 
 	(key "change_tracking_active")
 	(key_class "java.lang.String")
 	(value "false")
 	(value_class "java.lang.String"))
 
-([PrimeraOntologia_ProjectKB_Class20101] of  Map_Entry
+([PrimeraOntologia_ProjectKB_Class20107] of  Map_Entry
 
 	(key "suppress_instance_counting")
 	(key_class "java.lang.String")
