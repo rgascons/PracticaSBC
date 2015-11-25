@@ -501,23 +501,31 @@
 	(assert (start))
 )
 
-(defrule preguntar-existencia ""
+(defrule preguntar-existencia "" 
 	(start)
 	=>
-	(if (pregunta-booleana "¿Eres ya usuario del sistema?")
-		then (assert(usuario-lector))
-		else (assert(nuevo-lector))
+	(bind ?dni (pregunta-general "Cual es tu DNI"))
+	(if (any-instancep ((?p Lector)) (eq (str-compare ?p:DNI ?dni) 0))
+	then (assert (usuario-lector))
+	else 
+	(bind ?lector (make-instance lectorN of Lector))
+	(send ?lector put-DNI ?dni)
+	(assert(nuevo-lector))
 	)
 )
 
 ;;; Pregunta para conocer la edad
 (defrule pregunta-edad ""
-	(nuevo-lector)
+	(nuevo-lector ?dni)
+	?p<-(Lector ?dni)
+	?lector<-(object (is-a Lector)(DNI ?dniL))
+	(test (eq (str-compare  ?dni ?dniL) 0))
 	=>
 	(bind ?ed (pregunta-numerica "¿Cuantos años tienes?" 0 150))
 	(if (< ?ed 12) then (assert (infantil)))
 	(if (and (>= ?ed 12)(<= ?ed 24)) then (assert (juvenil)))
 	(if (> ?ed 24) then (assert(adulto)))
+	(slot-insert$ ?lector edad 1 ?ed)
 )
 
 (defrule pregunta-horas " Pregunta para horas de lectura "
@@ -588,16 +596,16 @@
 	(printout t "4. Erotico")
 	(printout t "5. Aventuras")
 	(bind ?resp (pregunta-lista "Escribe los identificadores separados por espacios: "))
-	(if (not (member 0 ?resp))
-		then
-		(progn ?it ?resp
-			(switch ?it
-				(case 1 then assert(Indiferencia))
-				(case 2 then assert(Infan))
-				(case 3 then assert(Suspense))
-			)
-		)
-	)
+	;(if (not (member 0 ?resp))
+	;	then
+	;	(progn ?it ?resp
+	;		(switch ?it
+	;			(case 1 then (assert(Indiferencia)))
+	;			(case 2 then (assert(Infan)))
+	;			(case 3 then (assert(Suspense)))
+	;		)
+	;	)
+	;)
 	
 )
 
