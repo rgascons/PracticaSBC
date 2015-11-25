@@ -1,4 +1,4 @@
-; Sun Nov 22 18:38:29 CET 2015
+; Wed Nov 25 10:36:56 CET 2015
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -20,9 +20,9 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[PrimeraOntologia_ProjectKB_Class10010]
-		[PrimeraOntologia_ProjectKB_Class10011]
-		[PrimeraOntologia_ProjectKB_Class10012]))
+		[PrimeraOntologia_ProjectKB_Class20096]
+		[PrimeraOntologia_ProjectKB_Class20097]
+		[PrimeraOntologia_ProjectKB_Class20098]))
 
 ([CLSES_TAB] of  Widget
 
@@ -66,7 +66,7 @@
 	(is_hidden FALSE)
 	(widget_class_name "edu.stanford.smi.protege.widget.InstancesTab"))
 
-([KB_449794_Class3] of  Map
+([KB_307575_Class3] of  Map
 )
 
 ([KB_624881_Class0] of  String
@@ -77,9 +77,9 @@
 ([KB_624881_Class1] of  Map
 
 	(entries
-		[PrimeraOntologia_ProjectKB_Class10013]
-		[PrimeraOntologia_ProjectKB_Class10014]
-		[PrimeraOntologia_ProjectKB_Class10015]))
+		[PrimeraOntologia_ProjectKB_Class20099]
+		[PrimeraOntologia_ProjectKB_Class20100]
+		[PrimeraOntologia_ProjectKB_Class20101]))
 
 ([KB_624881_Class119] of  String
 
@@ -261,42 +261,6 @@
 ([PrimeraOntologia_ProjectKB_Class10] of  Property_List
 )
 
-([PrimeraOntologia_ProjectKB_Class10010] of  String
-
-	(name ":INSTANCE-ANNOTATION")
-	(string_value "%3AANNOTATION-TEXT"))
-
-([PrimeraOntologia_ProjectKB_Class10011] of  String
-
-	(name ":META-CLASS")
-	(string_value "%3ANAME"))
-
-([PrimeraOntologia_ProjectKB_Class10012] of  String
-
-	(name ":PAL-CONSTRAINT")
-	(string_value "%3APAL-NAME"))
-
-([PrimeraOntologia_ProjectKB_Class10013] of  Map_Entry
-
-	(key "add_name_on_instance_form")
-	(key_class "java.lang.String")
-	(value "false")
-	(value_class "java.lang.String"))
-
-([PrimeraOntologia_ProjectKB_Class10014] of  Map_Entry
-
-	(key "change_tracking_active")
-	(key_class "java.lang.String")
-	(value "false")
-	(value_class "java.lang.String"))
-
-([PrimeraOntologia_ProjectKB_Class10015] of  Map_Entry
-
-	(key "suppress_instance_counting")
-	(key_class "java.lang.String")
-	(value "false")
-	(value_class "java.lang.String"))
-
 ([PrimeraOntologia_ProjectKB_Class11] of  Widget
 
 	(is_hidden TRUE)
@@ -348,6 +312,69 @@
 
 ([PrimeraOntologia_ProjectKB_Class20] of  Property_List
 )
+
+([PrimeraOntologia_ProjectKB_Class20041] of  Widget
+
+	(height 300)
+	(is_hidden FALSE)
+	(name "puntosDeVenta")
+	(property_list [PrimeraOntologia_ProjectKB_Class20042])
+	(widget_class_name "edu.stanford.smi.protege.widget.InstanceListWidget")
+	(width 200)
+	(x 400)
+	(y 0))
+
+([PrimeraOntologia_ProjectKB_Class20042] of  Property_List
+
+	(properties
+		[PrimeraOntologia_ProjectKB_Class20043]
+		[PrimeraOntologia_ProjectKB_Class20044]))
+
+([PrimeraOntologia_ProjectKB_Class20043] of  Boolean
+
+	(boolean_value FALSE)
+	(name "ButtonDisplayed-View References to Value"))
+
+([PrimeraOntologia_ProjectKB_Class20044] of  Boolean
+
+	(boolean_value FALSE)
+	(name "ButtonDisplayed-Delete Instance"))
+
+([PrimeraOntologia_ProjectKB_Class20096] of  String
+
+	(name ":INSTANCE-ANNOTATION")
+	(string_value "%3AANNOTATION-TEXT"))
+
+([PrimeraOntologia_ProjectKB_Class20097] of  String
+
+	(name ":PAL-CONSTRAINT")
+	(string_value "%3APAL-NAME"))
+
+([PrimeraOntologia_ProjectKB_Class20098] of  String
+
+	(name ":META-CLASS")
+	(string_value "%3ANAME"))
+
+([PrimeraOntologia_ProjectKB_Class20099] of  Map_Entry
+
+	(key "add_name_on_instance_form")
+	(key_class "java.lang.String")
+	(value "false")
+	(value_class "java.lang.String"))
+
+([PrimeraOntologia_ProjectKB_Class20100] of  Map_Entry
+
+	(key "change_tracking_active")
+	(key_class "java.lang.String")
+	(value "false")
+	(value_class "java.lang.String"))
+
+([PrimeraOntologia_ProjectKB_Class20101] of  Map_Entry
+
+	(key "suppress_instance_counting")
+	(key_class "java.lang.String")
+	(value "false")
+	(value_class "java.lang.String"))
 
 ([PrimeraOntologia_ProjectKB_Class21] of  Widget
 
@@ -630,8 +657,8 @@
 	(browser_slot_names [BROWSER_SLOT_NAMES])
 	(customized_instance_widgets
 		[INSTANCE_ANNOTATION_FORM_WIDGET]
-		[STANDARD_FACET_FORM_WIDGET]
 		[STANDARD_SLOT_FORM_WIDGET]
+		[STANDARD_FACET_FORM_WIDGET]
 		[PAL_FORM_WIDGET]
 		[STANDARD_CLASS_FORM_WIDGET])
 	(default_cls_metaclass ":STANDARD-CLASS")

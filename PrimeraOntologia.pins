@@ -1,7 +1,148 @@
-; Sun Nov 22 18:38:29 CET 2015
+; Wed Nov 25 10:38:56 CET 2015
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
 
-([KB_429977_Class18] of  Autor
+([PrimeraOntologia_Class10] of  Genero
+
+	(nombre "Erotica"))
+
+([PrimeraOntologia_Class11] of  Libro
+
+	(generos [PrimeraOntologia_Class10])
+	(Titulo "Cracked Slaves"))
+
+([PrimeraOntologia_Class12] of  Genero
 )
+
+([PrimeraOntologia_Class14] of  Libro
+
+	(generos
+		[PrimeraOntologia_Class12]
+		[PrimeraOntologia_Class7])
+	(Titulo "The Vacant Male"))
+
+([PrimeraOntologia_Class15] of  Libro
+
+	(generos [PrimeraOntologia_Class7])
+	(Titulo "Wife of Male"))
+
+([PrimeraOntologia_Class16] of  Libro
+
+	(generos [PrimeraOntologia_Class3])
+	(Titulo "The Crying's Fairy"))
+
+([PrimeraOntologia_Class17] of  Libro
+
+	(generos [PrimeraOntologia_Class2])
+	(Titulo "Voyagers in the Wife"))
+
+([PrimeraOntologia_Class18] of  Libro
+
+	(generos [PrimeraOntologia_Class6])
+	(Titulo "The Stream of the Thorn"))
+
+([PrimeraOntologia_Class19] of  Libro
+
+	(generos
+		[PrimeraOntologia_Class3]
+		[PrimeraOntologia_Class9])
+	(Titulo "The Souls's Winter"))
+
+([PrimeraOntologia_Class2] of  Genero
+
+	(nombre "Horror"))
+
+([PrimeraOntologia_Class20] of  Libro
+
+	(generos [PrimeraOntologia_Class4])
+	(Titulo "Snake of Sorcerer"))
+
+([PrimeraOntologia_Class21] of  Libro
+
+	(generos [PrimeraOntologia_Class9])
+	(Titulo "The Soul of the Door"))
+
+([PrimeraOntologia_Class22] of  Libro
+
+	(generos
+		[PrimeraOntologia_Class12]
+		[PrimeraOntologia_Class4]
+		[PrimeraOntologia_Class7])
+	(Titulo "Kissing Woman"))
+
+([PrimeraOntologia_Class23] of  Autor
+
+	(nombreAutor "Wicea"))
+
+([PrimeraOntologia_Class24] of  Autor
+
+	(nombreAutor "Elbrecht"))
+
+([PrimeraOntologia_Class25] of  Autor
+
+	(nombreAutor "Wicemar"))
+
+([PrimeraOntologia_Class26] of  Autor
+
+	(nombreAutor "Asterius"))
+
+([PrimeraOntologia_Class27] of  Autor
+
+	(nombreAutor "Nalien"))
+
+([PrimeraOntologia_Class28] of  Autor
+
+	(nombreAutor "Zann"))
+
+([PrimeraOntologia_Class29] of  Autor
+
+	(nombreAutor "Sevardo"))
+
+([PrimeraOntologia_Class3] of  Genero
+
+	(nombre "Aventuras"))
+
+([PrimeraOntologia_Class30] of  Autor
+
+	(nombreAutor "Etirekor"))
+
+([PrimeraOntologia_Class31] of  Autor
+
+	(nombreAutor "Loikath"))
+
+([PrimeraOntologia_Class32] of  Autor
+
+	(nombreAutor "Mijan"))
+
+([PrimeraOntologia_Class33] of  Autor
+
+	(nombreAutor "Tardotram"))
+
+([PrimeraOntologia_Class34] of  Autor
+
+	(nombreAutor "Larerijar"))
+
+([PrimeraOntologia_Class4] of  Genero
+
+	(nombre "Novela"))
+
+([PrimeraOntologia_Class5] of  Genero
+
+	(nombre "Policial"))
+
+([PrimeraOntologia_Class6] of  Genero
+
+	(nombre "Romantica"))
+
+([PrimeraOntologia_Class7] of  Genero
+
+	(nombre "Ciencia Ficcion"))
+
+([PrimeraOntologia_Class8] of  Genero
+
+	(nombre "Infantil"))
+
+([PrimeraOntologia_Class9] of  Genero
+
+	(nombre "Suspense"))
