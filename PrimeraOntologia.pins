@@ -1,7 +1,7 @@
-; Wed Nov 25 11:57:40 CET 2015
+; Wed Nov 25 12:11:39 GMT 2015
 ; 
-;+ (version "3.5")
-;+ (build "Build 663")
+;+ (version "3.4.8")
+;+ (build "Build 629")
 
 ([PrimeraOntologia_Class10] of  Genero
 
@@ -9,45 +9,59 @@
 
 ([PrimeraOntologia_Class11] of  Libro
 
+	(bestSeller TRUE)
+	(escritoPor [PrimeraOntologia_Class23])
 	(generos [PrimeraOntologia_Class10])
-	(Titulo "Cracked Slaves"))
+	(titulo "Cracked Slaves"))
 
 ([PrimeraOntologia_Class12] of  Genero
 )
 
 ([PrimeraOntologia_Class14] of  Libro
 
+	(escritoPor [PrimeraOntologia_Class33])
 	(generos
 		[PrimeraOntologia_Class12]
 		[PrimeraOntologia_Class7])
-	(Titulo "The Vacant Male"))
+	(titulo "The Vacant Male"))
 
 ([PrimeraOntologia_Class15] of  Libro
 
+	(bestSeller TRUE)
+	(escritoPor
+		[PrimeraOntologia_Class33]
+		[PrimeraOntologia_Class30])
 	(generos [PrimeraOntologia_Class7])
-	(Titulo "Wife of Male"))
+	(titulo "Wife of Male"))
 
 ([PrimeraOntologia_Class16] of  Libro
 
+	(escritoPor [PrimeraOntologia_Class32])
 	(generos [PrimeraOntologia_Class3])
-	(Titulo "The Crying's Fairy"))
+	(titulo "The Crying's Fairy"))
 
 ([PrimeraOntologia_Class17] of  Libro
 
+	(escritoPor [PrimeraOntologia_Class28])
 	(generos [PrimeraOntologia_Class2])
-	(Titulo "Voyagers in the Wife"))
+	(titulo "Voyagers in the Wife"))
 
 ([PrimeraOntologia_Class18] of  Libro
 
+	(bestSeller TRUE)
+	(escritoPor
+		[PrimeraOntologia_Class28]
+		[PrimeraOntologia_Class30])
 	(generos [PrimeraOntologia_Class6])
-	(Titulo "The Stream of the Thorn"))
+	(titulo "The Stream of the Thorn"))
 
 ([PrimeraOntologia_Class19] of  Libro
 
+	(escritoPor [PrimeraOntologia_Class27])
 	(generos
 		[PrimeraOntologia_Class3]
 		[PrimeraOntologia_Class9])
-	(Titulo "The Souls's Winter"))
+	(titulo "The Souls's Winter"))
 
 ([PrimeraOntologia_Class2] of  Genero
 
@@ -55,21 +69,24 @@
 
 ([PrimeraOntologia_Class20] of  Libro
 
+	(escritoPor [PrimeraOntologia_Class30])
 	(generos [PrimeraOntologia_Class4])
-	(Titulo "Snake of Sorcerer"))
+	(titulo "Snake of Sorcerer"))
 
 ([PrimeraOntologia_Class21] of  Libro
 
+	(escritoPor [PrimeraOntologia_Class29])
 	(generos [PrimeraOntologia_Class9])
-	(Titulo "The Soul of the Door"))
+	(titulo "The Soul of the Door"))
 
 ([PrimeraOntologia_Class22] of  Libro
 
+	(escritoPor [PrimeraOntologia_Class26])
 	(generos
 		[PrimeraOntologia_Class12]
 		[PrimeraOntologia_Class4]
 		[PrimeraOntologia_Class7])
-	(Titulo "Kissing Woman"))
+	(titulo "Kissing Woman"))
 
 ([PrimeraOntologia_Class23] of  Autor
 
