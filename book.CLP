@@ -944,7 +944,7 @@
 (defrule pregunta-idioma "Pregunta para saber el idioma preferido"
 	(nuevo-lector ?)
 	=>
-	(bind ?resp (pregunta-general "En que idioma prefieres leer? Ni->No importa"))
+	(bind ?resp (pregunta-general "En que idioma prefieres leer? Ni->No importa "))
 	(if (eq (str-compare ?resp "Ni") 0) then (assert (Idioma indef))
 	else (assert (Idioma ?resp)))
 )
@@ -1023,6 +1023,26 @@
 		)
 	)
 	(assert (pregunta-generos))
+)
+
+(defrule pregunta-libros "Pregunta para saber los libros que le gustan"
+	(pregunta-generos)
+	(genero ?gen)
+	;(any-instancep ((?l Libro)) (genre_in_book ?gen ?l))
+	=>
+	(printout t "Obteniendo lista del genero " ?gen crlf)
+	(bind $?lista (find-all-instances((?book Libro)) (genre_in_book ?gen ?book)))
+	(loop-for-count (?i 1 (length$ ?lista)) do
+	(bind ?linea (str-cat ?i " " (nth$ ?i ?lista):titulo " " (nth$ ?i ?lista)))
+	(printout t ?linea crlf)
+	)
+	(bind ?resp (pregunta-lista "Escribe los identificadores separados por espacios: 0->Ninguno "))
+	(if (not (member 0 ?resp))
+		then
+		(progn$ (?it ?resp)
+			(assert (LibroLeido ?it))
+		)
+	)
 )
 
 
