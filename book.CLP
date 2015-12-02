@@ -548,6 +548,15 @@
 	?res
 )
 
+
+(deffunction genre_in_book ""
+	(?gen ?book)
+	(bind ?list (send ?book get-generos))
+	(progn$ (?it ?list)
+		(if (eq (str-cat ?gen) (send ?it get-nombre) ) then TRUE else FALSE)
+	)
+)
+
 ;;;**********************
 ;;;MAIN
 ;;;**********************
@@ -588,18 +597,20 @@
 	(if (< ?ed 12) then (assert (infantil)))
 	(if (and (>= ?ed 12)(<= ?ed 24)) then (assert (juvenil)))
 	(if (> ?ed 24) then (assert(adulto)))
+	
+	(if (< ?ed 18) then (assert (menor_de_edad)) )
 	(send ?lector put-edad ?ed)
 )
 
 (defrule pregunta-horas " Pregunta para horas de lectura "
-	(nuevo-lector)
+	(nuevo-lector ?)
 	=>
 	(bind ?resp (pregunta-numerica "Cuantas horas dedicas a leer al dia? " 0 24))
 	(assert (HorasDia ?resp))
 )
 
 (defrule pregunta-momento "Pregunta para momento de lectura del día"
-	(nuevo-lector)
+	(nuevo-lector ?)
 	=>
 	(bind ?resp (pregunta-numerica "Mas o menos a que hora comienzas a leer? " 0 24))
 	(if (and (>= ?resp 0) (<= ?resp 6)) then (assert (Momento madrugada)) 
@@ -609,7 +620,7 @@
 )
 
 (defrule pregunta-frecuencia "Pregunta para frecuencia de lectura"
-	(nuevo-lector)
+	(nuevo-lector ?)
 	=>
 	(bind ?resp (pregunta-numerica "En un mes cuantos dias sueles leer? " 0 24))
 	(if (and (>= ?resp 0) (<= ?resp 6)) then (assert (Frecuencia muyPoca))
@@ -620,7 +631,7 @@
 )
 
 (defrule pregunta-lugar "Pregunta para horas de lectura"
-	(nuevo-lector)
+	(nuevo-lector ?)
 	=>
 	(bind ?resp (pregunta-general "En que sitio sueles leer normalmente? Ni -> No importa "))
 	(if (eq (str-compare ?resp "Ni") 0) then (assert (Lugar indef))
@@ -628,10 +639,57 @@
 )
 
 (defrule pregunta-bestseller ""
-	(nuevo-lector)
+	(nuevo-lector ?)
 	=>
-	(bind ?resp (pregunta-booleana "Sueles fijarte en los libros más vendidos?"))
+	(bind ?resp (pregunta-booleana "Te interesan los libros mas vendidos?"))
 	(assert (bestseller ?resp))
+)
+
+(defrule pregunta-modas ""
+	(nuevo-lector ?)
+	=>
+	(bind ?resp (pregunta-booleana "Quieres ver los libros que estan de moda?"))
+	(assert (modas ?resp))
+)
+
+(defrule pregunta-generos "Pregunta para saber generos preferidos"
+	(nuevo-lector ?)
+	=>
+	(printout t "Cuales son tus generos preferidos?" crlf)
+	(printout t "0. Indiferente" crlf)
+	(printout t "1. Misterio" crlf)
+	(printout t "2. Suspense" crlf) 
+	(printout t "3. Ciencia Ficcion" crlf)
+	(printout t "4. Erotico" crlf)
+	(printout t "5. Aventuras" crlf)
+	(bind ?resp (pregunta-lista "Escribe los identificadores separados por espacios: "))
+	(if (not (member 0 ?resp))
+		then
+		(progn$ (?it ?resp)
+			(switch ?it
+				(case 1 then (assert(genero Misterio)))
+				(case 2 then (assert(genero Suspense)))
+				(case 3 then (assert(genero CienciaFiccion)))
+				(case 4 then (assert(genero Erotico)))
+				(case 5 then (assert(genero Aventuras)))
+			)
+		)
+	)
+	(assert (pregunta-generos))
+)
+
+
+(defrule focusFiltrado
+	(pregunta-generos)
+	=>
+	(focus filtrado)
+)
+;;;*********
+;;;Filtrado
+;;;*********
+(defmodule filtrado
+	(import MAIN ?ALL)
+	(export ?ALL)
 )
 
 (defrule obtenerLibros "Obtener todos los libros"
@@ -642,7 +700,7 @@
 	(loop-for-count (?i 1 (length$ ?lista)) do
 		(bind ?book (nth$ ?i ?lista)) 
 		(bind ?nR (sym-cat R**(send ?book get-titulo)))	 
-		(bind ?inst (make-instance ?nR of Recomendacion (libro ?book)))
+		(bind ?inst (make-instance ?nR of Recomendacion (libro ?book) (puntuacion 0) ))
 	)
 	(retract ?v)
 	(assert(libros-obtenidos))
@@ -654,32 +712,31 @@
 	?recm <- (object (is-a Recomendacion) (libro ?book))
 	(test (send ?book get-bestSeller))
 	=>
-	(printout t " Eliminado por ser un bestseller: " (instance-name ?recm) crlf)	
+	(printout t "Eliminado por ser un bestseller: " (instance-name ?recm) crlf)	
 	(send ?recm delete)
 )
 
-
-(defrule pregunta-generos "Pregunta para saber generos preferidos"
-	(nuevo-lector)
+(defrule descartarMenorErotico "Borra libros eróticos si el lector es un niño"
+	(libros-obtenidos)
+	(menor_de_edad)
+	?recm <- (object (is-a Recomendacion) (libro ?book) )
+	(test (genre_in_book Erotica ?book))
 	=>
-	(printout t "Cuales son tus generos preferidos?")
-	(printout t "0. Indiferente")
-	(printout t "1. Infantil")
-	(printout t "2. Suspense")
-	(printout t "3. Ciencia Ficcion")
-	(printout t "4. Erotico")
-	(printout t "5. Aventuras")
-	(bind ?resp (pregunta-lista "Escribe los identificadores separados por espacios: "))
-	;(if (not (member 0 ?resp))
-	;	then
-	;	(progn ?it ?resp
-	;		(switch ?it
-	;			(case 1 then (assert(Indiferencia)))
-	;			(case 2 then (assert(Infan)))
-	;			(case 3 then (assert(Suspense)))
-	;		)
-	;	)
-	;)
-	
+	(printout t "Eliminado por ser inadecuado para niños: " (instance-name ?recm) crlf)
+	(send ?recm delete)
 )
 
+;;;**********
+;;;Valoración
+;;;**********
+
+(defrule plusGenero
+	(genero ?resp)
+	?recm <- (object (is-a Recomendacion) (libro ?book) (puntuacion ?pt))
+	(test (genre_in_book ?resp ?book))
+	(not (valorGenero ?recm))
+	=>
+	(printout t "Pertenece a genero favorito (" ?resp ") : " (instance-name ?recm) crlf)
+	(send ?recm put-puntuacion (+ ?pt 50))
+	assert (valorGenero ?recm)
+)

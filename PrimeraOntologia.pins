@@ -1,4 +1,4 @@
-; Wed Nov 25 12:11:39 GMT 2015
+; Wed Dec 02 09:27:18 GMT 2015
 ; 
 ;+ (version "3.4.8")
 ;+ (build "Build 629")
@@ -11,7 +11,11 @@
 
 	(bestSeller TRUE)
 	(escritoPor [PrimeraOntologia_Class23])
+	(fechaPublicacion "2015")
 	(generos [PrimeraOntologia_Class10])
+	(idioma "Inglés")
+	(numPaginas 250)
+	(publicoDirigido Juvenil)
 	(titulo "Cracked Slaves"))
 
 ([PrimeraOntologia_Class12] of  Genero
