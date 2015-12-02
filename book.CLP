@@ -913,6 +913,9 @@
 	(printout t crlf crlf)
 	(assert (start))
 )
+;;;-------------------------------------------------------------------
+;;;------------------------------Preguntas----------------------------
+;;;-------------------------------------------------------------------
 
 (defrule preguntar-existencia "" 
 	(start)
@@ -925,23 +928,25 @@
 	(send ?lector put-DNI ?dni)
 	(assert(nuevo-lector ?dni))
 	)
-	;(bind ?dniL (send ?lector get-DNI))
-	;(printout t ?dni crlf)
-	;(printout t ?dniL crlf)
 )
 
 ;;; Pregunta para conocer la edad
 (defrule pregunta-edad ""
 	(nuevo-lector ?dni)
-	?lector<-(object (is-a Lector)(DNI ?dni))
 	=>
 	(bind ?ed (pregunta-numerica "Cuantos anyos tienes?" 0 150))
 	(if (< ?ed 12) then (assert (perfil infantil)))
 	(if (and (>= ?ed 12)(<= ?ed 24)) then (assert (perfiljuvenil)))
 	(if (> ?ed 24) then (assert(perfil adulto)))
-	
 	(if (< ?ed 18) then (assert (menor_de_edad)) )
-	(send ?lector put-edad ?ed)
+)
+
+(defrule pregunta-idioma "Pregunta para saber el idioma preferido"
+	(nuevo-lector ?)
+	=>
+	(bind ?resp (pregunta-general "En que idioma prefieres leer? Ni->No importa"))
+	(if (eq (str-compare ?resp "Ni") 0) then (assert (Idioma indef))
+	else (assert (Idioma ?resp)))
 )
 
 (defrule pregunta-horas " Pregunta para horas de lectura "
