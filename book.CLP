@@ -611,9 +611,9 @@
 	?lector<-(object (is-a Lector)(DNI ?dni))
 	=>
 	(bind ?ed (pregunta-numerica "Cuantos anyos tienes?" 0 150))
-	(if (< ?ed 12) then (assert (infantil)))
-	(if (and (>= ?ed 12)(<= ?ed 24)) then (assert (juvenil)))
-	(if (> ?ed 24) then (assert(adulto)))
+	(if (< ?ed 12) then (assert (perfil infantil)))
+	(if (and (>= ?ed 12)(<= ?ed 24)) then (assert (perfiljuvenil)))
+	(if (> ?ed 24) then (assert(perfil adulto)))
 	
 	(if (< ?ed 18) then (assert (menor_de_edad)) )
 	(send ?lector put-edad ?ed)
@@ -755,15 +755,6 @@
 	(send ?recm delete)
 )
 
-(defrule descartarBestSellers ""
-	(libros-obtenidos)
-	(bestseller FALSE)
-	?recm <- (object (is-a Recomendacion) (libro ?book))
-	(test (send ?book get-bestSeller))
-	=>
-	(printout t "Eliminado por ser un bestseller: " (instance-name ?recm) crlf)	
-	(send ?recm delete)
-)
 
 (defrule descartarIdiomas ""
 	(libros-obtenidos)
@@ -786,6 +777,15 @@
 	(not (valorGenero ?recm))
 	=>
 	(printout t "Pertenece a genero favorito (" ?resp ") : " (instance-name ?recm) crlf)
-	(send ?recm put-puntuacion (+ ?pt 50))
+	(send ?recm put-puntuacion (+ ?pt 100))
 	(assert (valorGenero ?recm))
+)
+
+(defrule plusPublico
+	(perfil ?perf)
+	?recm <- (object (is-a Recomendacion) (libro ?book))
+	(test (eq ?perf (send ?book get-publicoDirigido)))
+	(not (valorPublico ?recm))
+	=>
+	(printout t "Pertenece al perfil del lector (" ?perf ") : " (instance-name ?recm) crlf)
 )
