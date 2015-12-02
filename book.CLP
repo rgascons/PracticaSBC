@@ -783,9 +783,16 @@
 
 (defrule plusPublico
 	(perfil ?perf)
-	?recm <- (object (is-a Recomendacion) (libro ?book))
+	?recm <- (object (is-a Recomendacion) (libro ?book) (puntuacion ?pt))
 	(test (eq ?perf (send ?book get-publicoDirigido)))
 	(not (valorPublico ?recm))
 	=>
 	(printout t "Pertenece al perfil del lector (" ?perf ") : " (instance-name ?recm) crlf)
+	(send ?recm put-puntuacion (+ ?pt 50))
+	(assert (valorPublico ?recm))
 )
+
+;;;************
+;;;Presentación
+;;;************
+
