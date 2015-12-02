@@ -1,7 +1,7 @@
-; Wed Nov 25 12:11:27 GMT 2015
+; Wed Dec 02 11:46:17 CET 2015
 ; 
-;+ (version "3.4.8")
-;+ (build "Build 629")
+;+ (version "3.5")
+;+ (build "Build 663")
 
 ([ANNOTATED_INSTANCE_WIDGET] of  Widget
 
@@ -20,9 +20,9 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[PrimeraOntologia_ProjectKB_Class10012]
-		[PrimeraOntologia_ProjectKB_Class10013]
-		[PrimeraOntologia_ProjectKB_Class10014]))
+		[PrimeraOntologia_ProjectKB_Class20065]
+		[PrimeraOntologia_ProjectKB_Class20066]
+		[PrimeraOntologia_ProjectKB_Class20067]))
 
 ([CLSES_TAB] of  Widget
 
@@ -66,7 +66,7 @@
 	(is_hidden FALSE)
 	(widget_class_name "edu.stanford.smi.protege.widget.InstancesTab"))
 
-([KB_496318_Class3] of  Map
+([KB_004134_Class3] of  Map
 )
 
 ([KB_624881_Class0] of  String
@@ -77,9 +77,9 @@
 ([KB_624881_Class1] of  Map
 
 	(entries
-		[PrimeraOntologia_ProjectKB_Class10015]
-		[PrimeraOntologia_ProjectKB_Class10016]
-		[PrimeraOntologia_ProjectKB_Class10017]))
+		[PrimeraOntologia_ProjectKB_Class20068]
+		[PrimeraOntologia_ProjectKB_Class20069]
+		[PrimeraOntologia_ProjectKB_Class20070]))
 
 ([KB_624881_Class119] of  String
 
@@ -261,78 +261,6 @@
 ([PrimeraOntologia_ProjectKB_Class10] of  Property_List
 )
 
-([PrimeraOntologia_ProjectKB_Class10004] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [PrimeraOntologia_ProjectKB_Class10005])
-	(widget_class_name "edu.stanford.smi.RemoteKBTab.WordNetTab"))
-
-([PrimeraOntologia_ProjectKB_Class10005] of  Property_List
-)
-
-([PrimeraOntologia_ProjectKB_Class10006] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [PrimeraOntologia_ProjectKB_Class10007])
-	(widget_class_name "org.algernon.kb.okbc.protege.plugins.AlgernonTab"))
-
-([PrimeraOntologia_ProjectKB_Class10007] of  Property_List
-)
-
-([PrimeraOntologia_ProjectKB_Class10008] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [PrimeraOntologia_ProjectKB_Class10009])
-	(widget_class_name "edu.stanford.smi.RemoteKBTab.UMLSTab"))
-
-([PrimeraOntologia_ProjectKB_Class10009] of  Property_List
-)
-
-([PrimeraOntologia_ProjectKB_Class10010] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [PrimeraOntologia_ProjectKB_Class10011])
-	(widget_class_name "org.protege.owl.mm.protege3.MappingMasterTab"))
-
-([PrimeraOntologia_ProjectKB_Class10011] of  Property_List
-)
-
-([PrimeraOntologia_ProjectKB_Class10012] of  String
-
-	(name ":INSTANCE-ANNOTATION")
-	(string_value "%3AANNOTATION-TEXT"))
-
-([PrimeraOntologia_ProjectKB_Class10013] of  String
-
-	(name ":META-CLASS")
-	(string_value "%3ANAME"))
-
-([PrimeraOntologia_ProjectKB_Class10014] of  String
-
-	(name ":PAL-CONSTRAINT")
-	(string_value "%3APAL-NAME"))
-
-([PrimeraOntologia_ProjectKB_Class10015] of  Map_Entry
-
-	(key "suppress_instance_counting")
-	(key_class "java.lang.String")
-	(value "false")
-	(value_class "java.lang.String"))
-
-([PrimeraOntologia_ProjectKB_Class10016] of  Map_Entry
-
-	(key "change_tracking_active")
-	(key_class "java.lang.String")
-	(value "false")
-	(value_class "java.lang.String"))
-
-([PrimeraOntologia_ProjectKB_Class10017] of  Map_Entry
-
-	(key "add_name_on_instance_form")
-	(key_class "java.lang.String")
-	(value "false")
-	(value_class "java.lang.String"))
-
 ([PrimeraOntologia_ProjectKB_Class11] of  Widget
 
 	(is_hidden TRUE)
@@ -384,6 +312,42 @@
 
 ([PrimeraOntologia_ProjectKB_Class20] of  Property_List
 )
+
+([PrimeraOntologia_ProjectKB_Class20065] of  String
+
+	(name ":INSTANCE-ANNOTATION")
+	(string_value "%3AANNOTATION-TEXT"))
+
+([PrimeraOntologia_ProjectKB_Class20066] of  String
+
+	(name ":PAL-CONSTRAINT")
+	(string_value "%3APAL-NAME"))
+
+([PrimeraOntologia_ProjectKB_Class20067] of  String
+
+	(name ":META-CLASS")
+	(string_value "%3ANAME"))
+
+([PrimeraOntologia_ProjectKB_Class20068] of  Map_Entry
+
+	(key "add_name_on_instance_form")
+	(key_class "java.lang.String")
+	(value "false")
+	(value_class "java.lang.String"))
+
+([PrimeraOntologia_ProjectKB_Class20069] of  Map_Entry
+
+	(key "change_tracking_active")
+	(key_class "java.lang.String")
+	(value "false")
+	(value_class "java.lang.String"))
+
+([PrimeraOntologia_ProjectKB_Class20070] of  Map_Entry
+
+	(key "suppress_instance_counting")
+	(key_class "java.lang.String")
+	(value "false")
+	(value_class "java.lang.String"))
 
 ([PrimeraOntologia_ProjectKB_Class21] of  Widget
 
@@ -666,10 +630,10 @@
 	(browser_slot_names [BROWSER_SLOT_NAMES])
 	(customized_instance_widgets
 		[INSTANCE_ANNOTATION_FORM_WIDGET]
-		[STANDARD_FACET_FORM_WIDGET]
 		[STANDARD_SLOT_FORM_WIDGET]
-		[STANDARD_CLASS_FORM_WIDGET]
-		[PAL_FORM_WIDGET])
+		[STANDARD_FACET_FORM_WIDGET]
+		[PAL_FORM_WIDGET]
+		[STANDARD_CLASS_FORM_WIDGET])
 	(default_cls_metaclass ":STANDARD-CLASS")
 	(default_facet_metaclass ":STANDARD-FACET")
 	(default_instance_widget_class_name "edu.stanford.smi.protege.widget.FormWidget")
