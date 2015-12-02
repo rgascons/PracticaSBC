@@ -574,6 +574,14 @@
 	)
 )
 
+(deffunction author_in_book ""
+	(?aut ?book)
+	(bind ?list (send ?book get-escritoPor))
+	(progn$ (?it ?list)
+		(if (eq (str-cat ?aut) (send ?it get-nombreAutor)) then TRUE else FALSE)
+	)
+)
+
 ;;;**********************
 ;;;MAIN
 ;;;**********************
@@ -790,6 +798,17 @@
 	(printout t "Pertenece al perfil del lector (" ?perf ") : " (instance-name ?recm) crlf)
 	(send ?recm put-puntuacion (+ ?pt 50))
 	(assert (valorPublico ?recm))
+)
+
+(defrule plusAutor
+	(autor ?autr)
+	?recm <- (object (is-a Recomendacion) (libro ?book) (puntuacion ?pt))
+	(test (author_in_book ?autr ?book))
+	(not (valorAutor ?recm))
+	=>
+	(printout t "El autor (" ?autr ") al conjunto de autores favoritos del lector : " (instance-name ?recm) crlf)
+	(send ?recm put-puntuacion (+ ?pt 50))
+	(assert (valorAutor ?recm))
 )
 
 ;;;************
