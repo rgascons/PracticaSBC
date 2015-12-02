@@ -814,13 +814,26 @@
 		(create-accessor read-write))
 )
 
+;;; Template para una lista de recomendaciones sin orden
+(deftemplate lista-rec-desordenada
+	(multislot recomendaciones (type INSTANCE))
+)
+
+;;; Template para una lista de recomendaciones con orden
+(deftemplate lista-rec-ordenada
+	(multislot recomendaciones (type INSTANCE))
+	)
+
 ;; Imprime los datos de un contenido
 (defmessage-handler Libro imprimir primary ()
 	(format t "Titulo: %s %n" ?self:titulo)
 	
-	(format t "Generos: %s" $?self:generos)
+	(format t "Genero/s: ")
+	(progn$ (?curr-gen (send ?self get-generos))
+		(format t "%s " (send ?curr-gen get-nombre))
+	)
 	(printout t crlf)
-	(format t "Fecha: %d" ?self:fechaPublicacion)
+	(format t "Fecha: %s" ?self:fechaPublicacion)
 	(printout t crlf)
 	(printout t "Autor/es: ")
 	(progn$ (?curr-aut (send ?self get-escritoPor))
@@ -834,10 +847,6 @@
 	(printout t (send ?self:libro imprimir))
 	(printout t crlf)
 	(format t "Nivel de recomendación: %d %n" ?self:puntuacion)
-	(printout t "Justificación: " crlf)
-	(progn$ (?curr-just ?self:justificaciones)
-		(printout t ?curr-just crlf)
-	)
 	(printout t crlf)
 	(printout t "-----------------------------------" crlf)
 )
@@ -882,6 +891,21 @@
 	?res
 )
 
+;;; Funcion que retorna el elemento con puntuacion maxima
+(deffunction maximo-puntuacion ($?lista)
+	(bind ?maximo -1)
+	(bind ?elemento nil)
+	(progn$ (?curr-rec $?lista)
+		;(bind ?curr-cont (send ?curr-rec get-contenido))
+		(bind ?curr-punt (send ?curr-rec get-puntuacion))
+		(if (> ?curr-punt ?maximo)
+			then 
+			(bind ?maximo ?curr-punt)
+			(bind ?elemento ?curr-rec)
+		)
+	)
+	?elemento
+)
 
 (deffunction genre_in_book ""
 	(?gen ?book)
@@ -1156,3 +1180,42 @@
 ;;;************
 ;;;Presentación
 ;;;************
+
+(defrule lista-desordenada "Si no existe la lista desordenada, se crea una"
+	(not (lista-rec-desordenada))
+	=>
+	(assert (lista-rec-desordenada))
+)
+
+(defrule insertar-recomendacion "Inserta una recomendacion a la lista de recomendaciones"
+	(declare (salience 10))
+	?rec <- (object (is-a Recomendacion))
+	?hecho <- (lista-rec-desordenada (recomendaciones $?lista))
+	(test (not (member$ ?rec $?lista)))
+	=>
+	(bind $?lista (insert$ $?lista (+ (length$ $?lista) 1) ?rec))
+	(modify ?hecho (recomendaciones $?lista))
+)
+
+(defrule crea-lista-ordenada "Se crea una lista ordenada de contenido"
+	(not (lista-rec-ordenada))
+	(lista-rec-desordenada (recomendaciones $?lista))
+	=>
+	;;; Hacemos una ordenacion buscando maximo a cada paso (lento per simple de implementar)
+	(bind $?resultado (create$ ))
+	(while (and (not (eq (length$ $?lista) 0)) (< (length$ $?resultado) 3))  do
+		(bind ?curr-rec (maximo-puntuacion $?lista))
+		(bind $?lista (delete-member$ $?lista ?curr-rec))
+		(bind $?resultado (insert$ $?resultado (+ (length$ $?resultado) 1) ?curr-rec))
+	)
+	(assert (lista-rec-ordenada (recomendaciones $?resultado)))
+)
+
+(defrule presentar ""
+	(lista-rec-ordenada (recomendaciones $?lista))
+	=>
+	(progn$ (?it ?lista)
+		(send ?it imprimir)
+		(printout t crlf)
+	)
+)
