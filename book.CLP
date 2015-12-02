@@ -1,3 +1,4 @@
+
 (defclass %3ACLIPS_TOP_LEVEL_SLOT_CLASS "Fake class to save top-level slot information"
 	(is-a USER)
 	(role abstract)
@@ -42,22 +43,22 @@
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(multislot exclusivas
-		(type INSTANCE)
-;+		(allowed-classes Libro)
-		(create-accessor read-write))
 	(multislot catalogo
 		(type INSTANCE)
 ;+		(allowed-classes Libro)
 		(cardinality 1 ?VARIABLE)
 		(create-accessor read-write))
-	(single-slot puntuacion
-		(type INTEGER)
-		(range 0 5)
-;+		(cardinality 0 1)
+	(multislot exclusivas
+		(type INSTANCE)
+;+		(allowed-classes Libro)
 		(create-accessor read-write))
 	(single-slot titulo
 		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot puntuacion
+		(type INTEGER)
+		(range 0 5)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(multislot librosLeidos
@@ -94,19 +95,19 @@
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot nombreCompa%C3%B1ia
-		(type STRING)
-;+		(cardinality 1 1)
+	(single-slot compa%C3%B1ia
+		(type INSTANCE)
+;+		(allowed-classes)
+;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot momento
 		(type SYMBOL)
 		(allowed-values ma%C3%B1ana mediodia tarde noche)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot compa%C3%B1ia
-		(type INSTANCE)
-;+		(allowed-classes)
-;+		(cardinality 0 1)
+	(single-slot nombreCompa%C3%B1ia
+		(type STRING)
+;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot autor
 		(type INSTANCE)
@@ -149,14 +150,14 @@
 		(type INSTANCE)
 ;+		(allowed-classes Genero)
 		(create-accessor read-write))
-	(single-slot nacionalidad
-		(type STRING)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
 	(single-slot presencia
 		(type SYMBOL)
 		(allowed-values fisica online)
 ;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot nacionalidad
+		(type STRING)
+;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot tiempoDisponible
 ;+		(comment "Tiempo disponible que tiene el lector al día, en horas")
@@ -188,18 +189,22 @@
 		(type INTEGER)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(multislot generos
-		(type INSTANCE)
-;+		(allowed-classes Genero)
-		(create-accessor read-write))
 	(single-slot bestSeller
 		(type SYMBOL)
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
+	(multislot generos
+		(type INSTANCE)
+;+		(allowed-classes Genero)
+		(create-accessor read-write))
 	(single-slot publicoDirigido
 		(type SYMBOL)
 		(allowed-values Infantil Juvenil Adulto)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot titulo
+		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot puntuacion
@@ -207,15 +212,11 @@
 		(range 0 5)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot titulo
+	(single-slot ISBN
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot fechaPublicacion
-		(type STRING)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot ISBN
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
@@ -253,14 +254,14 @@
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot momento
-		(type SYMBOL)
-		(allowed-values ma%C3%B1ana mediodia tarde noche)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
 	(single-slot tiempoDisponible
 ;+		(comment "Tiempo disponible que tiene el lector al día, en horas")
 		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot momento
+		(type SYMBOL)
+		(allowed-values ma%C3%B1ana mediodia tarde noche)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(multislot autoresFavoritos
@@ -310,10 +311,332 @@
 ;+		(cardinality 0 1)
 		(create-accessor read-write)))
 		
+		
 (definstances instancias
-	([PrimeraOntologia_Class10] of  Genero
+ ([PrimeraOntologia_Class10] of  Genero
 
 	(nombre "Erotica"))
+
+([PrimeraOntologia_Class10000] of  Autor
+
+	(librosEscritos [PrimeraOntologia_Class10001])
+	(nombreAutor "David H Lawrence"))
+
+([PrimeraOntologia_Class10001] of  Libro
+
+	(escritoPor [PrimeraOntologia_Class10000])
+	(fechaPublicacion "1928")
+	(generos [PrimeraOntologia_Class10])
+	(idioma "Castellano")
+	(titulo "El amante de Lady Chatterley"))
+
+([PrimeraOntologia_Class10002] of  Libro
+
+	(escritoPor [PrimeraOntologia_Class10003])
+	(fechaPublicacion "1928")
+	(generos [PrimeraOntologia_Class10])
+	(idioma "Castellano")
+	(titulo "Historia de ojo"))
+
+([PrimeraOntologia_Class10003] of  Autor
+
+	(librosEscritos [PrimeraOntologia_Class10002])
+	(nombreAutor "Georges Bataille"))
+
+([PrimeraOntologia_Class10004] of  Libro
+
+	(escritoPor [PrimeraOntologia_Class10005])
+	(fechaPublicacion "1955")
+	(generos [PrimeraOntologia_Class10])
+	(idioma "Castellano")
+	(titulo "Lolita"))
+
+([PrimeraOntologia_Class10005] of  Autor
+
+	(librosEscritos [PrimeraOntologia_Class10004])
+	(nombreAutor "Vladimir Nabokov"))
+
+([PrimeraOntologia_Class10006] of  Libro
+
+	(escritoPor [PrimeraOntologia_Class10007])
+	(generos [PrimeraOntologia_Class2])
+	(titulo "¡Arde, bruja, arde!"))
+
+([PrimeraOntologia_Class10007] of  Autor
+
+	(librosEscritos [PrimeraOntologia_Class10006])
+	(nombreAutor "Abraham Merritt"))
+
+([PrimeraOntologia_Class10008] of  Libro
+
+	(escritoPor [PrimeraOntologia_Class10009])
+	(generos [PrimeraOntologia_Class2])
+	(titulo "Al salir del infierno"))
+
+([PrimeraOntologia_Class10009] of  Autor
+
+	(librosEscritos [PrimeraOntologia_Class10008])
+	(nombreAutor "John Franklin Bardin"))
+
+([PrimeraOntologia_Class10010] of  Libro
+
+	(escritoPor [PrimeraOntologia_Class10011])
+	(generos [PrimeraOntologia_Class2])
+	(titulo "American Psycho"))
+
+([PrimeraOntologia_Class10011] of  Autor
+
+	(librosEscritos [PrimeraOntologia_Class10010])
+	(nombreAutor "Bret Easton Ellis"))
+
+([PrimeraOntologia_Class10012] of  Libro
+
+	(escritoPor [PrimeraOntologia_Class10013])
+	(generos [PrimeraOntologia_Class3])
+	(titulo "Miguel Strogoff"))
+
+([PrimeraOntologia_Class10013] of  Autor
+
+	(librosEscritos [PrimeraOntologia_Class10012])
+	(nombreAutor "Julio Verne"))
+
+([PrimeraOntologia_Class10014] of  Libro
+
+	(escritoPor [PrimeraOntologia_Class10015])
+	(generos [PrimeraOntologia_Class3])
+	(titulo "El Hobbit"))
+
+([PrimeraOntologia_Class10015] of  Autor
+
+	(librosEscritos [PrimeraOntologia_Class10014])
+	(nombreAutor "J.R.R. Tolkien"))
+
+([PrimeraOntologia_Class10016] of  Libro
+
+	(escritoPor [PrimeraOntologia_Class10017])
+	(generos [PrimeraOntologia_Class3])
+	(titulo "Ivanhoe"))
+
+([PrimeraOntologia_Class10017] of  Autor
+
+	(librosEscritos [PrimeraOntologia_Class10016])
+	(nombreAutor "Walter Scott"))
+
+([PrimeraOntologia_Class10020] of  Libro
+
+	(escritoPor [PrimeraOntologia_Class10021])
+	(generos [PrimeraOntologia_Class4])
+	(idioma "Castellano")
+	(ISBN "9788433979384")
+	(numPaginas 232)
+	(titulo "Francamente , Frank"))
+
+([PrimeraOntologia_Class10021] of  Autor
+
+	(librosEscritos [PrimeraOntologia_Class10020])
+	(nombreAutor "Richard Ford"))
+
+([PrimeraOntologia_Class10022] of  Libro
+
+	(escritoPor [PrimeraOntologia_Class10023])
+	(generos [PrimeraOntologia_Class4])
+	(idioma "Castellano")
+	(ISBN "9788408145820")
+	(numPaginas 610)
+	(titulo "El regreso del Catón"))
+
+([PrimeraOntologia_Class10023] of  Autor
+
+	(librosEscritos [PrimeraOntologia_Class10022])
+	(nombreAutor "Matilde Asensi"))
+
+([PrimeraOntologia_Class10025] of  Libro
+
+	(escritoPor [PrimeraOntologia_Class10026])
+	(generos [PrimeraOntologia_Class4])
+	(ISBN "9788490661918")
+	(titulo "Los besos en el pan"))
+
+([PrimeraOntologia_Class10026] of  Autor
+
+	(librosEscritos [PrimeraOntologia_Class10025])
+	(nombreAutor "Almudena Grandes"))
+
+([PrimeraOntologia_Class10027] of  Libro
+
+	(escritoPor [PrimeraOntologia_Class10028])
+	(generos [PrimeraOntologia_Class5])
+	(idioma "Castellano")
+	(titulo "Los crímenes de la calle Morgue"))
+
+([PrimeraOntologia_Class10028] of  Autor
+
+	(librosEscritos [PrimeraOntologia_Class10027])
+	(nombreAutor "Edgar Allan Poe"))
+
+([PrimeraOntologia_Class10029] of  Libro
+
+	(escritoPor [PrimeraOntologia_Class10030])
+	(generos [PrimeraOntologia_Class5])
+	(titulo "La piedra lunar"))
+
+([PrimeraOntologia_Class10030] of  Autor
+
+	(librosEscritos [PrimeraOntologia_Class10029])
+	(nombreAutor "Wilkie Collins"))
+
+([PrimeraOntologia_Class10031] of  Libro
+
+	(escritoPor [PrimeraOntologia_Class10032])
+	(generos [PrimeraOntologia_Class5])
+	(titulo "El sabueso de Baskerville"))
+
+([PrimeraOntologia_Class10032] of  Autor
+
+	(librosEscritos [PrimeraOntologia_Class10031])
+	(nombreAutor "Arthur Conan Doyle"))
+
+([PrimeraOntologia_Class10033] of  Libro
+
+	(escritoPor [PrimeraOntologia_Class10034])
+	(generos [PrimeraOntologia_Class6])
+	(titulo "Cada día, cada hora"))
+
+([PrimeraOntologia_Class10034] of  Autor
+
+	(librosEscritos [PrimeraOntologia_Class10033])
+	(nombreAutor "Nataša Dragnic"))
+
+([PrimeraOntologia_Class10035] of  Libro
+
+	(escritoPor [PrimeraOntologia_Class10036])
+	(generos [PrimeraOntologia_Class6])
+	(titulo "Las horas distantes"))
+
+([PrimeraOntologia_Class10036] of  Autor
+
+	(librosEscritos [PrimeraOntologia_Class10035])
+	(nombreAutor "Kate Morton"))
+
+([PrimeraOntologia_Class10037] of  Libro
+
+	(escritoPor [PrimeraOntologia_Class10038])
+	(generos [PrimeraOntologia_Class6])
+	(titulo "El jardín de los hechizos"))
+
+([PrimeraOntologia_Class10038] of  Autor
+
+	(librosEscritos [PrimeraOntologia_Class10037])
+	(nombreAutor "Sarah Addison Allen"))
+
+([PrimeraOntologia_Class10039] of  Libro
+
+	(escritoPor [PrimeraOntologia_Class10040])
+	(fechaPublicacion "2006")
+	(generos [PrimeraOntologia_Class7])
+	(idioma "Castellano")
+	(ISBN "9788496208391")
+	(titulo "TORMENTA DE ESPADAS"))
+
+([PrimeraOntologia_Class10040] of  Autor
+
+	(librosEscritos [PrimeraOntologia_Class10041])
+	(nombreAutor "MARTIN, GEORGE R.R."))
+
+([PrimeraOntologia_Class10041] of  Libro
+
+	(escritoPor [PrimeraOntologia_Class10042])
+	(fechaPublicacion "2011")
+	(generos [PrimeraOntologia_Class7])
+	(idioma "Castellano")
+	(titulo "EL IMPERIO FINAL"))
+
+([PrimeraOntologia_Class10042] of  Autor
+
+	(librosEscritos [PrimeraOntologia_Class10041])
+	(nombreAutor "SANDERSON, BRANDON"))
+
+([PrimeraOntologia_Class10043] of  Libro
+
+	(bestSeller TRUE)
+	(escritoPor [PrimeraOntologia_Class10044])
+	(fechaPublicacion "2009")
+	(generos [PrimeraOntologia_Class7])
+	(idioma "Castellano")
+	(ISBN "9788498382068")
+	(titulo "LA MALDICIÓN DEL TITÁN. Percy Jackson y los dioses del Olimpo III"))
+
+([PrimeraOntologia_Class10044] of  Autor
+
+	(librosEscritos [PrimeraOntologia_Class10043])
+	(nombreAutor "RIORDAN, RICK"))
+
+([PrimeraOntologia_Class10045] of  Libro
+
+	(escritoPor [PrimeraOntologia_Class10046])
+	(generos [PrimeraOntologia_Class8])
+	(titulo "El Alzamiento"))
+
+([PrimeraOntologia_Class10046] of  Autor
+
+	(librosEscritos [PrimeraOntologia_Class10045])
+	(nombreAutor "Brian Keene"))
+
+([PrimeraOntologia_Class10047] of  Libro
+
+	(escritoPor [PrimeraOntologia_Class10048])
+	(generos [PrimeraOntologia_Class8])
+	(titulo "Antirresurrección"))
+
+([PrimeraOntologia_Class10048] of  Autor
+
+	(librosEscritos [PrimeraOntologia_Class10047])
+	(nombreAutor "Juan Ramón Biedma"))
+
+([PrimeraOntologia_Class10049] of  Libro
+
+	(bestSeller TRUE)
+	(escritoPor [PrimeraOntologia_Class10050])
+	(generos [PrimeraOntologia_Class8])
+	(titulo "Antología Z"))
+
+([PrimeraOntologia_Class10050] of  Autor
+
+	(librosEscritos [PrimeraOntologia_Class10049])
+	(nombreAutor "VV.AA."))
+
+([PrimeraOntologia_Class10051] of  Libro
+
+	(escritoPor [PrimeraOntologia_Class10052])
+	(generos [PrimeraOntologia_Class9])
+	(titulo "Canon Holmesiano"))
+
+([PrimeraOntologia_Class10052] of  Autor
+
+	(librosEscritos [PrimeraOntologia_Class10051])
+	(nombreAutor "Arthur Conan Doyle"))
+
+([PrimeraOntologia_Class10054] of  Libro
+
+	(escritoPor [PrimeraOntologia_Class10055])
+	(generos [PrimeraOntologia_Class9])
+	(titulo "El halcón maltés"))
+
+([PrimeraOntologia_Class10055] of  Autor
+
+	(librosEscritos [PrimeraOntologia_Class10054])
+	(nombreAutor "Dashiell Hammett"))
+
+([PrimeraOntologia_Class10056] of  Libro
+
+	(escritoPor [PrimeraOntologia_Class10057])
+	(generos [PrimeraOntologia_Class9])
+	(titulo "Presunto inocente"))
+
+([PrimeraOntologia_Class10057] of  Autor
+
+	(librosEscritos [PrimeraOntologia_Class10056])
+	(nombreAutor "Scott Turow"))
 
 ([PrimeraOntologia_Class11] of  Libro
 
@@ -326,15 +649,10 @@
 	(publicoDirigido Juvenil)
 	(titulo "Cracked Slaves"))
 
-([PrimeraOntologia_Class12] of  Genero
-)
-
 ([PrimeraOntologia_Class14] of  Libro
 
 	(escritoPor [PrimeraOntologia_Class33])
-	(generos
-		[PrimeraOntologia_Class12]
-		[PrimeraOntologia_Class7])
+	(generos [PrimeraOntologia_Class7])
 	(titulo "The Vacant Male"))
 
 ([PrimeraOntologia_Class15] of  Libro
@@ -395,7 +713,6 @@
 
 	(escritoPor [PrimeraOntologia_Class26])
 	(generos
-		[PrimeraOntologia_Class12]
 		[PrimeraOntologia_Class4]
 		[PrimeraOntologia_Class7])
 	(titulo "Kissing Woman"))
@@ -466,11 +783,11 @@
 
 ([PrimeraOntologia_Class7] of  Genero
 
-	(nombre "Ciencia Ficcion"))
+	(nombre "Ciencia Ficcion Futurista"))
 
 ([PrimeraOntologia_Class8] of  Genero
 
-	(nombre "Infantil"))
+	(nombre "Zombis"))
 
 ([PrimeraOntologia_Class9] of  Genero
 
@@ -814,4 +1131,3 @@
 ;;;************
 ;;;Presentación
 ;;;************
-
