@@ -869,6 +869,7 @@
 	(printout t "-----------------------------------" crlf)
 	(printout t (send ?self:libro imprimir))
 	(printout t crlf)
+	;Max puntuacion = 200
 	(format t "Nivel de recomendacion: %d %% %n" (/ (* ?self:puntuacion 100) 200))
 	(printout t crlf)
 	(printout t "-----------------------------------" crlf)
