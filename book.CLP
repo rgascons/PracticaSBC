@@ -910,7 +910,7 @@
 (deffunction pregunta-lista (?pregunta $?valores_posibles) 
 	(format t "%s" ?pregunta)  
 	(bind ?resposta (readline))  
-	(bind ?res (str-explode ?resposta))   
+	(bind ?res (str-explode ?resposta))
 	?res
 )
 
@@ -1066,10 +1066,10 @@
 (defrule pregunta-libros "Pregunta para saber los libros que le gustan"
 	(pregunta-generos)
 	(genero ?gen)
-	(test (any-instancep ((?l Libro)) (genre_in_book ?gen ?l)))
+	?g<-(object (is-a Genero) (nombre ?gen) (librosRepresentativos $?lista))
+	(test (> (length$ ?lista) 0))
 	=>
 	(printout t "Obteniendo lista del genero " ?gen crlf)
-	(bind $?lista (find-all-instances((?book Libro)) (genre_in_book ?gen ?book)))
 	(loop-for-count (?i 1 (length$ ?lista)) do
 		(printout t ?i ". " (send (nth$ ?i ?lista) get-titulo) crlf)
 	)
