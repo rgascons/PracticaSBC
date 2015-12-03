@@ -944,7 +944,7 @@
 (defrule preguntar-existencia "" 
 	(start)
 	=>
-	(bind ?dni (pregunta-general "Cual es tu DNI?"))
+	(bind ?dni (pregunta-general "Cual es tu DNI? "))
 	(if (any-instancep ((?p Lector)) (eq (str-compare ?p:DNI ?dni) 0))
 	then (assert (usuario-lector))
 	else 
@@ -1026,24 +1026,15 @@
 (defrule pregunta-generos "Pregunta para saber generos preferidos"
 	(nuevo-lector ?)
 	=>
-	(printout t "Cuales son tus generos preferidos?" crlf)
-	(printout t "0. Indiferente" crlf)
-	(printout t "1. Misterio" crlf)
-	(printout t "2. Suspense" crlf) 
-	(printout t "3. Ciencia Ficcion" crlf)
-	(printout t "4. Erotico" crlf)
-	(printout t "5. Aventuras" crlf)
+	(bind ?lista (find-all-instances ((?p Genero)) TRUE))
+	(loop-for-count (?i 1 (length$ ?lista)) do
+		(printout t ?i ". " (send (nth$ ?i ?lista) get-nombre) crlf)
+	)
 	(bind ?resp (pregunta-lista "Escribe los identificadores separados por espacios: "))
 	(if (not (member 0 ?resp))
 		then
 		(progn$ (?it ?resp)
-			(switch ?it
-				(case 1 then (assert(genero Misterio)))
-				(case 2 then (assert(genero Suspense)))
-				(case 3 then (assert(genero CienciaFiccion)))
-				(case 4 then (assert(genero Erotico)))
-				(case 5 then (assert(genero Aventuras)))
-			)
+			(assert (genero (send (nth$ ?it ?lista) get-nombre)))
 		)
 	)
 	(assert (pregunta-generos))
@@ -1052,7 +1043,7 @@
 (defrule pregunta-libros "Pregunta para saber los libros que le gustan"
 	(pregunta-generos)
 	(genero ?gen)
-	;(any-instancep ((?l Libro)) (genre_in_book ?gen ?l))
+	(test (any-instancep ((?l Libro)) (genre_in_book ?gen ?l)))
 	=>
 	(printout t "Obteniendo lista del genero " ?gen crlf)
 	(bind $?lista (find-all-instances((?book Libro)) (genre_in_book ?gen ?book)))
@@ -1063,7 +1054,7 @@
 	(if (not (member 0 ?resp))
 		then
 		(progn$ (?it ?resp)
-			(assert (LibroLeido ?it))
+			(assert (LibroLeido (send (nth$ ?it ?lista) get-titulo)))
 		)
 	)
 )
