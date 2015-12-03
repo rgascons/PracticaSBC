@@ -1,10 +1,13 @@
-; Wed Dec 02 11:46:17 CET 2015
+; Thu Dec 03 19:03:56 GMT 2015
 ; 
-;+ (version "3.5")
-;+ (build "Build 663")
+;+ (version "3.4.8")
+;+ (build "Build 629")
 
 ([PrimeraOntologia_Class10] of  Genero
 
+	(librosRepresentativos
+		[PrimeraOntologia_Class10001]
+		[PrimeraOntologia_Class10004])
 	(nombre "Erotica"))
 
 ([PrimeraOntologia_Class10000] of  Autor
@@ -18,6 +21,7 @@
 	(fechaPublicacion "1928")
 	(generos [PrimeraOntologia_Class10])
 	(idioma "Castellano")
+	(publicoDirigido Adulto)
 	(titulo "El amante de Lady Chatterley"))
 
 ([PrimeraOntologia_Class10002] of  Libro
@@ -39,6 +43,7 @@
 	(fechaPublicacion "1955")
 	(generos [PrimeraOntologia_Class10])
 	(idioma "Castellano")
+	(publicoDirigido Adulto)
 	(titulo "Lolita"))
 
 ([PrimeraOntologia_Class10005] of  Autor
@@ -70,8 +75,14 @@
 
 ([PrimeraOntologia_Class10010] of  Libro
 
+	(bestSeller FALSE)
 	(escritoPor [PrimeraOntologia_Class10011])
+	(fechaPublicacion "1991")
 	(generos [PrimeraOntologia_Class2])
+	(idioma "Ingles")
+	(ISBN "978-0-679-73577-9")
+	(numPaginas 400)
+	(publicoDirigido Adulto)
 	(titulo "American Psycho"))
 
 ([PrimeraOntologia_Class10011] of  Autor
@@ -82,6 +93,7 @@
 ([PrimeraOntologia_Class10012] of  Libro
 
 	(escritoPor [PrimeraOntologia_Class10013])
+	(fechaPublicacion "1876")
 	(generos [PrimeraOntologia_Class3])
 	(titulo "Miguel Strogoff"))
 
@@ -385,6 +397,7 @@
 
 ([PrimeraOntologia_Class2] of  Genero
 
+	(librosRepresentativos [PrimeraOntologia_Class10010])
 	(nombre "Horror"))
 
 ([PrimeraOntologia_Class20] of  Libro
@@ -437,6 +450,7 @@
 
 ([PrimeraOntologia_Class3] of  Genero
 
+	(librosRepresentativos [PrimeraOntologia_Class10012])
 	(nombre "Aventuras"))
 
 ([PrimeraOntologia_Class30] of  Autor
@@ -477,6 +491,7 @@
 
 ([PrimeraOntologia_Class8] of  Genero
 
+	(moda TRUE)
 	(nombre "Zombis"))
 
 ([PrimeraOntologia_Class9] of  Genero

@@ -2,26 +2,34 @@
 (defclass %3ACLIPS_TOP_LEVEL_SLOT_CLASS "Fake class to save top-level slot information"
 	(is-a USER)
 	(role abstract)
-	(single-slot idioma
+	(single-slot nombreAutor
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot lugar
-		(type SYMBOL)
-		(allowed-values casa transporte trabajo)
+	(multislot autoresFavoritos
+		(type INSTANCE)
+;+		(allowed-classes Autor)
+		(create-accessor read-write))
+	(single-slot compa%C3%B1ia
+		(type INSTANCE)
+;+		(allowed-classes)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot bestSeller
+	(multislot generoExperto
+		(type INSTANCE)
+;+		(allowed-classes Genero)
+		(create-accessor read-write))
+	(single-slot momento
 		(type SYMBOL)
-		(allowed-values FALSE TRUE)
+		(allowed-values ma%C3%B1ana mediodia tarde noche)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot estudios
-		(type SYMBOL)
-		(allowed-values primaria secundaria bachillerato universidad formacionProfesional otros)
-;+		(cardinality 0 1)
+	(multislot catalogo
+		(type INSTANCE)
+;+		(allowed-classes Libro)
+		(cardinality 1 ?VARIABLE)
 		(create-accessor read-write))
-	(single-slot ISBN
+	(single-slot titulo
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
@@ -30,79 +38,72 @@
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot ejemplaresVendidos
-		(type INTEGER)
+	(single-slot DNI
+		(type STRING)
 ;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(multislot puntosDeVenta
-		(type INSTANCE)
-;+		(allowed-classes)
 		(create-accessor read-write))
 	(single-slot modas
 		(type SYMBOL)
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(multislot catalogo
-		(type INSTANCE)
-;+		(allowed-classes Libro)
-		(cardinality 1 ?VARIABLE)
-		(create-accessor read-write))
-	(multislot exclusivas
-		(type INSTANCE)
-;+		(allowed-classes Libro)
-		(create-accessor read-write))
-	(single-slot titulo
-		(type STRING)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot puntuacion
-		(type INTEGER)
-		(range 0 5)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(multislot librosLeidos
-		(type INSTANCE)
-;+		(allowed-classes Libro)
-		(create-accessor read-write))
-	(multislot librosEscritos
-		(type INSTANCE)
-;+		(allowed-classes Libro)
-		(create-accessor read-write))
-	(single-slot nombreEstablecimiento
-		(type STRING)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot DNI
-		(type STRING)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot numPaginas
-		(type INTEGER)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot frecuencia
+	(single-slot bestSeller
 		(type SYMBOL)
-		(allowed-values poca media mucha)
+		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot PrimeraOntologia_Class0
-		(type STRING)
-;+		(cardinality 0 1)
+	(single-slot presencia
+		(type SYMBOL)
+		(allowed-values fisica online)
+;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot populares
 		(type SYMBOL)
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot compa%C3%B1ia
+	(multislot librosLeidos
 		(type INSTANCE)
-;+		(allowed-classes)
+;+		(allowed-classes Libro)
+		(create-accessor read-write))
+	(multislot generosRelacionados
+		(type INSTANCE)
+;+		(allowed-classes Genero)
+		(create-accessor read-write))
+	(multislot generosPreferidos
+		(type INSTANCE)
+;+		(allowed-classes Genero)
+		(create-accessor read-write))
+	(single-slot edad
+		(type INTEGER)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot momento
-		(type SYMBOL)
-		(allowed-values ma%C3%B1ana mediodia tarde noche)
+	(single-slot ejemplaresVendidos
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot nombre
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot ISBN
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot escritoPor
+		(type INSTANCE)
+;+		(allowed-classes Autor)
+		(create-accessor read-write))
+	(single-slot idioma
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot exclusivas
+		(type INSTANCE)
+;+		(allowed-classes Libro)
+		(create-accessor read-write))
+	(single-slot PrimeraOntologia_Class0
+		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot nombreCompa%C3%B1ia
@@ -114,95 +115,72 @@
 ;+		(allowed-classes Autor)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(multislot escritoPor
+	(multislot librosRepresentativos
 		(type INSTANCE)
-;+		(allowed-classes Autor)
-		(create-accessor read-write))
-	(multislot generoExperto
-		(type INSTANCE)
-;+		(allowed-classes Genero)
-		(create-accessor read-write))
-	(single-slot fechaPublicacion
-		(type STRING)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(multislot generosRelacionados
-		(type INSTANCE)
-;+		(allowed-classes Genero)
-		(create-accessor read-write))
-	(single-slot nombreAutor
-		(type STRING)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot nombre
-		(type STRING)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(multislot autoresFavoritos
-		(type INSTANCE)
-;+		(allowed-classes Autor)
-		(create-accessor read-write))
-	(multislot generos
-		(type INSTANCE)
-;+		(allowed-classes Genero)
-		(create-accessor read-write))
-	(multislot generosPreferidos
-		(type INSTANCE)
-;+		(allowed-classes Genero)
-		(create-accessor read-write))
-	(single-slot presencia
-		(type SYMBOL)
-		(allowed-values fisica online)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot nacionalidad
-		(type STRING)
-;+		(cardinality 0 1)
+;+		(allowed-classes Libro)
 		(create-accessor read-write))
 	(single-slot tiempoDisponible
 ;+		(comment "Tiempo disponible que tiene el lector al día, en horas")
 		(type INTEGER)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot edad
-		(type INTEGER)
-;+		(cardinality 0 1)
+	(multislot puntosDeVenta
+		(type INSTANCE)
+;+		(allowed-classes)
 		(create-accessor read-write))
-	(single-slot publicoDirigido
+	(single-slot lugar
 		(type SYMBOL)
-		(allowed-values Infantil Juvenil Adulto)
-;+		(cardinality 0 1)
-		(create-accessor read-write)))
-
-(defclass Libro
-	(is-a USER)
-	(role concrete)
-	(single-slot idioma
-		(type STRING)
+		(allowed-values casa transporte trabajo)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot ejemplaresVendidos
-		(type INTEGER)
+	(single-slot estudios
+		(type SYMBOL)
+		(allowed-values primaria secundaria bachillerato universidad formacionProfesional otros)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot frecuencia
+		(type SYMBOL)
+		(allowed-values poca media mucha)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot numPaginas
 		(type INTEGER)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot bestSeller
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 0 1)
+	(multislot librosEscritos
+		(type INSTANCE)
+;+		(allowed-classes Libro)
 		(create-accessor read-write))
 	(multislot generos
 		(type INSTANCE)
 ;+		(allowed-classes Genero)
+		(create-accessor read-write))
+	(single-slot nombreEstablecimiento
+		(type STRING)
+;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot publicoDirigido
 		(type SYMBOL)
 		(allowed-values Infantil Juvenil Adulto)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
+	(single-slot fechaPublicacion
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot nacionalidad
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot puntuacion
+		(type INTEGER)
+		(range 0 5)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Libro
+	(is-a USER)
+	(role concrete)
 	(single-slot titulo
 		(type STRING)
 ;+		(cardinality 0 1)
@@ -212,22 +190,57 @@
 		(range 0 5)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
+	(single-slot ejemplaresVendidos
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot bestSeller
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(single-slot ISBN
 		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot publicoDirigido
+		(type SYMBOL)
+		(allowed-values Infantil Juvenil Adulto)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot fechaPublicacion
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
+	(single-slot numPaginas
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(multislot escritoPor
 		(type INSTANCE)
 ;+		(allowed-classes Autor)
+		(create-accessor read-write))
+	(multislot generos
+		(type INSTANCE)
+;+		(allowed-classes Genero)
+		(create-accessor read-write))
+	(single-slot idioma
+		(type STRING)
+;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
 (defclass Persona
 	(is-a USER)
 	(role concrete)
+	(single-slot estudios
+		(type SYMBOL)
+		(allowed-values primaria secundaria bachillerato universidad formacionProfesional otros)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot edad
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(single-slot nacionalidad
 		(type STRING)
 ;+		(cardinality 0 1)
@@ -235,25 +248,11 @@
 	(single-slot DNI
 		(type STRING)
 ;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot edad
-		(type INTEGER)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot estudios
-		(type SYMBOL)
-		(allowed-values primaria secundaria bachillerato universidad formacionProfesional otros)
-;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
 (defclass Lector
 	(is-a Persona)
 	(role concrete)
-	(single-slot populares
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
 	(single-slot tiempoDisponible
 ;+		(comment "Tiempo disponible que tiene el lector al día, en horas")
 		(type INTEGER)
@@ -268,40 +267,40 @@
 		(type INSTANCE)
 ;+		(allowed-classes Autor)
 		(create-accessor read-write))
+	(multislot generosPreferidos
+		(type INSTANCE)
+;+		(allowed-classes Genero)
+		(create-accessor read-write))
 	(single-slot frecuencia
 		(type SYMBOL)
 		(allowed-values poca media mucha)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(multislot generosPreferidos
-		(type INSTANCE)
-;+		(allowed-classes Genero)
+	(single-slot populares
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
 (defclass Autor
 	(is-a Persona)
 	(role concrete)
-	(multislot generoExperto
-		(type INSTANCE)
-;+		(allowed-classes Genero)
+	(single-slot nombreAutor
+		(type STRING)
+;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(multislot librosEscritos
 		(type INSTANCE)
 ;+		(allowed-classes Libro)
 		(create-accessor read-write))
-	(single-slot nombreAutor
-		(type STRING)
-;+		(cardinality 0 1)
+	(multislot generoExperto
+		(type INSTANCE)
+;+		(allowed-classes Genero)
 		(create-accessor read-write)))
 
 (defclass Genero
 	(is-a USER)
 	(role concrete)
-	(single-slot moda
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
 	(multislot generosRelacionados
 		(type INSTANCE)
 ;+		(allowed-classes Genero)
@@ -309,12 +308,24 @@
 	(single-slot nombre
 		(type STRING)
 ;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot moda
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot librosRepresentativos
+		(type INSTANCE)
+;+		(allowed-classes Libro)
 		(create-accessor read-write)))
 		
-		
 (definstances instancias
- ([PrimeraOntologia_Class10] of  Genero
 
+([PrimeraOntologia_Class10] of  Genero
+
+	(librosRepresentativos
+		[PrimeraOntologia_Class10001]
+		[PrimeraOntologia_Class10004])
 	(nombre "Erotica"))
 
 ([PrimeraOntologia_Class10000] of  Autor
@@ -328,6 +339,7 @@
 	(fechaPublicacion "1928")
 	(generos [PrimeraOntologia_Class10])
 	(idioma "Castellano")
+	(publicoDirigido Adulto)
 	(titulo "El amante de Lady Chatterley"))
 
 ([PrimeraOntologia_Class10002] of  Libro
@@ -349,6 +361,7 @@
 	(fechaPublicacion "1955")
 	(generos [PrimeraOntologia_Class10])
 	(idioma "Castellano")
+	(publicoDirigido Adulto)
 	(titulo "Lolita"))
 
 ([PrimeraOntologia_Class10005] of  Autor
@@ -380,8 +393,14 @@
 
 ([PrimeraOntologia_Class10010] of  Libro
 
+	(bestSeller FALSE)
 	(escritoPor [PrimeraOntologia_Class10011])
+	(fechaPublicacion "1991")
 	(generos [PrimeraOntologia_Class2])
+	(idioma "Ingles")
+	(ISBN "978-0-679-73577-9")
+	(numPaginas 400)
+	(publicoDirigido Adulto)
 	(titulo "American Psycho"))
 
 ([PrimeraOntologia_Class10011] of  Autor
@@ -392,6 +411,7 @@
 ([PrimeraOntologia_Class10012] of  Libro
 
 	(escritoPor [PrimeraOntologia_Class10013])
+	(fechaPublicacion "1876")
 	(generos [PrimeraOntologia_Class3])
 	(titulo "Miguel Strogoff"))
 
@@ -695,6 +715,7 @@
 
 ([PrimeraOntologia_Class2] of  Genero
 
+	(librosRepresentativos [PrimeraOntologia_Class10010])
 	(nombre "Horror"))
 
 ([PrimeraOntologia_Class20] of  Libro
@@ -747,6 +768,7 @@
 
 ([PrimeraOntologia_Class3] of  Genero
 
+	(librosRepresentativos [PrimeraOntologia_Class10012])
 	(nombre "Aventuras"))
 
 ([PrimeraOntologia_Class30] of  Autor
@@ -787,13 +809,14 @@
 
 ([PrimeraOntologia_Class8] of  Genero
 
+	(moda TRUE)
 	(nombre "Zombis"))
 
 ([PrimeraOntologia_Class9] of  Genero
 
 	(nombre "Suspense"))
 
-)
+	)
 
 ;;;**************
 ;;;Codigo CLIPS
@@ -846,7 +869,7 @@
 	(printout t "-----------------------------------" crlf)
 	(printout t (send ?self:libro imprimir))
 	(printout t crlf)
-	(format t "Nivel de recomendación: %d %n" ?self:puntuacion)
+	(format t "Nivel de recomendacion: %d %n" ?self:puntuacion)
 	(printout t crlf)
 	(printout t "-----------------------------------" crlf)
 )
@@ -958,9 +981,9 @@
 (defrule pregunta-edad ""
 	(nuevo-lector ?dni)
 	=>
-	(bind ?ed (pregunta-numerica "Cuantos anyos tienes?" 0 150))
+	(bind ?ed (pregunta-numerica "Que edad tienes?" 0 150))
 	(if (< ?ed 12) then (assert (perfil infantil)))
-	(if (and (>= ?ed 12)(<= ?ed 24)) then (assert (perfiljuvenil)))
+	(if (and (>= ?ed 12)(<= ?ed 24)) then (assert (perfil juvenil)))
 	(if (> ?ed 24) then (assert(perfil adulto)))
 	(if (< ?ed 18) then (assert (menor_de_edad)) )
 )
@@ -1061,14 +1084,15 @@
 
 (defrule autores-libros "Define con un hecho los autores de libros que le gustan"
 	(LibroLeido ?bname)
-	?book <- (object (is-a Libro) (nombre ?bname) (escritoPor ?list_aut))
+	?book <- (object (is-a Libro) (titulo ?bname) (escritoPor $?list_aut))
 	=>
 	(printout t "El libro " ?bname " ha sido escrito por:")
-	(progn$ (?it ?list_aut)
+	(progn$ (?it $?list_aut)
 		(bind ?aname (send ?it get-nombreAutor))
 		(printout t " " ?aname )
 		(assert (autor ?aname))
 	)
+	(printout t crlf)
 )
 
 (defrule focusFiltrado
@@ -1129,6 +1153,13 @@
 	(printout t "Eliminado por pertenecer a un genero de moda: " (instance-name ?recm) crlf)
 	(send ?recm delete)
 )
+
+;(defrule descartarLibrosCortos "Descarta los libros más cortos para aquellos que leen con mucha frecuencia"
+;	(libros-obtenidos)
+;	(Frecuencia muchisima)
+;	?book <- (object (is-a Libro) (numPaginas ? np))
+;	?recm <- (object (is-a Recomendacion) (libro ?book))
+;)
 
 
 (defrule descartarIdiomas ""
