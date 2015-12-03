@@ -1057,8 +1057,7 @@
 	(printout t "Obteniendo lista del genero " ?gen crlf)
 	(bind $?lista (find-all-instances((?book Libro)) (genre_in_book ?gen ?book)))
 	(loop-for-count (?i 1 (length$ ?lista)) do
-	(bind ?linea (str-cat ?i " " (nth$ ?i ?lista):titulo " " (nth$ ?i ?lista)))
-	(printout t ?linea crlf)
+		(printout t ?i ". " (send (nth$ ?i ?lista) get-titulo) crlf)
 	)
 	(bind ?resp (pregunta-lista "Escribe los identificadores separados por espacios: 0->Ninguno "))
 	(if (not (member 0 ?resp))
