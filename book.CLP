@@ -1059,6 +1059,17 @@
 	)
 )
 
+(defrule autores-libros "Define con un hecho los autores de libros que le gustan"
+	(LibroLeido ?bname)
+	?book <- (object (is-a Libro) (nombre ?bname) (escritoPor ?list_aut))
+	=>
+	(printout t "El libro " ?bname " ha sido escrito por:")
+	(progn$ (?it ?list_aut)
+		(bind ?aname (send ?it get-nombreAutor))
+		(printout t " " ?aname )
+		(assert (autor ?aname))
+	)
+)
 
 (defrule focusFiltrado
 	(pregunta-generos)
