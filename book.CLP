@@ -869,7 +869,7 @@
 	(printout t "-----------------------------------" crlf)
 	(printout t (send ?self:libro imprimir))
 	(printout t crlf)
-	(format t "Nivel de recomendacion: %d %n" ?self:puntuacion)
+	(format t "Nivel de recomendacion: %d %% %n" (/ (* ?self:puntuacion 100) 200))
 	(printout t crlf)
 	(printout t "-----------------------------------" crlf)
 )
@@ -1049,6 +1049,7 @@
 (defrule pregunta-generos "Pregunta para saber generos preferidos"
 	(nuevo-lector ?)
 	=>
+	(printout t "Cuales de los siguientes generos te gustan?" crlf)
 	(bind ?lista (find-all-instances ((?p Genero)) TRUE))
 	(loop-for-count (?i 1 (length$ ?lista)) do
 		(printout t ?i ". " (send (nth$ ?i ?lista) get-nombre) crlf)
