@@ -1,499 +1,633 @@
-; Thu Dec 03 19:03:56 GMT 2015
+; Thu Dec 03 21:31:24 GMT 2015
 ; 
 ;+ (version "3.4.8")
 ;+ (build "Build 629")
 
-([PrimeraOntologia_Class10] of  Genero
+([PrimeraOntologia_ACDoyle] of  Autor
 
-	(librosRepresentativos
-		[PrimeraOntologia_Class10001]
-		[PrimeraOntologia_Class10004])
-	(nombre "Erotica"))
+	(librosEscritos
+		[PrimeraOntologia_SabuesoBaskerville]
+		[PrimeraOntologia_CanonHolmesiano])
+	(nombreAutor "Arthur Conan Doyle"))
 
-([PrimeraOntologia_Class10000] of  Autor
+([PrimeraOntologia_AGrandes] of  Autor
 
-	(librosEscritos [PrimeraOntologia_Class10001])
-	(nombreAutor "David H Lawrence"))
+	(librosEscritos [PrimeraOntologia_BesosPan])
+	(nombreAutor "Almudena Grandes"))
 
-([PrimeraOntologia_Class10001] of  Libro
+([PrimeraOntologia_AlexGomez] of  Autor
 
-	(escritoPor [PrimeraOntologia_Class10000])
+	(librosEscritos [PrimeraOntologia_AntologiaZ])
+	(nombreAutor "Alex Gomez"))
+
+([PrimeraOntologia_Alzamiento] of  Libro
+
+	(escritoPor [PrimeraOntologia_BKeene])
+	(generos [PrimeraOntologia_Zombis])
+	(titulo "El Alzamiento"))
+
+([PrimeraOntologia_AmanteChatterley] of  Libro
+
+	(escritoPor [PrimeraOntologia_DHLawrence])
 	(fechaPublicacion "1928")
-	(generos [PrimeraOntologia_Class10])
+	(generos [PrimeraOntologia_Erotica])
 	(idioma "Castellano")
 	(publicoDirigido Adulto)
 	(titulo "El amante de Lady Chatterley"))
 
-([PrimeraOntologia_Class10002] of  Libro
-
-	(escritoPor [PrimeraOntologia_Class10003])
-	(fechaPublicacion "1928")
-	(generos [PrimeraOntologia_Class10])
-	(idioma "Castellano")
-	(titulo "Historia de ojo"))
-
-([PrimeraOntologia_Class10003] of  Autor
-
-	(librosEscritos [PrimeraOntologia_Class10002])
-	(nombreAutor "Georges Bataille"))
-
-([PrimeraOntologia_Class10004] of  Libro
-
-	(escritoPor [PrimeraOntologia_Class10005])
-	(fechaPublicacion "1955")
-	(generos [PrimeraOntologia_Class10])
-	(idioma "Castellano")
-	(publicoDirigido Adulto)
-	(titulo "Lolita"))
-
-([PrimeraOntologia_Class10005] of  Autor
-
-	(librosEscritos [PrimeraOntologia_Class10004])
-	(nombreAutor "Vladimir Nabokov"))
-
-([PrimeraOntologia_Class10006] of  Libro
-
-	(escritoPor [PrimeraOntologia_Class10007])
-	(generos [PrimeraOntologia_Class2])
-	(titulo "¡Arde, bruja, arde!"))
-
-([PrimeraOntologia_Class10007] of  Autor
-
-	(librosEscritos [PrimeraOntologia_Class10006])
-	(nombreAutor "Abraham Merritt"))
-
-([PrimeraOntologia_Class10008] of  Libro
-
-	(escritoPor [PrimeraOntologia_Class10009])
-	(generos [PrimeraOntologia_Class2])
-	(titulo "Al salir del infierno"))
-
-([PrimeraOntologia_Class10009] of  Autor
-
-	(librosEscritos [PrimeraOntologia_Class10008])
-	(nombreAutor "John Franklin Bardin"))
-
-([PrimeraOntologia_Class10010] of  Libro
+([PrimeraOntologia_AmericanPsycho] of  Libro
 
 	(bestSeller FALSE)
-	(escritoPor [PrimeraOntologia_Class10011])
+	(escritoPor [PrimeraOntologia_BEastonEllis])
 	(fechaPublicacion "1991")
-	(generos [PrimeraOntologia_Class2])
+	(generos [PrimeraOntologia_Horror])
 	(idioma "Ingles")
 	(ISBN "978-0-679-73577-9")
 	(numPaginas 400)
 	(publicoDirigido Adulto)
 	(titulo "American Psycho"))
 
-([PrimeraOntologia_Class10011] of  Autor
+([PrimeraOntologia_AMerritt] of  Autor
 
-	(librosEscritos [PrimeraOntologia_Class10010])
+	(librosEscritos [PrimeraOntologia_ArdeBruja])
+	(nombreAutor "Abraham Merritt"))
+
+([PrimeraOntologia_Antirresurreccion] of  Libro
+
+	(escritoPor [PrimeraOntologia_JRBiedma])
+	(generos [PrimeraOntologia_Zombis])
+	(titulo "Antirresurrección"))
+
+([PrimeraOntologia_AntologiaZ] of  Libro
+
+	(bestSeller TRUE)
+	(escritoPor
+		[PrimeraOntologia_AlexGomez]
+		[PrimeraOntologia_JMRamiro])
+	(generos [PrimeraOntologia_Zombis])
+	(titulo "Antología Z"))
+
+([PrimeraOntologia_ArdeBruja] of  Libro
+
+	(escritoPor [PrimeraOntologia_AMerritt])
+	(generos [PrimeraOntologia_Horror])
+	(titulo "¡Arde, bruja, arde!"))
+
+([PrimeraOntologia_Asterius] of  Autor
+
+	(librosEscritos [PrimeraOntologia_KissingWoman])
+	(nombreAutor "Asterius Williams"))
+
+([PrimeraOntologia_Aventuras] of  Genero
+
+	(librosRepresentativos
+		[PrimeraOntologia_MiguelStrogoff]
+		[PrimeraOntologia_Ivanhoe]
+		[PrimeraOntologia_Hobbit])
+	(nombre "Aventuras"))
+
+([PrimeraOntologia_BEastonEllis] of  Autor
+
+	(librosEscritos [PrimeraOntologia_AmericanPsycho])
 	(nombreAutor "Bret Easton Ellis"))
 
-([PrimeraOntologia_Class10012] of  Libro
+([PrimeraOntologia_BesosPan] of  Libro
 
-	(escritoPor [PrimeraOntologia_Class10013])
-	(fechaPublicacion "1876")
-	(generos [PrimeraOntologia_Class3])
-	(titulo "Miguel Strogoff"))
-
-([PrimeraOntologia_Class10013] of  Autor
-
-	(librosEscritos [PrimeraOntologia_Class10012])
-	(nombreAutor "Julio Verne"))
-
-([PrimeraOntologia_Class10014] of  Libro
-
-	(escritoPor [PrimeraOntologia_Class10015])
-	(generos [PrimeraOntologia_Class3])
-	(titulo "El Hobbit"))
-
-([PrimeraOntologia_Class10015] of  Autor
-
-	(librosEscritos [PrimeraOntologia_Class10014])
-	(nombreAutor "J.R.R. Tolkien"))
-
-([PrimeraOntologia_Class10016] of  Libro
-
-	(escritoPor [PrimeraOntologia_Class10017])
-	(generos [PrimeraOntologia_Class3])
-	(titulo "Ivanhoe"))
-
-([PrimeraOntologia_Class10017] of  Autor
-
-	(librosEscritos [PrimeraOntologia_Class10016])
-	(nombreAutor "Walter Scott"))
-
-([PrimeraOntologia_Class10020] of  Libro
-
-	(escritoPor [PrimeraOntologia_Class10021])
-	(generos [PrimeraOntologia_Class4])
-	(idioma "Castellano")
-	(ISBN "9788433979384")
-	(numPaginas 232)
-	(titulo "Francamente , Frank"))
-
-([PrimeraOntologia_Class10021] of  Autor
-
-	(librosEscritos [PrimeraOntologia_Class10020])
-	(nombreAutor "Richard Ford"))
-
-([PrimeraOntologia_Class10022] of  Libro
-
-	(escritoPor [PrimeraOntologia_Class10023])
-	(generos [PrimeraOntologia_Class4])
-	(idioma "Castellano")
-	(ISBN "9788408145820")
-	(numPaginas 610)
-	(titulo "El regreso del Catón"))
-
-([PrimeraOntologia_Class10023] of  Autor
-
-	(librosEscritos [PrimeraOntologia_Class10022])
-	(nombreAutor "Matilde Asensi"))
-
-([PrimeraOntologia_Class10025] of  Libro
-
-	(escritoPor [PrimeraOntologia_Class10026])
-	(generos [PrimeraOntologia_Class4])
+	(escritoPor [PrimeraOntologia_AGrandes])
+	(generos [PrimeraOntologia_Novela])
 	(ISBN "9788490661918")
 	(titulo "Los besos en el pan"))
 
-([PrimeraOntologia_Class10026] of  Autor
+([PrimeraOntologia_BKeene] of  Autor
 
-	(librosEscritos [PrimeraOntologia_Class10025])
-	(nombreAutor "Almudena Grandes"))
-
-([PrimeraOntologia_Class10027] of  Libro
-
-	(escritoPor [PrimeraOntologia_Class10028])
-	(generos [PrimeraOntologia_Class5])
-	(idioma "Castellano")
-	(titulo "Los crímenes de la calle Morgue"))
-
-([PrimeraOntologia_Class10028] of  Autor
-
-	(librosEscritos [PrimeraOntologia_Class10027])
-	(nombreAutor "Edgar Allan Poe"))
-
-([PrimeraOntologia_Class10029] of  Libro
-
-	(escritoPor [PrimeraOntologia_Class10030])
-	(generos [PrimeraOntologia_Class5])
-	(titulo "La piedra lunar"))
-
-([PrimeraOntologia_Class10030] of  Autor
-
-	(librosEscritos [PrimeraOntologia_Class10029])
-	(nombreAutor "Wilkie Collins"))
-
-([PrimeraOntologia_Class10031] of  Libro
-
-	(escritoPor [PrimeraOntologia_Class10032])
-	(generos [PrimeraOntologia_Class5])
-	(titulo "El sabueso de Baskerville"))
-
-([PrimeraOntologia_Class10032] of  Autor
-
-	(librosEscritos [PrimeraOntologia_Class10031])
-	(nombreAutor "Arthur Conan Doyle"))
-
-([PrimeraOntologia_Class10033] of  Libro
-
-	(escritoPor [PrimeraOntologia_Class10034])
-	(generos [PrimeraOntologia_Class6])
-	(titulo "Cada día, cada hora"))
-
-([PrimeraOntologia_Class10034] of  Autor
-
-	(librosEscritos [PrimeraOntologia_Class10033])
-	(nombreAutor "Nataša Dragnic"))
-
-([PrimeraOntologia_Class10035] of  Libro
-
-	(escritoPor [PrimeraOntologia_Class10036])
-	(generos [PrimeraOntologia_Class6])
-	(titulo "Las horas distantes"))
-
-([PrimeraOntologia_Class10036] of  Autor
-
-	(librosEscritos [PrimeraOntologia_Class10035])
-	(nombreAutor "Kate Morton"))
-
-([PrimeraOntologia_Class10037] of  Libro
-
-	(escritoPor [PrimeraOntologia_Class10038])
-	(generos [PrimeraOntologia_Class6])
-	(titulo "El jardín de los hechizos"))
-
-([PrimeraOntologia_Class10038] of  Autor
-
-	(librosEscritos [PrimeraOntologia_Class10037])
-	(nombreAutor "Sarah Addison Allen"))
-
-([PrimeraOntologia_Class10039] of  Libro
-
-	(escritoPor [PrimeraOntologia_Class10040])
-	(fechaPublicacion "2006")
-	(generos [PrimeraOntologia_Class7])
-	(idioma "Castellano")
-	(ISBN "9788496208391")
-	(titulo "TORMENTA DE ESPADAS"))
-
-([PrimeraOntologia_Class10040] of  Autor
-
-	(librosEscritos [PrimeraOntologia_Class10041])
-	(nombreAutor "MARTIN, GEORGE R.R."))
-
-([PrimeraOntologia_Class10041] of  Libro
-
-	(escritoPor [PrimeraOntologia_Class10042])
-	(fechaPublicacion "2011")
-	(generos [PrimeraOntologia_Class7])
-	(idioma "Castellano")
-	(titulo "EL IMPERIO FINAL"))
-
-([PrimeraOntologia_Class10042] of  Autor
-
-	(librosEscritos [PrimeraOntologia_Class10041])
-	(nombreAutor "SANDERSON, BRANDON"))
-
-([PrimeraOntologia_Class10043] of  Libro
-
-	(bestSeller TRUE)
-	(escritoPor [PrimeraOntologia_Class10044])
-	(fechaPublicacion "2009")
-	(generos [PrimeraOntologia_Class7])
-	(idioma "Castellano")
-	(ISBN "9788498382068")
-	(titulo "LA MALDICIÓN DEL TITÁN. Percy Jackson y los dioses del Olimpo III"))
-
-([PrimeraOntologia_Class10044] of  Autor
-
-	(librosEscritos [PrimeraOntologia_Class10043])
-	(nombreAutor "RIORDAN, RICK"))
-
-([PrimeraOntologia_Class10045] of  Libro
-
-	(escritoPor [PrimeraOntologia_Class10046])
-	(generos [PrimeraOntologia_Class8])
-	(titulo "El Alzamiento"))
-
-([PrimeraOntologia_Class10046] of  Autor
-
-	(librosEscritos [PrimeraOntologia_Class10045])
+	(librosEscritos [PrimeraOntologia_Alzamiento])
 	(nombreAutor "Brian Keene"))
 
-([PrimeraOntologia_Class10047] of  Libro
+([PrimeraOntologia_BSanderson] of  Autor
 
-	(escritoPor [PrimeraOntologia_Class10048])
-	(generos [PrimeraOntologia_Class8])
-	(titulo "Antirresurrección"))
+	(librosEscritos [PrimeraOntologia_ImperioFinal])
+	(nombreAutor "Brandon Sanderson"))
 
-([PrimeraOntologia_Class10048] of  Autor
+([PrimeraOntologia_CadaDia] of  Libro
 
-	(librosEscritos [PrimeraOntologia_Class10047])
-	(nombreAutor "Juan Ramón Biedma"))
+	(escritoPor [PrimeraOntologia_NDragnic])
+	(generos [PrimeraOntologia_Romance])
+	(titulo "Cada día, cada hora"))
 
-([PrimeraOntologia_Class10049] of  Libro
+([PrimeraOntologia_CanonHolmesiano] of  Libro
 
-	(bestSeller TRUE)
-	(escritoPor [PrimeraOntologia_Class10050])
-	(generos [PrimeraOntologia_Class8])
-	(titulo "Antología Z"))
-
-([PrimeraOntologia_Class10050] of  Autor
-
-	(librosEscritos [PrimeraOntologia_Class10049])
-	(nombreAutor "VV.AA."))
-
-([PrimeraOntologia_Class10051] of  Libro
-
-	(escritoPor [PrimeraOntologia_Class10052])
-	(generos [PrimeraOntologia_Class9])
+	(escritoPor [PrimeraOntologia_ACDoyle])
+	(generos [PrimeraOntologia_Suspense])
 	(titulo "Canon Holmesiano"))
 
-([PrimeraOntologia_Class10052] of  Autor
+([PrimeraOntologia_CasaRiverton] of  Libro
 
-	(librosEscritos [PrimeraOntologia_Class10051])
-	(nombreAutor "Arthur Conan Doyle"))
+	(escritoPor [PrimeraOntologia_KMorton])
+	(fechaPublicacion "2009")
+	(generos [PrimeraOntologia_Novela])
+	(titulo "La casa de Riverton"))
 
-([PrimeraOntologia_Class10054] of  Libro
+([PrimeraOntologia_Cenital] of  Libro
 
-	(escritoPor [PrimeraOntologia_Class10055])
-	(generos [PrimeraOntologia_Class9])
-	(titulo "El halcón maltés"))
+	(escritoPor [PrimeraOntologia_EBueso])
+	(fechaPublicacion "2012")
+	(generos [PrimeraOntologia_CFApocalipsis])
+	(idioma "Espanol")
+	(numPaginas 288)
+	(titulo "Cenital"))
 
-([PrimeraOntologia_Class10055] of  Autor
+([PrimeraOntologia_CFApocalipsis] of  Genero
 
-	(librosEscritos [PrimeraOntologia_Class10054])
-	(nombreAutor "Dashiell Hammett"))
+	(generosRelacionados [PrimeraOntologia_CFFuturista])
+	(nombre "Ciencia Ficcion Apocaliptica"))
 
-([PrimeraOntologia_Class10056] of  Libro
+([PrimeraOntologia_CFFuturista] of  Genero
 
-	(escritoPor [PrimeraOntologia_Class10057])
-	(generos [PrimeraOntologia_Class9])
-	(titulo "Presunto inocente"))
-
-([PrimeraOntologia_Class10057] of  Autor
-
-	(librosEscritos [PrimeraOntologia_Class10056])
-	(nombreAutor "Scott Turow"))
-
-([PrimeraOntologia_Class11] of  Libro
-
-	(bestSeller TRUE)
-	(escritoPor [PrimeraOntologia_Class23])
-	(fechaPublicacion "2015")
-	(generos [PrimeraOntologia_Class10])
-	(idioma "Inglés")
-	(numPaginas 250)
-	(publicoDirigido Juvenil)
-	(titulo "Cracked Slaves"))
-
-([PrimeraOntologia_Class14] of  Libro
-
-	(escritoPor [PrimeraOntologia_Class33])
-	(generos [PrimeraOntologia_Class7])
-	(titulo "The Vacant Male"))
-
-([PrimeraOntologia_Class15] of  Libro
-
-	(bestSeller TRUE)
-	(escritoPor
-		[PrimeraOntologia_Class33]
-		[PrimeraOntologia_Class30])
-	(generos [PrimeraOntologia_Class7])
-	(titulo "Wife of Male"))
-
-([PrimeraOntologia_Class16] of  Libro
-
-	(escritoPor [PrimeraOntologia_Class32])
-	(generos [PrimeraOntologia_Class3])
-	(titulo "The Crying's Fairy"))
-
-([PrimeraOntologia_Class17] of  Libro
-
-	(escritoPor [PrimeraOntologia_Class28])
-	(generos [PrimeraOntologia_Class2])
-	(titulo "Voyagers in the Wife"))
-
-([PrimeraOntologia_Class18] of  Libro
-
-	(bestSeller TRUE)
-	(escritoPor
-		[PrimeraOntologia_Class28]
-		[PrimeraOntologia_Class30])
-	(generos [PrimeraOntologia_Class6])
-	(titulo "The Stream of the Thorn"))
-
-([PrimeraOntologia_Class19] of  Libro
-
-	(escritoPor [PrimeraOntologia_Class27])
-	(generos
-		[PrimeraOntologia_Class3]
-		[PrimeraOntologia_Class9])
-	(titulo "The Souls's Winter"))
-
-([PrimeraOntologia_Class2] of  Genero
-
-	(librosRepresentativos [PrimeraOntologia_Class10010])
-	(nombre "Horror"))
-
-([PrimeraOntologia_Class20] of  Libro
-
-	(escritoPor [PrimeraOntologia_Class30])
-	(generos [PrimeraOntologia_Class4])
-	(titulo "Snake of Sorcerer"))
-
-([PrimeraOntologia_Class21] of  Libro
-
-	(escritoPor [PrimeraOntologia_Class29])
-	(generos [PrimeraOntologia_Class9])
-	(titulo "The Soul of the Door"))
-
-([PrimeraOntologia_Class22] of  Libro
-
-	(escritoPor [PrimeraOntologia_Class26])
-	(generos
-		[PrimeraOntologia_Class4]
-		[PrimeraOntologia_Class7])
-	(titulo "Kissing Woman"))
-
-([PrimeraOntologia_Class23] of  Autor
-
-	(nombreAutor "Wicea"))
+	(generosRelacionados [PrimeraOntologia_CFApocalipsis])
+	(librosRepresentativos [PrimeraOntologia_ImperioFinal])
+	(nombre "Ciencia Ficcion Futurista"))
 
 ([PrimeraOntologia_Class24] of  Autor
 
 	(nombreAutor "Elbrecht"))
 
-([PrimeraOntologia_Class25] of  Autor
-
-	(nombreAutor "Wicemar"))
-
-([PrimeraOntologia_Class26] of  Autor
-
-	(nombreAutor "Asterius"))
-
-([PrimeraOntologia_Class27] of  Autor
-
-	(nombreAutor "Nalien"))
-
-([PrimeraOntologia_Class28] of  Autor
-
-	(nombreAutor "Zann"))
-
-([PrimeraOntologia_Class29] of  Autor
-
-	(nombreAutor "Sevardo"))
-
-([PrimeraOntologia_Class3] of  Genero
-
-	(librosRepresentativos [PrimeraOntologia_Class10012])
-	(nombre "Aventuras"))
-
-([PrimeraOntologia_Class30] of  Autor
-
-	(nombreAutor "Etirekor"))
-
-([PrimeraOntologia_Class31] of  Autor
-
-	(nombreAutor "Loikath"))
-
-([PrimeraOntologia_Class32] of  Autor
-
-	(nombreAutor "Mijan"))
-
-([PrimeraOntologia_Class33] of  Autor
-
-	(nombreAutor "Tardotram"))
-
 ([PrimeraOntologia_Class34] of  Autor
 
 	(nombreAutor "Larerijar"))
 
-([PrimeraOntologia_Class4] of  Genero
+([PrimeraOntologia_CrimenesCalleMorgue] of  Libro
 
+	(escritoPor [PrimeraOntologia_EAPoe])
+	(generos [PrimeraOntologia_Policial])
+	(idioma "Castellano")
+	(titulo "Los crímenes de la calle Morgue"))
+
+([PrimeraOntologia_CryingFairy] of  Libro
+
+	(escritoPor [PrimeraOntologia_MTorchwood])
+	(generos [PrimeraOntologia_Aventuras])
+	(titulo "The Crying Fairy"))
+
+([PrimeraOntologia_CyborgWife] of  Libro
+
+	(bestSeller TRUE)
+	(escritoPor
+		[PrimeraOntologia_Tardotram]
+		[PrimeraOntologia_Etirekor])
+	(generos [PrimeraOntologia_CFFuturista])
+	(publicoDirigido Adulto)
+	(titulo "The cyborg's wife"))
+
+([PrimeraOntologia_DHammett] of  Autor
+
+	(librosEscritos [PrimeraOntologia_HalconMaltes])
+	(nombreAutor "Dashiell Hammett"))
+
+([PrimeraOntologia_DHLawrence] of  Autor
+
+	(librosEscritos [PrimeraOntologia_AmanteChatterley])
+	(nombreAutor "David H Lawrence"))
+
+([PrimeraOntologia_EAPoe] of  Autor
+
+	(librosEscritos
+		[PrimeraOntologia_CrimenesCalleMorgue]
+		[PrimeraOntologia_GatoNegro])
+	(nombreAutor "Edgar Allan Poe"))
+
+([PrimeraOntologia_EBueso] of  Autor
+
+	(librosEscritos [PrimeraOntologia_Cenital])
+	(nombreAutor "Emilio Bueso"))
+
+([PrimeraOntologia_Erotica] of  Genero
+
+	(librosRepresentativos
+		[PrimeraOntologia_AmanteChatterley]
+		[PrimeraOntologia_Lolita]
+		[PrimeraOntologia_HistoriaOjo])
+	(nombre "Erotica"))
+
+([PrimeraOntologia_Etirekor] of  Autor
+
+	(librosEscritos
+		[PrimeraOntologia_CyborgWife]
+		[PrimeraOntologia_StreamThorn]
+		[PrimeraOntologia_Sorcerer])
+	(nombreAutor "Etirekor"))
+
+([PrimeraOntologia_FantasiaMagia] of  Genero
+
+	(nombre "Fantasia Magica"))
+
+([PrimeraOntologia_FantasiaMedieval] of  Genero
+
+	(librosRepresentativos [PrimeraOntologia_TormentaEspadas])
+	(nombre "Fantasia Medieval"))
+
+([PrimeraOntologia_FantasiaSuperheroes] of  Genero
+
+	(nombre "Fantasia Superheroica"))
+
+([PrimeraOntologia_FinEternidad] of  Libro
+
+	(escritoPor [PrimeraOntologia_IAsimov])
+	(generos [PrimeraOntologia_CFFuturista])
+	(titulo "El fin de la eternidad"))
+
+([PrimeraOntologia_Francamente] of  Libro
+
+	(escritoPor [PrimeraOntologia_RFord])
+	(generos [PrimeraOntologia_Novela])
+	(idioma "Castellano")
+	(ISBN "9788433979384")
+	(numPaginas 232)
+	(titulo "Francamente, Frank"))
+
+([PrimeraOntologia_GatoNegro] of  Libro
+
+	(escritoPor [PrimeraOntologia_EAPoe])
+	(generos [PrimeraOntologia_Horror])
+	(titulo "El gato negro"))
+
+([PrimeraOntologia_GBataille] of  Autor
+
+	(librosEscritos [PrimeraOntologia_HistoriaOjo])
+	(nombreAutor "Georges Bataille"))
+
+([PrimeraOntologia_GRRMartin] of  Autor
+
+	(librosEscritos [PrimeraOntologia_ImperioFinal])
+	(nombreAutor "George R. R. Martin"))
+
+([PrimeraOntologia_HalconMaltes] of  Libro
+
+	(escritoPor [PrimeraOntologia_DHammett])
+	(generos [PrimeraOntologia_Suspense])
+	(titulo "El halcon maltes"))
+
+([PrimeraOntologia_HistoriaOjo] of  Libro
+
+	(escritoPor [PrimeraOntologia_GBataille])
+	(fechaPublicacion "1928")
+	(generos [PrimeraOntologia_Erotica])
+	(idioma "Castellano")
+	(titulo "Historia de ojo"))
+
+([PrimeraOntologia_Hobbit] of  Libro
+
+	(escritoPor [PrimeraOntologia_JRRTolkien])
+	(generos [PrimeraOntologia_Aventuras])
+	(titulo "El Hobbit"))
+
+([PrimeraOntologia_HorasDistantes] of  Libro
+
+	(escritoPor [PrimeraOntologia_KMorton])
+	(generos [PrimeraOntologia_Romance])
+	(titulo "Las horas distantes"))
+
+([PrimeraOntologia_Horror] of  Genero
+
+	(librosRepresentativos
+		[PrimeraOntologia_AmericanPsycho]
+		[PrimeraOntologia_ArdeBruja]
+		[PrimeraOntologia_SalirInfierno]
+		[PrimeraOntologia_GatoNegro])
+	(nombre "Horror"))
+
+([PrimeraOntologia_IAsimov] of  Autor
+
+	(librosEscritos [PrimeraOntologia_FinEternidad])
+	(nombreAutor "Isaac Asimov"))
+
+([PrimeraOntologia_ImperioFinal] of  Libro
+
+	(escritoPor [PrimeraOntologia_BSanderson])
+	(fechaPublicacion "2011")
+	(generos [PrimeraOntologia_CFFuturista])
+	(idioma "Castellano")
+	(titulo "El Imperio Final"))
+
+([PrimeraOntologia_IslaMisteriosa] of  Libro
+
+	(escritoPor [PrimeraOntologia_JVerne])
+	(fechaPublicacion "1874")
+	(generos [PrimeraOntologia_Aventuras])
+	(titulo "La isla misteriosa"))
+
+([PrimeraOntologia_Ivanhoe] of  Libro
+
+	(escritoPor [PrimeraOntologia_WScott])
+	(generos [PrimeraOntologia_Aventuras])
+	(titulo "Ivanhoe"))
+
+([PrimeraOntologia_JardinHechizos] of  Libro
+
+	(escritoPor [PrimeraOntologia_SAAllen])
+	(generos [PrimeraOntologia_Romance])
+	(titulo "El jardín de los hechizos"))
+
+([PrimeraOntologia_JFBardin] of  Autor
+
+	(librosEscritos [PrimeraOntologia_SalirInfierno])
+	(nombreAutor "John Franklin Bardin"))
+
+([PrimeraOntologia_JMRamiro] of  Autor
+
+	(librosEscritos [PrimeraOntologia_AntologiaZ])
+	(nombreAutor "José Martín Ramiro"))
+
+([PrimeraOntologia_JRBiedma] of  Autor
+
+	(librosEscritos [PrimeraOntologia_Antirresurreccion])
+	(nombreAutor "Juan Ramón Biedma"))
+
+([PrimeraOntologia_JRRTolkien] of  Autor
+
+	(librosEscritos [PrimeraOntologia_Hobbit])
+	(nombreAutor "J.R.R. Tolkien"))
+
+([PrimeraOntologia_JVerne] of  Autor
+
+	(librosEscritos
+		[PrimeraOntologia_MiguelStrogoff]
+		[PrimeraOntologia_IslaMisteriosa])
+	(nombreAutor "Julio Verne"))
+
+([PrimeraOntologia_KissingWoman] of  Libro
+
+	(escritoPor [PrimeraOntologia_Asterius])
+	(generos
+		[PrimeraOntologia_Novela]
+		[PrimeraOntologia_Erotica])
+	(titulo "Kissing Woman"))
+
+([PrimeraOntologia_KMorton] of  Autor
+
+	(librosEscritos
+		[PrimeraOntologia_HorasDistantes]
+		[PrimeraOntologia_CasaRiverton])
+	(nombreAutor "Kate Morton"))
+
+([PrimeraOntologia_Loikath] of  Autor
+
+	(nombreAutor "Loikath Welter"))
+
+([PrimeraOntologia_Lolita] of  Libro
+
+	(escritoPor [PrimeraOntologia_VNabokov])
+	(fechaPublicacion "1955")
+	(generos [PrimeraOntologia_Erotica])
+	(idioma "Castellano")
+	(publicoDirigido Adulto)
+	(titulo "Lolita"))
+
+([PrimeraOntologia_LookingInfinity] of  Libro
+
+	(escritoPor [PrimeraOntologia_WGenadi])
+	(fechaPublicacion "2014")
+	(generos [PrimeraOntologia_CFFuturista])
+	(idioma "Ingles")
+	(numPaginas 300)
+	(publicoDirigido Juvenil)
+	(titulo "Looking at infinity"))
+
+([PrimeraOntologia_MAsensi] of  Autor
+
+	(librosEscritos [PrimeraOntologia_RegresoCaton])
+	(nombreAutor "Matilde Asensi"))
+
+([PrimeraOntologia_MiguelStrogoff] of  Libro
+
+	(escritoPor [PrimeraOntologia_JVerne])
+	(fechaPublicacion "1876")
+	(generos [PrimeraOntologia_Aventuras])
+	(titulo "Miguel Strogoff"))
+
+([PrimeraOntologia_MTorchwood] of  Autor
+
+	(librosEscritos [PrimeraOntologia_CryingFairy])
+	(nombreAutor "Mijan Torchwood"))
+
+([PrimeraOntologia_NDragnic] of  Autor
+
+	(librosEscritos [PrimeraOntologia_CadaDia])
+	(nombreAutor "Nataša Dragnic"))
+
+([PrimeraOntologia_NJerouax] of  Autor
+
+	(librosEscritos [PrimeraOntologia_SoulWinter])
+	(nombreAutor "Nalien Jerouax"))
+
+([PrimeraOntologia_Novela] of  Genero
+
+	(librosRepresentativos
+		[PrimeraOntologia_BesosPan]
+		[PrimeraOntologia_RegresoCaton]
+		[PrimeraOntologia_Francamente])
 	(nombre "Novela"))
 
-([PrimeraOntologia_Class5] of  Genero
+([PrimeraOntologia_PercyJackson] of  Libro
 
+	(bestSeller TRUE)
+	(escritoPor [PrimeraOntologia_RRiordan])
+	(fechaPublicacion "2009")
+	(generos [PrimeraOntologia_CFFuturista])
+	(idioma "Castellano")
+	(ISBN "9788498382068")
+	(titulo "LA MALDICION DEL TITAN. Percy Jackson y los dioses del Olimpo III"))
+
+([PrimeraOntologia_PiedraLunar] of  Libro
+
+	(escritoPor [PrimeraOntologia_WilkieCollins])
+	(generos [PrimeraOntologia_Policial])
+	(titulo "La piedra lunar"))
+
+([PrimeraOntologia_Policial] of  Genero
+
+	(librosRepresentativos
+		[PrimeraOntologia_PiedraLunar]
+		[PrimeraOntologia_SabuesoBaskerville]
+		[PrimeraOntologia_CrimenesCalleMorgue])
 	(nombre "Policial"))
 
-([PrimeraOntologia_Class6] of  Genero
+([PrimeraOntologia_PresuntoInocente] of  Libro
 
+	(escritoPor [PrimeraOntologia_STurow])
+	(generos [PrimeraOntologia_Suspense])
+	(titulo "Presunto inocente"))
+
+([PrimeraOntologia_RegresoCaton] of  Libro
+
+	(escritoPor [PrimeraOntologia_MAsensi])
+	(generos [PrimeraOntologia_Novela])
+	(idioma "Castellano")
+	(ISBN "9788408145820")
+	(numPaginas 610)
+	(titulo "El regreso del Caton"))
+
+([PrimeraOntologia_RFord] of  Autor
+
+	(librosEscritos [PrimeraOntologia_Francamente])
+	(nombreAutor "Richard Ford"))
+
+([PrimeraOntologia_Romance] of  Genero
+
+	(librosRepresentativos
+		[PrimeraOntologia_JardinHechizos]
+		[PrimeraOntologia_HorasDistantes]
+		[PrimeraOntologia_CadaDia])
 	(nombre "Romantica"))
 
-([PrimeraOntologia_Class7] of  Genero
+([PrimeraOntologia_RRiordan] of  Autor
 
-	(nombre "Ciencia Ficcion Futurista"))
+	(librosEscritos [PrimeraOntologia_PercyJackson])
+	(nombreAutor "Rick Riordan"))
 
-([PrimeraOntologia_Class8] of  Genero
+([PrimeraOntologia_SAAllen] of  Autor
 
+	(librosEscritos [PrimeraOntologia_JardinHechizos])
+	(nombreAutor "Sarah Addison Allen"))
+
+([PrimeraOntologia_SabuesoBaskerville] of  Libro
+
+	(escritoPor [PrimeraOntologia_ACDoyle])
+	(generos [PrimeraOntologia_Policial])
+	(titulo "El sabueso de Baskerville"))
+
+([PrimeraOntologia_SalirInfierno] of  Libro
+
+	(escritoPor [PrimeraOntologia_JFBardin])
+	(generos [PrimeraOntologia_Horror])
+	(titulo "Al salir del infierno"))
+
+([PrimeraOntologia_SevardoAguilar] of  Autor
+
+	(librosEscritos [PrimeraOntologia_SoulDoor])
+	(nombreAutor "Sevardo Aguilar"))
+
+([PrimeraOntologia_Slaves] of  Libro
+
+	(bestSeller TRUE)
+	(escritoPor [PrimeraOntologia_WGenadi])
+	(fechaPublicacion "2015")
+	(generos [PrimeraOntologia_Erotica])
+	(idioma "Inglés")
+	(numPaginas 250)
+	(publicoDirigido Juvenil)
+	(titulo "Slaves"))
+
+([PrimeraOntologia_Sorcerer] of  Libro
+
+	(escritoPor [PrimeraOntologia_Etirekor])
+	(generos [PrimeraOntologia_Novela])
+	(titulo "The sorcerer"))
+
+([PrimeraOntologia_SoulDoor] of  Libro
+
+	(escritoPor [PrimeraOntologia_SevardoAguilar])
+	(generos [PrimeraOntologia_Suspense])
+	(idioma "Ingles")
+	(titulo "The Soul of the Door"))
+
+([PrimeraOntologia_SoulWinter] of  Libro
+
+	(escritoPor [PrimeraOntologia_NJerouax])
+	(generos
+		[PrimeraOntologia_Aventuras]
+		[PrimeraOntologia_Suspense])
+	(idioma "Ingles")
+	(titulo "The Souls's Winter"))
+
+([PrimeraOntologia_StreamThorn] of  Libro
+
+	(bestSeller TRUE)
+	(escritoPor
+		[PrimeraOntologia_ZannLatimhoff]
+		[PrimeraOntologia_Etirekor])
+	(generos [PrimeraOntologia_Romance])
+	(titulo "The Stream of the Thorn"))
+
+([PrimeraOntologia_STurow] of  Autor
+
+	(librosEscritos [PrimeraOntologia_PresuntoInocente])
+	(nombreAutor "Scott Turow"))
+
+([PrimeraOntologia_Suspense] of  Genero
+
+	(librosRepresentativos
+		[PrimeraOntologia_PresuntoInocente]
+		[PrimeraOntologia_HalconMaltes]
+		[PrimeraOntologia_CanonHolmesiano])
+	(nombre "Suspense"))
+
+([PrimeraOntologia_Tardotram] of  Autor
+
+	(librosEscritos
+		[PrimeraOntologia_VacantMale]
+		[PrimeraOntologia_CyborgWife])
+	(nombreAutor "Tardotram Agosti"))
+
+([PrimeraOntologia_TormentaEspadas] of  Libro
+
+	(escritoPor [PrimeraOntologia_GRRMartin])
+	(fechaPublicacion "2006")
+	(generos [PrimeraOntologia_FantasiaMedieval])
+	(idioma "Castellano")
+	(ISBN "9788496208391")
+	(titulo "Tormenta de espadas"))
+
+([PrimeraOntologia_VacantMale] of  Libro
+
+	(escritoPor [PrimeraOntologia_Tardotram])
+	(generos [PrimeraOntologia_CFFuturista])
+	(idioma "Ingles")
+	(titulo "The Vacant Male"))
+
+([PrimeraOntologia_VNabokov] of  Autor
+
+	(librosEscritos [PrimeraOntologia_Lolita])
+	(nombreAutor "Vladimir Nabokov"))
+
+([PrimeraOntologia_VoyagersWife] of  Libro
+
+	(escritoPor [PrimeraOntologia_ZannLatimhoff])
+	(generos [PrimeraOntologia_Horror])
+	(titulo "Voyagers in the Wife"))
+
+([PrimeraOntologia_WGenadi] of  Autor
+
+	(librosEscritos
+		[PrimeraOntologia_LookingInfinity]
+		[PrimeraOntologia_Slaves])
+	(nombreAutor "Wicea Genadi"))
+
+([PrimeraOntologia_Wicemar] of  Autor
+
+	(nombreAutor "Wicemar Darunt"))
+
+([PrimeraOntologia_WilkieCollins] of  Autor
+
+	(librosEscritos [PrimeraOntologia_PiedraLunar])
+	(nombreAutor "Wilkie Collins"))
+
+([PrimeraOntologia_WScott] of  Autor
+
+	(librosEscritos [PrimeraOntologia_Ivanhoe])
+	(nombreAutor "Walter Scott"))
+
+([PrimeraOntologia_ZannLatimhoff] of  Autor
+
+	(librosEscritos
+		[PrimeraOntologia_StreamThorn]
+		[PrimeraOntologia_VoyagersWife])
+	(nombreAutor "Zann Latimhoff"))
+
+([PrimeraOntologia_Zombis] of  Genero
+
+	(librosRepresentativos
+		[PrimeraOntologia_AntologiaZ]
+		[PrimeraOntologia_Alzamiento]
+		[PrimeraOntologia_Antirresurreccion])
 	(moda TRUE)
 	(nombre "Zombis"))
-
-([PrimeraOntologia_Class9] of  Genero
-
-	(nombre "Suspense"))
