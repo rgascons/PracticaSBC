@@ -1078,6 +1078,14 @@
 	)
 )
 
+(deffunction pages_in_book ""
+        (?frec ?book)
+        (bind ?pagsLibro (send ?book get-numPaginas))
+        (if (and (eq ?frec poca) (< ?pagsLibro 199)) then TRUE else FALSE)
+        (if (and (eq ?frec media) (< ?pagsLibro 399)) then TRUE else FALSE)
+        (if (eq ?frec mucha) then TRUE)
+)
+
 ;;;**********************
 ;;;MAIN
 ;;;**********************
@@ -1337,9 +1345,31 @@
 	(test (author_in_book ?autr ?book))
 	(not (valorAutor ?recm))
 	=>
-	(printout t "El autor (" ?autr ") al conjunto de autores favoritos del lector : " (instance-name ?recm) crlf)
+	(printout t "El autor (" ?autr ") pertenece al conjunto de autores favoritos del lector : " (instance-name ?recm) crlf)
 	(send ?recm put-puntuacion (+ ?pt 50))
 	(assert (valorAutor ?recm))
+)
+
+(defrule plusBestSeller
+        (bestseller TRUE)
+        ?recm <- (object (is-a Recomendacion) (libro ?book) (puntuacion ?pt))
+        (test (eq TRUE (send ?book get-bestSeller)))
+        (not (valorBS ?recm))
+        =>
+        (printout t "El lector prefiere el conjunto de libros Best Seller : " (instance-name ?recm) crlf)
+        (send ?recm put-puntuacion (+ ?pt 50))
+        (assert (valorBS ?recm))
+)
+
+(defrule plusFreqNumPag
+        (Frecuencia ?frec)
+        ?recm <- (object (is-a Recomendacion) (libro ?book) (puntuacion ?pt))
+        (test (pages_in_book ?frec ?book))
+        (not (valorPaginas ?recm))
+        =>
+        (printout t "El lector con frecuentia (" ?frec ") tiene preferencia por el conjunto de libros : " (instance-name ?recm) crlf)
+        (send ?recm put-puntuacion (+ ?pt 50))
+        (assert (valorPaginas ?recm))
 )
 
 ;;;************
