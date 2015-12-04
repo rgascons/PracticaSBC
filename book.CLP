@@ -1125,6 +1125,10 @@
 	(nuevo-lector ?)
 	=>
 	(bind ?resp (pregunta-general "En que idioma prefieres leer? Ni->No importa "))
+	(bind ?idilist (allowed-values Libro idioma))
+	(progn$ (?it ?idilist)
+		(printout t "::" ?it)
+	)
 	(if (eq (str-compare ?resp "Ni") 0) then (assert (Idioma indef))
 	else (assert (Idioma ?resp)))
 )
@@ -1291,14 +1295,15 @@
 ;(defrule descartarLibrosCortos "Descarta los libros más cortos para aquellos que leen con mucha frecuencia"
 ;	(libros-obtenidos)
 ;	(Frecuencia muchisima)
-;	?book <- (object (is-a Libro) (numPaginas ? np))
+;	?book <- (object (is-a Libro) (numPaginas ?np))
 ;	?recm <- (object (is-a Recomendacion) (libro ?book))
 ;)
 
 
 (defrule descartarIdiomas ""
 	(libros-obtenidos)
-	(idioma ?idi)
+	(not (Idioma indef))
+	(Idioma ?idi)
 	?recm <- (object (is-a Recomendacion) (libro ?book))
 	(test (not (eq ?idi (send ?book get-idioma) ) ) )
 	=>
