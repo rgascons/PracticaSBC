@@ -1044,6 +1044,9 @@
 	(format t "%s" ?pregunta)  
 	(bind ?resposta (readline))  
 	(bind ?res (str-explode ?resposta))
+	;(foreach ?value ?res do 
+	;(if (not(member ?value ?valores_posibles)
+	;)
 	?res
 )
 
@@ -1106,13 +1109,13 @@
 	else 
 	(bind ?lector (make-instance lectorN of Lector))
 	(send ?lector put-DNI ?dni)
-	(assert(nuevo-lector ?dni))
+	(assert(nuevo-lector))
 	)
 )
 
 ;;; Pregunta para conocer la edad
 (defrule pregunta-edad ""
-	(nuevo-lector ?dni)
+	(nuevo-lector)
 	=>
 	(bind ?ed (pregunta-numerica "Que edad tienes?" 0 150))
 	(if (< ?ed 12) then (assert (perfil infantil)))
@@ -1121,27 +1124,36 @@
 	(if (< ?ed 18) then (assert (menor_de_edad)) )
 )
 
-(defrule pregunta-idioma "Pregunta para saber el idioma preferido"
-	(nuevo-lector ?)
+(defrule pregunta-estudios "Pregunta para saber los estudios"
+	(nuevo-lector)
 	=>
-	(bind ?resp (pregunta-general "En que idioma prefieres leer? Ni->No importa "))
-	(bind ?idilist (allowed-values Libro idioma))
-	(progn$ (?it ?idilist)
-		(printout t "::" ?it)
-	)
-	(if (eq (str-compare ?resp "Ni") 0) then (assert (Idioma indef))
-	else (assert (Idioma ?resp)))
+	;(bind ?lista (allowed-values Lector estudios))
+	;(loop-for-count ?i 1 (length$ ?lista) do
+	;	(printout t ?i ". " (nth$ ?i ?lista) crlf)
+	;)
+	;(bind ?resp (pregunta-numerica "Escribe el identificador de tu estudio maximo: " 1 (length$ ?lista)))
+	;(assert (Estudios (nth$ ?resp ?lista))
 )
 
-(defrule pregunta-horas " Pregunta para horas de lectura "
-	(nuevo-lector ?)
+(defrule pregunta-idioma "Pregunta para saber el idioma preferido"
+	(nuevo-lector)
 	=>
-	(bind ?resp (pregunta-numerica "Cuantas horas dedicas a leer al dia? " 0 24))
-	(assert (HorasDia ?resp))
+	;(bind ?lista (allowed-values Libro idioma))
+	;(loop-for-count ?i 1 (length$ ?lista) do
+	;	(printout t ?i ". " (nth$ ?i ?lista) crlf)
+	;)
+	;(bind ?resp (pregunta-lista "Escribe los identificadores separados por espacios: "))
+	;(if (not (member 0 ?resp))
+	;	then
+	;	(progn$ (?it ?resp)
+	;		(assert (Idioma (nth$ ?it ?lista)))
+	;	)
+	;else (assert (Idioma indef))
+	;)
 )
 
 (defrule pregunta-momento "Pregunta para momento de lectura del día"
-	(nuevo-lector ?)
+	(nuevo-lector)
 	=>
 	(bind ?resp (pregunta-numerica "Mas o menos a que hora comienzas a leer? " 0 24))
 	(if (and (>= ?resp 0) (<= ?resp 6)) then (assert (Momento madrugada)) 
@@ -1151,18 +1163,16 @@
 )
 
 (defrule pregunta-frecuencia "Pregunta para frecuencia de lectura"
-	(nuevo-lector ?)
+	(nuevo-lector)
 	=>
 	(bind ?resp (pregunta-numerica "En un mes cuantos dias sueles leer? " 0 24))
-	(if (and (>= ?resp 0) (<= ?resp 6)) then (assert (Frecuencia muyPoca))
-	else (if (and (> ?resp 6) (<= ?resp 12)) then (assert (Frecuencia poca))
-	else (if (and (> ?resp 12) (<= ?resp 18)) then (assert (Frecuencia normal)) 
-	else (if (and (> ?resp 18) (<= ?resp 24)) then (assert (Frecuencia mucha)) 	
-	else (assert (Frecuencia muchisima))))))
+	(if (and (>= ?resp 0) (<= ?resp 12)) then (assert (Frecuencia poca))
+	else (if (and (> ?resp 12) (<= ?resp 18)) then (assert (Frecuencia normal))  	
+	else (assert (Frecuencia muchisima))))
 )
 
 (defrule pregunta-lugar "Pregunta para horas de lectura"
-	(nuevo-lector ?)
+	(nuevo-lector)
 	=>
 	(bind ?resp (pregunta-general "En que sitio sueles leer normalmente? Ni -> No importa "))
 	(if (eq (str-compare ?resp "Ni") 0) then (assert (Lugar indef))
@@ -1170,21 +1180,21 @@
 )
 
 (defrule pregunta-bestseller ""
-	(nuevo-lector ?)
+	(nuevo-lector)
 	=>
 	(bind ?resp (pregunta-booleana "Te interesan los libros mas vendidos?"))
 	(assert (bestseller ?resp))
 )
 
 (defrule pregunta-modas ""
-	(nuevo-lector ?)
+	(nuevo-lector)
 	=>
 	(bind ?resp (pregunta-booleana "Quieres ver los libros que estan de moda?"))
 	(assert (modas ?resp))
 )
 
 (defrule pregunta-generos "Pregunta para saber generos preferidos"
-	(nuevo-lector ?)
+	(nuevo-lector)
 	=>
 	(printout t "Cuales de los siguientes generos te gustan?" crlf)
 	(bind ?lista (find-all-instances ((?p Genero)) TRUE))
@@ -1198,11 +1208,9 @@
 			(assert (genero (send (nth$ ?it ?lista) get-nombre)))
 		)
 	)
-	(assert (pregunta-generos))
 )
 
 (defrule pregunta-libros "Pregunta para saber los libros que le gustan"
-	(pregunta-generos)
 	(genero ?gen)
 	?g<-(object (is-a Genero) (nombre ?gen) (librosRepresentativos $?lista))
 	(test (> (length$ ?lista) 0))
