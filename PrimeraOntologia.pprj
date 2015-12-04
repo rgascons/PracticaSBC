@@ -1,4 +1,4 @@
-; Fri Dec 04 10:24:43 GMT 2015
+; Fri Dec 04 10:56:36 GMT 2015
 ; 
 ;+ (version "3.4.8")
 ;+ (build "Build 629")
@@ -20,9 +20,9 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[PrimeraOntologia_ProjectKB_Class10012]
-		[PrimeraOntologia_ProjectKB_Class10013]
-		[PrimeraOntologia_ProjectKB_Class10014]))
+		[PrimeraOntologia_ProjectKB_Class10077]
+		[PrimeraOntologia_ProjectKB_Class10078]
+		[PrimeraOntologia_ProjectKB_Class10079]))
 
 ([CLSES_TAB] of  Widget
 
@@ -74,9 +74,9 @@
 ([KB_624881_Class1] of  Map
 
 	(entries
-		[PrimeraOntologia_ProjectKB_Class10015]
-		[PrimeraOntologia_ProjectKB_Class10016]
-		[PrimeraOntologia_ProjectKB_Class10017]))
+		[PrimeraOntologia_ProjectKB_Class10080]
+		[PrimeraOntologia_ProjectKB_Class10081]
+		[PrimeraOntologia_ProjectKB_Class10082]))
 
 ([KB_624881_Class119] of  String
 
@@ -297,36 +297,36 @@
 ([PrimeraOntologia_ProjectKB_Class10011] of  Property_List
 )
 
-([PrimeraOntologia_ProjectKB_Class10012] of  String
+([PrimeraOntologia_ProjectKB_Class10077] of  String
 
 	(name ":INSTANCE-ANNOTATION")
 	(string_value "%3AANNOTATION-TEXT"))
 
-([PrimeraOntologia_ProjectKB_Class10013] of  String
+([PrimeraOntologia_ProjectKB_Class10078] of  String
 
 	(name ":META-CLASS")
 	(string_value "%3ANAME"))
 
-([PrimeraOntologia_ProjectKB_Class10014] of  String
+([PrimeraOntologia_ProjectKB_Class10079] of  String
 
 	(name ":PAL-CONSTRAINT")
 	(string_value "%3APAL-NAME"))
 
-([PrimeraOntologia_ProjectKB_Class10015] of  Map_Entry
+([PrimeraOntologia_ProjectKB_Class10080] of  Map_Entry
 
 	(key "suppress_instance_counting")
 	(key_class "java.lang.String")
 	(value "false")
 	(value_class "java.lang.String"))
 
-([PrimeraOntologia_ProjectKB_Class10016] of  Map_Entry
+([PrimeraOntologia_ProjectKB_Class10081] of  Map_Entry
 
 	(key "change_tracking_active")
 	(key_class "java.lang.String")
 	(value "false")
 	(value_class "java.lang.String"))
 
-([PrimeraOntologia_ProjectKB_Class10017] of  Map_Entry
+([PrimeraOntologia_ProjectKB_Class10082] of  Map_Entry
 
 	(key "add_name_on_instance_form")
 	(key_class "java.lang.String")

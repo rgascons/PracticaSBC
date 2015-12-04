@@ -1,4 +1,4 @@
-; Fri Dec 04 10:24:43 GMT 2015
+; Fri Dec 04 10:56:45 GMT 2015
 ; 
 ;+ (version "3.4.8")
 ;+ (build "Build 629")
@@ -14,11 +14,6 @@
 	(multislot autoresFavoritos
 		(type INSTANCE)
 ;+		(allowed-classes Autor)
-		(create-accessor read-write))
-	(single-slot compa%C3%B1ia
-		(type INSTANCE)
-;+		(allowed-classes)
-;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(multislot generoExperto
 		(type INSTANCE)
@@ -67,11 +62,6 @@
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot nombreIdioma
-		(type STRING)
-		(default "Ingles" "Espanol")
-;+		(cardinality 0 1)
-		(create-accessor read-write))
 	(multislot librosLeidos
 		(type INSTANCE)
 ;+		(allowed-classes Libro)
@@ -85,10 +75,6 @@
 ;+		(allowed-classes Genero)
 		(create-accessor read-write))
 	(single-slot edad
-		(type INTEGER)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot ejemplaresVendidos
 		(type INTEGER)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
@@ -156,6 +142,7 @@
 		(create-accessor read-write))
 	(single-slot numPaginas
 		(type INTEGER)
+		(default 0)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(multislot librosEscritos
@@ -221,6 +208,7 @@
 		(create-accessor read-write))
 	(single-slot numPaginas
 		(type INTEGER)
+		(default 0)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(multislot escritoPor
