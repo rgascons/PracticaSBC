@@ -1,4 +1,4 @@
-; Thu Dec 03 21:31:24 GMT 2015
+; Fri Dec 04 10:56:45 GMT 2015
 ; 
 ;+ (version "3.4.8")
 ;+ (build "Build 629")
@@ -29,9 +29,8 @@
 ([PrimeraOntologia_AmanteChatterley] of  Libro
 
 	(escritoPor [PrimeraOntologia_DHLawrence])
-	(fechaPublicacion "1928")
 	(generos [PrimeraOntologia_Erotica])
-	(idioma "Castellano")
+	(idioma Castellano)
 	(publicoDirigido Adulto)
 	(titulo "El amante de Lady Chatterley"))
 
@@ -39,9 +38,8 @@
 
 	(bestSeller FALSE)
 	(escritoPor [PrimeraOntologia_BEastonEllis])
-	(fechaPublicacion "1991")
 	(generos [PrimeraOntologia_Horror])
-	(idioma "Ingles")
+	(idioma Ingles)
 	(ISBN "978-0-679-73577-9")
 	(numPaginas 400)
 	(publicoDirigido Adulto)
@@ -123,16 +121,14 @@
 ([PrimeraOntologia_CasaRiverton] of  Libro
 
 	(escritoPor [PrimeraOntologia_KMorton])
-	(fechaPublicacion "2009")
 	(generos [PrimeraOntologia_Novela])
 	(titulo "La casa de Riverton"))
 
 ([PrimeraOntologia_Cenital] of  Libro
 
 	(escritoPor [PrimeraOntologia_EBueso])
-	(fechaPublicacion "2012")
 	(generos [PrimeraOntologia_CFApocalipsis])
-	(idioma "Espanol")
+	(idioma Espanol)
 	(numPaginas 288)
 	(titulo "Cenital"))
 
@@ -159,7 +155,7 @@
 
 	(escritoPor [PrimeraOntologia_EAPoe])
 	(generos [PrimeraOntologia_Policial])
-	(idioma "Castellano")
+	(idioma Castellano)
 	(titulo "Los crímenes de la calle Morgue"))
 
 ([PrimeraOntologia_CryingFairy] of  Libro
@@ -239,7 +235,7 @@
 
 	(escritoPor [PrimeraOntologia_RFord])
 	(generos [PrimeraOntologia_Novela])
-	(idioma "Castellano")
+	(idioma Castellano)
 	(ISBN "9788433979384")
 	(numPaginas 232)
 	(titulo "Francamente, Frank"))
@@ -269,9 +265,8 @@
 ([PrimeraOntologia_HistoriaOjo] of  Libro
 
 	(escritoPor [PrimeraOntologia_GBataille])
-	(fechaPublicacion "1928")
 	(generos [PrimeraOntologia_Erotica])
-	(idioma "Castellano")
+	(idioma Castellano)
 	(titulo "Historia de ojo"))
 
 ([PrimeraOntologia_Hobbit] of  Libro
@@ -303,15 +298,13 @@
 ([PrimeraOntologia_ImperioFinal] of  Libro
 
 	(escritoPor [PrimeraOntologia_BSanderson])
-	(fechaPublicacion "2011")
 	(generos [PrimeraOntologia_CFFuturista])
-	(idioma "Castellano")
+	(idioma Castellano)
 	(titulo "El Imperio Final"))
 
 ([PrimeraOntologia_IslaMisteriosa] of  Libro
 
 	(escritoPor [PrimeraOntologia_JVerne])
-	(fechaPublicacion "1874")
 	(generos [PrimeraOntologia_Aventuras])
 	(titulo "La isla misteriosa"))
 
@@ -376,18 +369,16 @@
 ([PrimeraOntologia_Lolita] of  Libro
 
 	(escritoPor [PrimeraOntologia_VNabokov])
-	(fechaPublicacion "1955")
 	(generos [PrimeraOntologia_Erotica])
-	(idioma "Castellano")
+	(idioma Castellano)
 	(publicoDirigido Adulto)
 	(titulo "Lolita"))
 
 ([PrimeraOntologia_LookingInfinity] of  Libro
 
 	(escritoPor [PrimeraOntologia_WGenadi])
-	(fechaPublicacion "2014")
 	(generos [PrimeraOntologia_CFFuturista])
-	(idioma "Ingles")
+	(idioma Ingles)
 	(numPaginas 300)
 	(publicoDirigido Juvenil)
 	(titulo "Looking at infinity"))
@@ -400,7 +391,6 @@
 ([PrimeraOntologia_MiguelStrogoff] of  Libro
 
 	(escritoPor [PrimeraOntologia_JVerne])
-	(fechaPublicacion "1876")
 	(generos [PrimeraOntologia_Aventuras])
 	(titulo "Miguel Strogoff"))
 
@@ -431,9 +421,8 @@
 
 	(bestSeller TRUE)
 	(escritoPor [PrimeraOntologia_RRiordan])
-	(fechaPublicacion "2009")
 	(generos [PrimeraOntologia_CFFuturista])
-	(idioma "Castellano")
+	(idioma Castellano)
 	(ISBN "9788498382068")
 	(titulo "LA MALDICION DEL TITAN. Percy Jackson y los dioses del Olimpo III"))
 
@@ -461,7 +450,7 @@
 
 	(escritoPor [PrimeraOntologia_MAsensi])
 	(generos [PrimeraOntologia_Novela])
-	(idioma "Castellano")
+	(idioma Castellano)
 	(ISBN "9788408145820")
 	(numPaginas 610)
 	(titulo "El regreso del Caton"))
@@ -510,9 +499,8 @@
 
 	(bestSeller TRUE)
 	(escritoPor [PrimeraOntologia_WGenadi])
-	(fechaPublicacion "2015")
 	(generos [PrimeraOntologia_Erotica])
-	(idioma "Inglés")
+	(idioma Ingl%C3%A9s)
 	(numPaginas 250)
 	(publicoDirigido Juvenil)
 	(titulo "Slaves"))
@@ -527,7 +515,7 @@
 
 	(escritoPor [PrimeraOntologia_SevardoAguilar])
 	(generos [PrimeraOntologia_Suspense])
-	(idioma "Ingles")
+	(idioma Ingles)
 	(titulo "The Soul of the Door"))
 
 ([PrimeraOntologia_SoulWinter] of  Libro
@@ -536,7 +524,7 @@
 	(generos
 		[PrimeraOntologia_Aventuras]
 		[PrimeraOntologia_Suspense])
-	(idioma "Ingles")
+	(idioma Ingles)
 	(titulo "The Souls's Winter"))
 
 ([PrimeraOntologia_StreamThorn] of  Libro
@@ -571,9 +559,8 @@
 ([PrimeraOntologia_TormentaEspadas] of  Libro
 
 	(escritoPor [PrimeraOntologia_GRRMartin])
-	(fechaPublicacion "2006")
 	(generos [PrimeraOntologia_FantasiaMedieval])
-	(idioma "Castellano")
+	(idioma Castellano)
 	(ISBN "9788496208391")
 	(titulo "Tormenta de espadas"))
 
@@ -581,7 +568,7 @@
 
 	(escritoPor [PrimeraOntologia_Tardotram])
 	(generos [PrimeraOntologia_CFFuturista])
-	(idioma "Ingles")
+	(idioma Ingles)
 	(titulo "The Vacant Male"))
 
 ([PrimeraOntologia_VNabokov] of  Autor
