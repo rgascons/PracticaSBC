@@ -1,3 +1,8 @@
+; Fri Dec 04 10:56:45 GMT 2015
+; 
+;+ (version "3.4.8")
+;+ (build "Build 629")
+
 
 (defclass %3ACLIPS_TOP_LEVEL_SLOT_CLASS "Fake class to save top-level slot information"
 	(is-a USER)
@@ -10,24 +15,19 @@
 		(type INSTANCE)
 ;+		(allowed-classes Autor)
 		(create-accessor read-write))
-	(single-slot compa%C3%B1ia
-		(type INSTANCE)
-;+		(allowed-classes)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
 	(multislot generoExperto
 		(type INSTANCE)
 ;+		(allowed-classes Genero)
-		(create-accessor read-write))
-	(multislot catalogo
-		(type INSTANCE)
-;+		(allowed-classes Libro)
-		(cardinality 1 ?VARIABLE)
 		(create-accessor read-write))
 	(single-slot momento
 		(type SYMBOL)
 		(allowed-values ma%C3%B1ana mediodia tarde noche)
 ;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot catalogo
+		(type INSTANCE)
+;+		(allowed-classes Libro)
+		(cardinality 1 ?VARIABLE)
 		(create-accessor read-write))
 	(single-slot titulo
 		(type STRING)
@@ -74,19 +74,15 @@
 		(type INSTANCE)
 ;+		(allowed-classes Genero)
 		(create-accessor read-write))
-	(single-slot ejemplaresVendidos
-		(type INTEGER)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
 	(single-slot edad
 		(type INTEGER)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot ISBN
+	(single-slot nombre
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot nombre
+	(single-slot ISBN
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
@@ -95,7 +91,8 @@
 ;+		(allowed-classes Autor)
 		(create-accessor read-write))
 	(single-slot idioma
-		(type STRING)
+		(type SYMBOL)
+		(allowed-values Ingles Espanol Catalan Frances Aleman)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(multislot exclusivas
@@ -143,13 +140,14 @@
 		(allowed-values poca media mucha)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
+	(single-slot numPaginas
+		(type INTEGER)
+		(default 0)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(multislot librosEscritos
 		(type INSTANCE)
 ;+		(allowed-classes Libro)
-		(create-accessor read-write))
-	(single-slot numPaginas
-		(type INTEGER)
-;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(multislot generos
 		(type INSTANCE)
@@ -165,7 +163,7 @@
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot fechaPublicacion
-		(type STRING)
+		(type INTEGER)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot nacionalidad
@@ -190,13 +188,13 @@
 		(range 0 5)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot ejemplaresVendidos
-		(type INTEGER)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
 	(single-slot bestSeller
 		(type SYMBOL)
 		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot ISBN
+		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot publicoDirigido
@@ -204,29 +202,27 @@
 		(allowed-values Infantil Juvenil Adulto)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot ISBN
-		(type STRING)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
 	(single-slot fechaPublicacion
-		(type STRING)
+		(type INTEGER)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot numPaginas
 		(type INTEGER)
+		(default 0)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(multislot escritoPor
 		(type INSTANCE)
 ;+		(allowed-classes Autor)
 		(create-accessor read-write))
-	(single-slot idioma
-		(type STRING)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
 	(multislot generos
 		(type INSTANCE)
 ;+		(allowed-classes Genero)
+		(create-accessor read-write))
+	(single-slot idioma
+		(type SYMBOL)
+		(allowed-values Ingles Espanol Catalan Frances Aleman)
+;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
 (defclass Persona
@@ -289,13 +285,13 @@
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(multislot generoExperto
-		(type INSTANCE)
-;+		(allowed-classes Genero)
-		(create-accessor read-write))
 	(multislot librosEscritos
 		(type INSTANCE)
 ;+		(allowed-classes Libro)
+		(create-accessor read-write))
+	(multislot generoExperto
+		(type INSTANCE)
+;+		(allowed-classes Genero)
 		(create-accessor read-write)))
 
 (defclass Genero
@@ -320,7 +316,12 @@
 		(create-accessor read-write)))
 		
 (definstances instancias
-	([PrimeraOntologia_ACDoyle] of  Autor
+	; Fri Dec 04 10:56:45 GMT 2015
+; 
+;+ (version "3.4.8")
+;+ (build "Build 629")
+
+([PrimeraOntologia_ACDoyle] of  Autor
 
 	(librosEscritos
 		[PrimeraOntologia_SabuesoBaskerville]
@@ -346,9 +347,8 @@
 ([PrimeraOntologia_AmanteChatterley] of  Libro
 
 	(escritoPor [PrimeraOntologia_DHLawrence])
-	(fechaPublicacion "1928")
 	(generos [PrimeraOntologia_Erotica])
-	(idioma "Castellano")
+	(idioma Castellano)
 	(publicoDirigido Adulto)
 	(titulo "El amante de Lady Chatterley"))
 
@@ -356,9 +356,8 @@
 
 	(bestSeller FALSE)
 	(escritoPor [PrimeraOntologia_BEastonEllis])
-	(fechaPublicacion "1991")
 	(generos [PrimeraOntologia_Horror])
-	(idioma "Ingles")
+	(idioma Ingles)
 	(ISBN "978-0-679-73577-9")
 	(numPaginas 400)
 	(publicoDirigido Adulto)
@@ -440,16 +439,14 @@
 ([PrimeraOntologia_CasaRiverton] of  Libro
 
 	(escritoPor [PrimeraOntologia_KMorton])
-	(fechaPublicacion "2009")
 	(generos [PrimeraOntologia_Novela])
 	(titulo "La casa de Riverton"))
 
 ([PrimeraOntologia_Cenital] of  Libro
 
 	(escritoPor [PrimeraOntologia_EBueso])
-	(fechaPublicacion "2012")
 	(generos [PrimeraOntologia_CFApocalipsis])
-	(idioma "Espanol")
+	(idioma Espanol)
 	(numPaginas 288)
 	(titulo "Cenital"))
 
@@ -476,7 +473,7 @@
 
 	(escritoPor [PrimeraOntologia_EAPoe])
 	(generos [PrimeraOntologia_Policial])
-	(idioma "Castellano")
+	(idioma Castellano)
 	(titulo "Los crímenes de la calle Morgue"))
 
 ([PrimeraOntologia_CryingFairy] of  Libro
@@ -556,7 +553,7 @@
 
 	(escritoPor [PrimeraOntologia_RFord])
 	(generos [PrimeraOntologia_Novela])
-	(idioma "Castellano")
+	(idioma Castellano)
 	(ISBN "9788433979384")
 	(numPaginas 232)
 	(titulo "Francamente, Frank"))
@@ -586,9 +583,8 @@
 ([PrimeraOntologia_HistoriaOjo] of  Libro
 
 	(escritoPor [PrimeraOntologia_GBataille])
-	(fechaPublicacion "1928")
 	(generos [PrimeraOntologia_Erotica])
-	(idioma "Castellano")
+	(idioma Castellano)
 	(titulo "Historia de ojo"))
 
 ([PrimeraOntologia_Hobbit] of  Libro
@@ -620,15 +616,13 @@
 ([PrimeraOntologia_ImperioFinal] of  Libro
 
 	(escritoPor [PrimeraOntologia_BSanderson])
-	(fechaPublicacion "2011")
 	(generos [PrimeraOntologia_CFFuturista])
-	(idioma "Castellano")
+	(idioma Castellano)
 	(titulo "El Imperio Final"))
 
 ([PrimeraOntologia_IslaMisteriosa] of  Libro
 
 	(escritoPor [PrimeraOntologia_JVerne])
-	(fechaPublicacion "1874")
 	(generos [PrimeraOntologia_Aventuras])
 	(titulo "La isla misteriosa"))
 
@@ -693,18 +687,16 @@
 ([PrimeraOntologia_Lolita] of  Libro
 
 	(escritoPor [PrimeraOntologia_VNabokov])
-	(fechaPublicacion "1955")
 	(generos [PrimeraOntologia_Erotica])
-	(idioma "Castellano")
+	(idioma Castellano)
 	(publicoDirigido Adulto)
 	(titulo "Lolita"))
 
 ([PrimeraOntologia_LookingInfinity] of  Libro
 
 	(escritoPor [PrimeraOntologia_WGenadi])
-	(fechaPublicacion "2014")
 	(generos [PrimeraOntologia_CFFuturista])
-	(idioma "Ingles")
+	(idioma Ingles)
 	(numPaginas 300)
 	(publicoDirigido Juvenil)
 	(titulo "Looking at infinity"))
@@ -717,7 +709,6 @@
 ([PrimeraOntologia_MiguelStrogoff] of  Libro
 
 	(escritoPor [PrimeraOntologia_JVerne])
-	(fechaPublicacion "1876")
 	(generos [PrimeraOntologia_Aventuras])
 	(titulo "Miguel Strogoff"))
 
@@ -748,9 +739,8 @@
 
 	(bestSeller TRUE)
 	(escritoPor [PrimeraOntologia_RRiordan])
-	(fechaPublicacion "2009")
 	(generos [PrimeraOntologia_CFFuturista])
-	(idioma "Castellano")
+	(idioma Castellano)
 	(ISBN "9788498382068")
 	(titulo "LA MALDICION DEL TITAN. Percy Jackson y los dioses del Olimpo III"))
 
@@ -778,7 +768,7 @@
 
 	(escritoPor [PrimeraOntologia_MAsensi])
 	(generos [PrimeraOntologia_Novela])
-	(idioma "Castellano")
+	(idioma Castellano)
 	(ISBN "9788408145820")
 	(numPaginas 610)
 	(titulo "El regreso del Caton"))
@@ -827,9 +817,8 @@
 
 	(bestSeller TRUE)
 	(escritoPor [PrimeraOntologia_WGenadi])
-	(fechaPublicacion "2015")
 	(generos [PrimeraOntologia_Erotica])
-	(idioma "Inglés")
+	(idioma Ingl%C3%A9s)
 	(numPaginas 250)
 	(publicoDirigido Juvenil)
 	(titulo "Slaves"))
@@ -844,7 +833,7 @@
 
 	(escritoPor [PrimeraOntologia_SevardoAguilar])
 	(generos [PrimeraOntologia_Suspense])
-	(idioma "Ingles")
+	(idioma Ingles)
 	(titulo "The Soul of the Door"))
 
 ([PrimeraOntologia_SoulWinter] of  Libro
@@ -853,7 +842,7 @@
 	(generos
 		[PrimeraOntologia_Aventuras]
 		[PrimeraOntologia_Suspense])
-	(idioma "Ingles")
+	(idioma Ingles)
 	(titulo "The Souls's Winter"))
 
 ([PrimeraOntologia_StreamThorn] of  Libro
@@ -888,9 +877,8 @@
 ([PrimeraOntologia_TormentaEspadas] of  Libro
 
 	(escritoPor [PrimeraOntologia_GRRMartin])
-	(fechaPublicacion "2006")
 	(generos [PrimeraOntologia_FantasiaMedieval])
-	(idioma "Castellano")
+	(idioma Castellano)
 	(ISBN "9788496208391")
 	(titulo "Tormenta de espadas"))
 
@@ -898,7 +886,7 @@
 
 	(escritoPor [PrimeraOntologia_Tardotram])
 	(generos [PrimeraOntologia_CFFuturista])
-	(idioma "Ingles")
+	(idioma Ingles)
 	(titulo "The Vacant Male"))
 
 ([PrimeraOntologia_VNabokov] of  Autor
@@ -948,8 +936,8 @@
 		[PrimeraOntologia_Antirresurreccion])
 	(moda TRUE)
 	(nombre "Zombis"))
-)
 
+)
 ;;;**************
 ;;;Codigo CLIPS
 ;;;**************
@@ -1001,6 +989,7 @@
 	(printout t "-----------------------------------" crlf)
 	(printout t (send ?self:libro imprimir))
 	(printout t crlf)
+	;Max puntuacion = 200
 	(format t "Nivel de recomendacion: %d %% %n" (/ (* ?self:puntuacion 100) 200))
 	(printout t crlf)
 	(printout t "-----------------------------------" crlf)
@@ -1043,6 +1032,9 @@
 	(format t "%s" ?pregunta)  
 	(bind ?resposta (readline))  
 	(bind ?res (str-explode ?resposta))
+	;(foreach ?value ?res do 
+	;(if (not(member ?value ?valores_posibles)
+	;)
 	?res
 )
 
@@ -1113,13 +1105,13 @@
 	else 
 	(bind ?lector (make-instance lectorN of Lector))
 	(send ?lector put-DNI ?dni)
-	(assert(nuevo-lector ?dni))
+	(assert(nuevo-lector))
 	)
 )
 
 ;;; Pregunta para conocer la edad
 (defrule pregunta-edad ""
-	(nuevo-lector ?dni)
+	(nuevo-lector)
 	=>
 	(bind ?ed (pregunta-numerica "Que edad tienes?" 0 150))
 	(if (< ?ed 12) then (assert (perfil infantil)))
@@ -1128,23 +1120,36 @@
 	(if (< ?ed 18) then (assert (menor_de_edad)) )
 )
 
-(defrule pregunta-idioma "Pregunta para saber el idioma preferido"
-	(nuevo-lector ?)
+(defrule pregunta-estudios "Pregunta para saber los estudios"
+	(nuevo-lector)
 	=>
-	(bind ?resp (pregunta-general "En que idioma prefieres leer? Ni->No importa "))
-	(if (eq (str-compare ?resp "Ni") 0) then (assert (Idioma indef))
-	else (assert (Idioma ?resp)))
+	;(bind ?lista (allowed-values Lector estudios))
+	;(loop-for-count ?i 1 (length$ ?lista) do
+	;	(printout t ?i ". " (nth$ ?i ?lista) crlf)
+	;)
+	;(bind ?resp (pregunta-numerica "Escribe el identificador de tu estudio maximo: " 1 (length$ ?lista)))
+	;(assert (Estudios (nth$ ?resp ?lista))
 )
 
-(defrule pregunta-horas " Pregunta para horas de lectura "
-	(nuevo-lector ?)
+(defrule pregunta-idioma "Pregunta para saber el idioma preferido"
+	(nuevo-lector)
 	=>
-	(bind ?resp (pregunta-numerica "Cuantas horas dedicas a leer al dia? " 0 24))
-	(assert (HorasDia ?resp))
+	;(bind ?lista (allowed-values Libro idioma))
+	;(loop-for-count ?i 1 (length$ ?lista) do
+	;	(printout t ?i ". " (nth$ ?i ?lista) crlf)
+	;)
+	;(bind ?resp (pregunta-lista "Escribe los identificadores separados por espacios: "))
+	;(if (not (member 0 ?resp))
+	;	then
+	;	(progn$ (?it ?resp)
+	;		(assert (Idioma (nth$ ?it ?lista)))
+	;	)
+	;else (assert (Idioma indef))
+	;)
 )
 
 (defrule pregunta-momento "Pregunta para momento de lectura del día"
-	(nuevo-lector ?)
+	(nuevo-lector)
 	=>
 	(bind ?resp (pregunta-numerica "Mas o menos a que hora comienzas a leer? " 0 24))
 	(if (and (>= ?resp 0) (<= ?resp 6)) then (assert (Momento madrugada)) 
@@ -1154,18 +1159,16 @@
 )
 
 (defrule pregunta-frecuencia "Pregunta para frecuencia de lectura"
-	(nuevo-lector ?)
+	(nuevo-lector)
 	=>
 	(bind ?resp (pregunta-numerica "En un mes cuantos dias sueles leer? " 0 24))
-	(if (and (>= ?resp 0) (<= ?resp 6)) then (assert (Frecuencia muyPoca))
-	else (if (and (> ?resp 6) (<= ?resp 12)) then (assert (Frecuencia poca))
-	else (if (and (> ?resp 12) (<= ?resp 18)) then (assert (Frecuencia normal)) 
-	else (if (and (> ?resp 18) (<= ?resp 24)) then (assert (Frecuencia mucha)) 	
-	else (assert (Frecuencia muchisima))))))
+	(if (and (>= ?resp 0) (<= ?resp 12)) then (assert (Frecuencia poca))
+	else (if (and (> ?resp 12) (<= ?resp 18)) then (assert (Frecuencia normal))  	
+	else (assert (Frecuencia muchisima))))
 )
 
 (defrule pregunta-lugar "Pregunta para horas de lectura"
-	(nuevo-lector ?)
+	(nuevo-lector)
 	=>
 	(bind ?resp (pregunta-general "En que sitio sueles leer normalmente? Ni -> No importa "))
 	(if (eq (str-compare ?resp "Ni") 0) then (assert (Lugar indef))
@@ -1173,21 +1176,21 @@
 )
 
 (defrule pregunta-bestseller ""
-	(nuevo-lector ?)
+	(nuevo-lector)
 	=>
 	(bind ?resp (pregunta-booleana "Te interesan los libros mas vendidos?"))
 	(assert (bestseller ?resp))
 )
 
 (defrule pregunta-modas ""
-	(nuevo-lector ?)
+	(nuevo-lector)
 	=>
 	(bind ?resp (pregunta-booleana "Quieres ver los libros que estan de moda?"))
 	(assert (modas ?resp))
 )
 
 (defrule pregunta-generos "Pregunta para saber generos preferidos"
-	(nuevo-lector ?)
+	(nuevo-lector)
 	=>
 	(printout t "Cuales de los siguientes generos te gustan?" crlf)
 	(bind ?lista (find-all-instances ((?p Genero)) TRUE))
@@ -1201,11 +1204,9 @@
 			(assert (genero (send (nth$ ?it ?lista) get-nombre)))
 		)
 	)
-	(assert (pregunta-generos))
 )
 
 (defrule pregunta-libros "Pregunta para saber los libros que le gustan"
-	(pregunta-generos)
 	(genero ?gen)
 	?g<-(object (is-a Genero) (nombre ?gen) (librosRepresentativos $?lista))
 	(test (> (length$ ?lista) 0))
@@ -1298,14 +1299,15 @@
 ;(defrule descartarLibrosCortos "Descarta los libros más cortos para aquellos que leen con mucha frecuencia"
 ;	(libros-obtenidos)
 ;	(Frecuencia muchisima)
-;	?book <- (object (is-a Libro) (numPaginas ? np))
+;	?book <- (object (is-a Libro) (numPaginas ?np))
 ;	?recm <- (object (is-a Recomendacion) (libro ?book))
 ;)
 
 
 (defrule descartarIdiomas ""
 	(libros-obtenidos)
-	(idioma ?idi)
+	(not (Idioma indef))
+	(Idioma ?idi)
 	?recm <- (object (is-a Recomendacion) (libro ?book))
 	(test (not (eq ?idi (send ?book get-idioma) ) ) )
 	=>
