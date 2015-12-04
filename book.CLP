@@ -1,4 +1,4 @@
-; Fri Dec 04 10:56:45 GMT 2015
+; Fri Dec 04 12:20:07 GMT 2015
 ; 
 ;+ (version "3.4.8")
 ;+ (build "Build 629")
@@ -19,15 +19,15 @@
 		(type INSTANCE)
 ;+		(allowed-classes Genero)
 		(create-accessor read-write))
-	(single-slot momento
-		(type SYMBOL)
-		(allowed-values ma%C3%B1ana mediodia tarde noche)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
 	(multislot catalogo
 		(type INSTANCE)
 ;+		(allowed-classes Libro)
 		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write))
+	(single-slot momento
+		(type SYMBOL)
+		(allowed-values ma%C3%B1ana mediodia tarde noche)
+;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot titulo
 		(type STRING)
@@ -78,11 +78,11 @@
 		(type INTEGER)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot nombre
+	(single-slot ISBN
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot ISBN
+	(single-slot nombre
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
@@ -140,14 +140,14 @@
 		(allowed-values poca media mucha)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
+	(multislot librosEscritos
+		(type INSTANCE)
+;+		(allowed-classes Libro)
+		(create-accessor read-write))
 	(single-slot numPaginas
 		(type INTEGER)
 		(default 0)
 ;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(multislot librosEscritos
-		(type INSTANCE)
-;+		(allowed-classes Libro)
 		(create-accessor read-write))
 	(multislot generos
 		(type INSTANCE)
@@ -193,13 +193,13 @@
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot ISBN
-		(type STRING)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
 	(single-slot publicoDirigido
 		(type SYMBOL)
 		(allowed-values Infantil Juvenil Adulto)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot ISBN
+		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot fechaPublicacion
@@ -215,14 +215,14 @@
 		(type INSTANCE)
 ;+		(allowed-classes Autor)
 		(create-accessor read-write))
-	(multislot generos
-		(type INSTANCE)
-;+		(allowed-classes Genero)
-		(create-accessor read-write))
 	(single-slot idioma
 		(type SYMBOL)
 		(allowed-values Ingles Espanol Catalan Frances Aleman)
 ;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot generos
+		(type INSTANCE)
+;+		(allowed-classes Genero)
 		(create-accessor read-write)))
 
 (defclass Persona
@@ -285,13 +285,13 @@
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(multislot librosEscritos
-		(type INSTANCE)
-;+		(allowed-classes Libro)
-		(create-accessor read-write))
 	(multislot generoExperto
 		(type INSTANCE)
 ;+		(allowed-classes Genero)
+		(create-accessor read-write))
+	(multislot librosEscritos
+		(type INSTANCE)
+;+		(allowed-classes Libro)
 		(create-accessor read-write)))
 
 (defclass Genero
@@ -314,9 +314,9 @@
 		(type INSTANCE)
 ;+		(allowed-classes Libro)
 		(create-accessor read-write)))
-		
+
 (definstances instancias
-	; Fri Dec 04 10:56:45 GMT 2015
+	; Fri Dec 04 12:20:07 GMT 2015
 ; 
 ;+ (version "3.4.8")
 ;+ (build "Build 629")
@@ -341,14 +341,18 @@
 ([PrimeraOntologia_Alzamiento] of  Libro
 
 	(escritoPor [PrimeraOntologia_BKeene])
+	(fechaPublicacion 2010)
 	(generos [PrimeraOntologia_Zombis])
+	(idioma Espanol)
+	(numPaginas 280)
+	(puntuacion 4)
 	(titulo "El Alzamiento"))
 
 ([PrimeraOntologia_AmanteChatterley] of  Libro
 
 	(escritoPor [PrimeraOntologia_DHLawrence])
 	(generos [PrimeraOntologia_Erotica])
-	(idioma Castellano)
+	(idioma Espanol)
 	(publicoDirigido Adulto)
 	(titulo "El amante de Lady Chatterley"))
 
@@ -372,6 +376,7 @@
 
 	(escritoPor [PrimeraOntologia_JRBiedma])
 	(generos [PrimeraOntologia_Zombis])
+	(idioma Espanol)
 	(titulo "Antirresurrección"))
 
 ([PrimeraOntologia_AntologiaZ] of  Libro
@@ -381,6 +386,7 @@
 		[PrimeraOntologia_AlexGomez]
 		[PrimeraOntologia_JMRamiro])
 	(generos [PrimeraOntologia_Zombis])
+	(idioma Espanol)
 	(titulo "Antología Z"))
 
 ([PrimeraOntologia_ArdeBruja] of  Libro
@@ -416,7 +422,9 @@
 
 ([PrimeraOntologia_BKeene] of  Autor
 
-	(librosEscritos [PrimeraOntologia_Alzamiento])
+	(librosEscritos
+		[PrimeraOntologia_Alzamiento]
+		[PrimeraOntologia_MarMuerto])
 	(nombreAutor "Brian Keene"))
 
 ([PrimeraOntologia_BSanderson] of  Autor
@@ -473,13 +481,14 @@
 
 	(escritoPor [PrimeraOntologia_EAPoe])
 	(generos [PrimeraOntologia_Policial])
-	(idioma Castellano)
+	(idioma Espanol)
 	(titulo "Los crímenes de la calle Morgue"))
 
 ([PrimeraOntologia_CryingFairy] of  Libro
 
 	(escritoPor [PrimeraOntologia_MTorchwood])
 	(generos [PrimeraOntologia_Aventuras])
+	(idioma Ingles)
 	(titulo "The Crying Fairy"))
 
 ([PrimeraOntologia_CyborgWife] of  Libro
@@ -489,6 +498,7 @@
 		[PrimeraOntologia_Tardotram]
 		[PrimeraOntologia_Etirekor])
 	(generos [PrimeraOntologia_CFFuturista])
+	(idioma Ingles)
 	(publicoDirigido Adulto)
 	(titulo "The cyborg's wife"))
 
@@ -553,7 +563,7 @@
 
 	(escritoPor [PrimeraOntologia_RFord])
 	(generos [PrimeraOntologia_Novela])
-	(idioma Castellano)
+	(idioma Espanol)
 	(ISBN "9788433979384")
 	(numPaginas 232)
 	(titulo "Francamente, Frank"))
@@ -562,6 +572,8 @@
 
 	(escritoPor [PrimeraOntologia_EAPoe])
 	(generos [PrimeraOntologia_Horror])
+	(idioma Espanol)
+	(publicoDirigido Adulto)
 	(titulo "El gato negro"))
 
 ([PrimeraOntologia_GBataille] of  Autor
@@ -578,13 +590,15 @@
 
 	(escritoPor [PrimeraOntologia_DHammett])
 	(generos [PrimeraOntologia_Suspense])
+	(idioma Espanol)
+	(numPaginas 0)
 	(titulo "El halcon maltes"))
 
 ([PrimeraOntologia_HistoriaOjo] of  Libro
 
 	(escritoPor [PrimeraOntologia_GBataille])
 	(generos [PrimeraOntologia_Erotica])
-	(idioma Castellano)
+	(idioma Espanol)
 	(titulo "Historia de ojo"))
 
 ([PrimeraOntologia_Hobbit] of  Libro
@@ -617,7 +631,7 @@
 
 	(escritoPor [PrimeraOntologia_BSanderson])
 	(generos [PrimeraOntologia_CFFuturista])
-	(idioma Castellano)
+	(idioma Espanol)
 	(titulo "El Imperio Final"))
 
 ([PrimeraOntologia_IslaMisteriosa] of  Libro
@@ -688,7 +702,7 @@
 
 	(escritoPor [PrimeraOntologia_VNabokov])
 	(generos [PrimeraOntologia_Erotica])
-	(idioma Castellano)
+	(idioma Espanol)
 	(publicoDirigido Adulto)
 	(titulo "Lolita"))
 
@@ -700,6 +714,16 @@
 	(numPaginas 300)
 	(publicoDirigido Juvenil)
 	(titulo "Looking at infinity"))
+
+([PrimeraOntologia_MarMuerto] of  Libro
+
+	(bestSeller FALSE)
+	(escritoPor [PrimeraOntologia_BKeene])
+	(fechaPublicacion 2010)
+	(generos [PrimeraOntologia_Zombis])
+	(numPaginas 0)
+	(puntuacion 3)
+	(titulo "Mar muerto"))
 
 ([PrimeraOntologia_MAsensi] of  Autor
 
@@ -740,7 +764,7 @@
 	(bestSeller TRUE)
 	(escritoPor [PrimeraOntologia_RRiordan])
 	(generos [PrimeraOntologia_CFFuturista])
-	(idioma Castellano)
+	(idioma Espanol)
 	(ISBN "9788498382068")
 	(titulo "LA MALDICION DEL TITAN. Percy Jackson y los dioses del Olimpo III"))
 
@@ -768,7 +792,7 @@
 
 	(escritoPor [PrimeraOntologia_MAsensi])
 	(generos [PrimeraOntologia_Novela])
-	(idioma Castellano)
+	(idioma Espanol)
 	(ISBN "9788408145820")
 	(numPaginas 610)
 	(titulo "El regreso del Caton"))
@@ -818,7 +842,7 @@
 	(bestSeller TRUE)
 	(escritoPor [PrimeraOntologia_WGenadi])
 	(generos [PrimeraOntologia_Erotica])
-	(idioma Ingl%C3%A9s)
+	(idioma Ingles)
 	(numPaginas 250)
 	(publicoDirigido Juvenil)
 	(titulo "Slaves"))
@@ -878,7 +902,7 @@
 
 	(escritoPor [PrimeraOntologia_GRRMartin])
 	(generos [PrimeraOntologia_FantasiaMedieval])
-	(idioma Castellano)
+	(idioma Espanol)
 	(ISBN "9788496208391")
 	(titulo "Tormenta de espadas"))
 
@@ -938,6 +962,7 @@
 	(nombre "Zombis"))
 
 )
+
 ;;;**************
 ;;;Codigo CLIPS
 ;;;**************
@@ -976,7 +1001,7 @@
 		(format t "%s " (send ?curr-gen get-nombre))
 	)
 	(printout t crlf)
-	(format t "Fecha: %s" ?self:fechaPublicacion)
+	(format t "Fecha: %d" ?self:fechaPublicacion)
 	(printout t crlf)
 	(printout t "Autor/es: ")
 	(progn$ (?curr-aut (send ?self get-escritoPor))
@@ -1123,29 +1148,32 @@
 (defrule pregunta-estudios "Pregunta para saber los estudios"
 	(nuevo-lector)
 	=>
-	;(bind ?lista (allowed-values Lector estudios))
-	;(loop-for-count ?i 1 (length$ ?lista) do
-	;	(printout t ?i ". " (nth$ ?i ?lista) crlf)
-	;)
-	;(bind ?resp (pregunta-numerica "Escribe el identificador de tu estudio maximo: " 1 (length$ ?lista)))
-	;(assert (Estudios (nth$ ?resp ?lista))
+	(printout t "Cual es tu maximo nivel de estudios?" crlf)
+	(bind ?lista (slot-allowed-values Lector estudios))
+	(loop-for-count (?i 1 (length$ ?lista)) do
+		(printout t ?i ". " (nth$ ?i ?lista) crlf)
+	)
+	(bind ?resp (pregunta-numerica "Escribe el identificador de tu estudio maximo: " 1 (length$ ?lista)))
+	(assert (Estudios (nth$ ?resp ?lista)))
 )
 
 (defrule pregunta-idioma "Pregunta para saber el idioma preferido"
 	(nuevo-lector)
 	=>
-	;(bind ?lista (allowed-values Libro idioma))
-	;(loop-for-count ?i 1 (length$ ?lista) do
-	;	(printout t ?i ". " (nth$ ?i ?lista) crlf)
-	;)
-	;(bind ?resp (pregunta-lista "Escribe los identificadores separados por espacios: "))
-	;(if (not (member 0 ?resp))
-	;	then
-	;	(progn$ (?it ?resp)
-	;		(assert (Idioma (nth$ ?it ?lista)))
-	;	)
-	;else (assert (Idioma indef))
-	;)
+	(printout t "Escoje tus idiomas favoritos para los libros: " crlf)
+	(printout t "0. Indefinido" crlf)
+	(bind ?lista (slot-allowed-values Libro idioma))
+	(loop-for-count (?i 1 (length$ ?lista)) do
+		(printout t ?i ". " (nth$ ?i ?lista) crlf)
+	)
+	(bind ?resp (pregunta-lista "Escribe los identificadores separados por espacios: "))
+	(if (not (member 0 ?resp))
+		then
+		(progn$ (?it ?resp)
+			(assert (Idioma (nth$ ?it ?lista)))
+		)
+		else (assert (Idioma indef))
+	)
 )
 
 (defrule pregunta-momento "Pregunta para momento de lectura del día"
@@ -1182,13 +1210,6 @@
 	(assert (bestseller ?resp))
 )
 
-(defrule pregunta-modas ""
-	(nuevo-lector)
-	=>
-	(bind ?resp (pregunta-booleana "Quieres ver los libros que estan de moda?"))
-	(assert (modas ?resp))
-)
-
 (defrule pregunta-generos "Pregunta para saber generos preferidos"
 	(nuevo-lector)
 	=>
@@ -1204,9 +1225,12 @@
 			(assert (genero (send (nth$ ?it ?lista) get-nombre)))
 		)
 	)
+	
+	(assert (pregunta-generos))
 )
 
 (defrule pregunta-libros "Pregunta para saber los libros que le gustan"
+	(pregunta-generos)
 	(genero ?gen)
 	?g<-(object (is-a Genero) (nombre ?gen) (librosRepresentativos $?lista))
 	(test (> (length$ ?lista) 0))
@@ -1220,25 +1244,27 @@
 		then
 		(progn$ (?it ?resp)
 			(assert (LibroLeido (send (nth$ ?it ?lista) get-titulo)))
+			(bind $?list_aut (send (nth$ ?it ?lista) get-escritoPor))
+			(progn$ (?it $?list_aut)
+				(bind ?aname (send ?it get-nombreAutor))
+				(assert (Autor ?aname))
+			)
 		)
 	)
 )
 
-(defrule autores-libros "Define con un hecho los autores de libros que le gustan"
-	(LibroLeido ?bname)
-	?book <- (object (is-a Libro) (titulo ?bname) (escritoPor $?list_aut))
+(defrule pregunta-modas ""
+	(pregunta-generos)
+	(nuevo-lector)
 	=>
-	(printout t "El libro " ?bname " ha sido escrito por:")
-	(progn$ (?it $?list_aut)
-		(bind ?aname (send ?it get-nombreAutor))
-		(printout t " " ?aname )
-		(assert (autor ?aname))
-	)
-	(printout t crlf)
+	(bind ?resp (pregunta-booleana "Quieres ver los libros de generos que estan de moda?"))
+	(assert (modas ?resp))
+	(assert (pregunta-modas))
 )
 
+
 (defrule focusFiltrado
-	(pregunta-generos)
+	(pregunta-modas)
 	=>
 	(focus filtrado)
 )
@@ -1304,20 +1330,31 @@
 ;)
 
 
-(defrule descartarIdiomas ""
+(defrule descartarLibrosLeidos ""
 	(libros-obtenidos)
-	(not (Idioma indef))
-	(Idioma ?idi)
+	(LibroLeido ?rbook)
 	?recm <- (object (is-a Recomendacion) (libro ?book))
-	(test (not (eq ?idi (send ?book get-idioma) ) ) )
+	(test (eq ?rbook (send ?book get-titulo)))
 	=>
-	(printout t "Eliminado por ser de un idioma diferente: " (instance-name ?recm) crlf)
+	(printout t "Eliminado por ser haber sido leído por el usuario: " (instance-name ?book) crlf)
 	(send ?recm delete)
 )
 
 ;;;**********
 ;;;Valoración
 ;;;**********
+
+(defrule plusIdioma "Valorar más si el libro está en un idioma preferido"
+	(not (Idioma indef))
+	(Idioma ?idi)
+	?book <- (object (is-a Libro) (idioma ?idi) (puntuacion ?pt))
+	?recm <- (object (is-a Recomendacion) (libro ?book))
+	(not (valorIdioma ?recm))
+	=>
+	(printout t "El libro " (instance-name ?recm) " esta escrito en " ?idi crlf)
+	(send ?recm put-puntuacion (+ ?pt 100))
+	(assert (valorIdioma ?recm))
+)
 
 (defrule plusGenero
 	(genero ?resp)
@@ -1342,7 +1379,7 @@
 )
 
 (defrule plusAutor
-	(autor ?autr)
+	(Autor ?autr)
 	?recm <- (object (is-a Recomendacion) (libro ?book) (puntuacion ?pt))
 	(test (author_in_book ?autr ?book))
 	(not (valorAutor ?recm))
@@ -1369,14 +1406,25 @@
         (test (pages_in_book ?frec ?book))
         (not (valorPaginas ?recm))
         =>
-        (printout t "El lector con frecuentia (" ?frec ") tiene preferencia por el conjunto de libros : " (instance-name ?recm) crlf)
+        (printout t "El lector con frecuencia (" ?frec ") tiene preferencia por el conjunto de libros : " (instance-name ?recm) crlf)
         (send ?recm put-puntuacion (+ ?pt 50))
         (assert (valorPaginas ?recm))
+)
+
+(defrule focusPresentacion
+	(declare (salience -10))
+	=>
+	(focus presentacion)
 )
 
 ;;;************
 ;;;Presentación
 ;;;************
+
+(defmodule presentacion
+	(import MAIN ?ALL)
+	(export ?ALL)
+)
 
 (defrule lista-desordenada "Si no existe la lista desordenada, se crea una"
 	(not (lista-rec-desordenada))
@@ -1407,6 +1455,7 @@
 	)
 	(assert (lista-rec-ordenada (recomendaciones $?resultado)))
 )
+
 
 (defrule presentar ""
 	(lista-rec-ordenada (recomendaciones $?lista))

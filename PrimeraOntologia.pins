@@ -1,4 +1,4 @@
-; Fri Dec 04 10:56:45 GMT 2015
+; Fri Dec 04 18:16:24 GMT 2015
 ; 
 ;+ (version "3.4.8")
 ;+ (build "Build 629")
@@ -23,14 +23,18 @@
 ([PrimeraOntologia_Alzamiento] of  Libro
 
 	(escritoPor [PrimeraOntologia_BKeene])
+	(fechaPublicacion 2010)
 	(generos [PrimeraOntologia_Zombis])
+	(idioma Espanol)
+	(numPaginas 280)
+	(puntuacion 4)
 	(titulo "El Alzamiento"))
 
 ([PrimeraOntologia_AmanteChatterley] of  Libro
 
 	(escritoPor [PrimeraOntologia_DHLawrence])
 	(generos [PrimeraOntologia_Erotica])
-	(idioma Castellano)
+	(idioma Espanol)
 	(publicoDirigido Adulto)
 	(titulo "El amante de Lady Chatterley"))
 
@@ -54,6 +58,7 @@
 
 	(escritoPor [PrimeraOntologia_JRBiedma])
 	(generos [PrimeraOntologia_Zombis])
+	(idioma Espanol)
 	(titulo "Antirresurrección"))
 
 ([PrimeraOntologia_AntologiaZ] of  Libro
@@ -63,6 +68,7 @@
 		[PrimeraOntologia_AlexGomez]
 		[PrimeraOntologia_JMRamiro])
 	(generos [PrimeraOntologia_Zombis])
+	(idioma Espanol)
 	(titulo "Antología Z"))
 
 ([PrimeraOntologia_ArdeBruja] of  Libro
@@ -98,7 +104,9 @@
 
 ([PrimeraOntologia_BKeene] of  Autor
 
-	(librosEscritos [PrimeraOntologia_Alzamiento])
+	(librosEscritos
+		[PrimeraOntologia_Alzamiento]
+		[PrimeraOntologia_MarMuerto])
 	(nombreAutor "Brian Keene"))
 
 ([PrimeraOntologia_BSanderson] of  Autor
@@ -116,6 +124,9 @@
 
 	(escritoPor [PrimeraOntologia_ACDoyle])
 	(generos [PrimeraOntologia_Suspense])
+	(idioma Ingles)
+	(publicoDirigido Adulto)
+	(puntuacion 4)
 	(titulo "Canon Holmesiano"))
 
 ([PrimeraOntologia_CasaRiverton] of  Libro
@@ -155,13 +166,14 @@
 
 	(escritoPor [PrimeraOntologia_EAPoe])
 	(generos [PrimeraOntologia_Policial])
-	(idioma Castellano)
+	(idioma Espanol)
 	(titulo "Los crímenes de la calle Morgue"))
 
 ([PrimeraOntologia_CryingFairy] of  Libro
 
 	(escritoPor [PrimeraOntologia_MTorchwood])
 	(generos [PrimeraOntologia_Aventuras])
+	(idioma Ingles)
 	(titulo "The Crying Fairy"))
 
 ([PrimeraOntologia_CyborgWife] of  Libro
@@ -171,6 +183,7 @@
 		[PrimeraOntologia_Tardotram]
 		[PrimeraOntologia_Etirekor])
 	(generos [PrimeraOntologia_CFFuturista])
+	(idioma Ingles)
 	(publicoDirigido Adulto)
 	(titulo "The cyborg's wife"))
 
@@ -235,7 +248,7 @@
 
 	(escritoPor [PrimeraOntologia_RFord])
 	(generos [PrimeraOntologia_Novela])
-	(idioma Castellano)
+	(idioma Espanol)
 	(ISBN "9788433979384")
 	(numPaginas 232)
 	(titulo "Francamente, Frank"))
@@ -244,6 +257,8 @@
 
 	(escritoPor [PrimeraOntologia_EAPoe])
 	(generos [PrimeraOntologia_Horror])
+	(idioma Espanol)
+	(publicoDirigido Adulto)
 	(titulo "El gato negro"))
 
 ([PrimeraOntologia_GBataille] of  Autor
@@ -260,13 +275,15 @@
 
 	(escritoPor [PrimeraOntologia_DHammett])
 	(generos [PrimeraOntologia_Suspense])
+	(idioma Espanol)
+	(numPaginas 0)
 	(titulo "El halcon maltes"))
 
 ([PrimeraOntologia_HistoriaOjo] of  Libro
 
 	(escritoPor [PrimeraOntologia_GBataille])
 	(generos [PrimeraOntologia_Erotica])
-	(idioma Castellano)
+	(idioma Espanol)
 	(titulo "Historia de ojo"))
 
 ([PrimeraOntologia_Hobbit] of  Libro
@@ -299,7 +316,7 @@
 
 	(escritoPor [PrimeraOntologia_BSanderson])
 	(generos [PrimeraOntologia_CFFuturista])
-	(idioma Castellano)
+	(idioma Espanol)
 	(titulo "El Imperio Final"))
 
 ([PrimeraOntologia_IslaMisteriosa] of  Libro
@@ -311,7 +328,10 @@
 ([PrimeraOntologia_Ivanhoe] of  Libro
 
 	(escritoPor [PrimeraOntologia_WScott])
+	(fechaPublicacion 1819)
 	(generos [PrimeraOntologia_Aventuras])
+	(idioma Ingles)
+	(numPaginas 346)
 	(titulo "Ivanhoe"))
 
 ([PrimeraOntologia_JardinHechizos] of  Libro
@@ -362,6 +382,15 @@
 		[PrimeraOntologia_CasaRiverton])
 	(nombreAutor "Kate Morton"))
 
+([PrimeraOntologia_Lector1] of  Lector
+
+	(autoresFavoritos [PrimeraOntologia_IAsimov])
+	(DNI "12345")
+	(edad 12)
+	(estudios primaria)
+	(frecuencia media)
+	(momento tarde))
+
 ([PrimeraOntologia_Loikath] of  Autor
 
 	(nombreAutor "Loikath Welter"))
@@ -370,7 +399,7 @@
 
 	(escritoPor [PrimeraOntologia_VNabokov])
 	(generos [PrimeraOntologia_Erotica])
-	(idioma Castellano)
+	(idioma Espanol)
 	(publicoDirigido Adulto)
 	(titulo "Lolita"))
 
@@ -382,6 +411,16 @@
 	(numPaginas 300)
 	(publicoDirigido Juvenil)
 	(titulo "Looking at infinity"))
+
+([PrimeraOntologia_MarMuerto] of  Libro
+
+	(bestSeller FALSE)
+	(escritoPor [PrimeraOntologia_BKeene])
+	(fechaPublicacion 2010)
+	(generos [PrimeraOntologia_Zombis])
+	(numPaginas 0)
+	(puntuacion 3)
+	(titulo "Mar muerto"))
 
 ([PrimeraOntologia_MAsensi] of  Autor
 
@@ -422,8 +461,9 @@
 	(bestSeller TRUE)
 	(escritoPor [PrimeraOntologia_RRiordan])
 	(generos [PrimeraOntologia_CFFuturista])
-	(idioma Castellano)
+	(idioma Espanol)
 	(ISBN "9788498382068")
+	(publicoDirigido Juvenil)
 	(titulo "LA MALDICION DEL TITAN. Percy Jackson y los dioses del Olimpo III"))
 
 ([PrimeraOntologia_PiedraLunar] of  Libro
@@ -450,7 +490,7 @@
 
 	(escritoPor [PrimeraOntologia_MAsensi])
 	(generos [PrimeraOntologia_Novela])
-	(idioma Castellano)
+	(idioma Espanol)
 	(ISBN "9788408145820")
 	(numPaginas 610)
 	(titulo "El regreso del Caton"))
@@ -500,7 +540,7 @@
 	(bestSeller TRUE)
 	(escritoPor [PrimeraOntologia_WGenadi])
 	(generos [PrimeraOntologia_Erotica])
-	(idioma Ingl%C3%A9s)
+	(idioma Ingles)
 	(numPaginas 250)
 	(publicoDirigido Juvenil)
 	(titulo "Slaves"))
@@ -560,7 +600,7 @@
 
 	(escritoPor [PrimeraOntologia_GRRMartin])
 	(generos [PrimeraOntologia_FantasiaMedieval])
-	(idioma Castellano)
+	(idioma Espanol)
 	(ISBN "9788496208391")
 	(titulo "Tormenta de espadas"))
 
