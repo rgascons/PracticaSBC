@@ -1432,6 +1432,17 @@
         (assert (valorEstudios ?recm))
 )
 
+(defrule plusLectorAutorMismaNacionalidad
+        (Nacionalidad ?nac)
+        ?recm <- (object (is-a Recomendacion) (libro ?book) (puntuacion ?pt))
+        (test (eq ?nac (send ?book get-nacionalidad)))
+        (not (valorNac ?recm))
+        =>
+        (printout t "El lector con nacionalidad (" ?nac ") tiene preferencia por el conjunto de libros : " (instance-name ?recm) crlf)
+        (send ?recm put-puntuacion (+ ?pt 50))
+        (assert (valorNac ?recm))
+)
+
 (defrule focusPresentacion
 	(declare (salience -10))
 	=>
