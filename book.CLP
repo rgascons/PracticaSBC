@@ -1175,7 +1175,7 @@
 (defrule pregunta-nacionalidad "Pregunta para saber la nacionalidad"
 	(nuevo-lector)
 	=>
-	(bind ?resp (pregunta-general "Cual es tu nacionalidad?"))
+	(bind ?resp (pregunta-general "Cual es tu nacionalidad? "))
 	(assert (Nacionalidad ?resp))
 )
 
@@ -1185,7 +1185,7 @@
 	(printout t "Escoje tus idiomas favoritos para los libros: " crlf)
 	(printout t "0. Indefinido" crlf)
 	(bind ?lista (slot-allowed-values Libro idioma))
-	(bind $?valores_permitidos (create$))
+	(bind $?valores_permitidos (create$ 0))
 	(loop-for-count (?i 1 (length$ ?lista)) do
 		(printout t ?i ". " (nth$ ?i ?lista) crlf)
 		(bind $?valores_permitidos (insert$ ?valores_permitidos (+ (length$ ?valores_permitidos) 1) ?i))
@@ -1239,7 +1239,7 @@
 	=>
 	(printout t "Cuales de los siguientes generos te gustan?" crlf)
 	(bind ?lista (find-all-instances ((?p Genero)) TRUE))
-	(bind $?valores_permitidos (create$))
+	(bind $?valores_permitidos (create$ 0))
 	(loop-for-count (?i 1 (length$ ?lista)) do
 		(printout t ?i ". " (send (nth$ ?i ?lista) get-nombre) crlf)
 		(bind $?valores_permitidos (insert$ ?valores_permitidos (+ (length$ ?valores_permitidos) 1) ?i))
@@ -1261,7 +1261,8 @@
 	(test (> (length$ ?lista) 0))
 	=>
 	(printout t "Obteniendo lista del genero " ?gen crlf)
-	(bind $?valores_permitidos (create$))
+	(printout t "De los siguientes libros, cuales te has leido?" crlf)
+	(bind $?valores_permitidos (create$ 0))
 	(loop-for-count (?i 1 (length$ ?lista)) do
 		(printout t ?i ". " (send (nth$ ?i ?lista) get-titulo) crlf)
 		(bind $?valores_permitidos (insert$ ?valores_permitidos (+ (length$ ?valores_permitidos) 1) ?i))
