@@ -1157,16 +1157,28 @@
 	(assert (Estudios (nth$ ?resp ?lista)))
 )
 
+(defrule pregunta-nacionalidad "Pregunta para saber la nacionalidad"
+	(nuevo-lector)
+	=>
+	(bind ?resp (pregunta-general "Cual es tu nacionalidad?"))
+	(assert (Nacionalidad ?resp))
+)
+
 (defrule pregunta-idioma "Pregunta para saber el idioma preferido"
 	(nuevo-lector)
 	=>
 	(printout t "Escoje tus idiomas favoritos para los libros: " crlf)
 	(printout t "0. Indefinido" crlf)
 	(bind ?lista (slot-allowed-values Libro idioma))
+	(bind $?valores_permitidos (create$))
 	(loop-for-count (?i 1 (length$ ?lista)) do
 		(printout t ?i ". " (nth$ ?i ?lista) crlf)
+		(insert$ ?valores_permitidos ?i (+ (length$ ?valores_permitidos) 1))
 	)
-	(bind ?resp (pregunta-lista "Escribe los identificadores separados por espacios: "))
+	(loop-for-count (?i 1 (length$ ?valores_permitidos)) do
+		(printout t ?i crlf)
+	)
+	(bind ?resp (pregunta-lista "Escribe los identificadores separados por espacios: " ?valores_permitidos))
 	(if (not (member 0 ?resp))
 		then
 		(progn$ (?it ?resp)
@@ -1195,7 +1207,7 @@
 	else (assert (Frecuencia muchisima))))
 )
 
-(defrule pregunta-lugar "Pregunta para horas de lectura"
+(defrule pregunta-lugar "Pregunta para saber el lugar de lectura"
 	(nuevo-lector)
 	=>
 	(bind ?resp (pregunta-general "En que sitio sueles leer normalmente? Ni -> No importa "))
@@ -1225,7 +1237,6 @@
 			(assert (genero (send (nth$ ?it ?lista) get-nombre)))
 		)
 	)
-	
 	(assert (pregunta-generos))
 )
 
