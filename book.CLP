@@ -1057,9 +1057,14 @@
 	(format t "%s" ?pregunta)  
 	(bind ?resposta (readline))  
 	(bind ?res (str-explode ?resposta))
-	;(foreach ?value ?res do 
-	;(if (not(member ?value ?valores_posibles)
-	;)
+	(loop-for-count (?i 1 (length$ ?res)) do 
+		(if (not(member (nth$ ?i ?res) ?valores_posibles)) then
+			(printout t "El valor " (nth$ ?i ?res) " no es un valido" crlf)
+			(bind ?valor (pregunta-numerica "Introduce un nuevo valor " 1 (length$ ?valores_posibles)))
+			(bind $?res (delete$ ?res ?i ?i))
+			(bind $?res (insert$ ?res ?i ?valor))
+		)
+	)
 	?res
 )
 
@@ -1183,12 +1188,9 @@
 	(bind $?valores_permitidos (create$))
 	(loop-for-count (?i 1 (length$ ?lista)) do
 		(printout t ?i ". " (nth$ ?i ?lista) crlf)
-		(insert$ ?valores_permitidos ?i (+ (length$ ?valores_permitidos) 1))
+		(bind $?valores_permitidos (insert$ ?valores_permitidos (+ (length$ ?valores_permitidos) 1) ?i))
 	)
-	(loop-for-count (?i 1 (length$ ?valores_permitidos)) do
-		(printout t ?i crlf)
-	)
-	(bind ?resp (pregunta-lista "Escribe los identificadores separados por espacios: " ?valores_permitidos))
+	(bind ?resp (pregunta-lista "Escribe los identificadores separados por espacios: " $?valores_permitidos))
 	(if (not (member 0 ?resp))
 		then
 		(progn$ (?it ?resp)
@@ -1237,10 +1239,12 @@
 	=>
 	(printout t "Cuales de los siguientes generos te gustan?" crlf)
 	(bind ?lista (find-all-instances ((?p Genero)) TRUE))
+	(bind $?valores_permitidos (create$))
 	(loop-for-count (?i 1 (length$ ?lista)) do
 		(printout t ?i ". " (send (nth$ ?i ?lista) get-nombre) crlf)
+		(bind $?valores_permitidos (insert$ ?valores_permitidos (+ (length$ ?valores_permitidos) 1) ?i))
 	)
-	(bind ?resp (pregunta-lista "Escribe los identificadores separados por espacios: "))
+	(bind ?resp (pregunta-lista "Escribe los identificadores separados por espacios: " $?valores_permitidos))
 	(if (not (member 0 ?resp))
 		then
 		(progn$ (?it ?resp)
@@ -1257,10 +1261,12 @@
 	(test (> (length$ ?lista) 0))
 	=>
 	(printout t "Obteniendo lista del genero " ?gen crlf)
+	(bind $?valores_permitidos (create$))
 	(loop-for-count (?i 1 (length$ ?lista)) do
 		(printout t ?i ". " (send (nth$ ?i ?lista) get-titulo) crlf)
+		(bind $?valores_permitidos (insert$ ?valores_permitidos (+ (length$ ?valores_permitidos) 1) ?i))
 	)
-	(bind ?resp (pregunta-lista "Escribe los identificadores separados por espacios: 0->Ninguno "))
+	(bind ?resp (pregunta-lista "Escribe los identificadores separados por espacios: 0->Ninguno " $?valores_permitidos))
 	(if (not (member 0 ?resp))
 		then
 		(progn$ (?it ?resp)
