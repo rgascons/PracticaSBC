@@ -1103,6 +1103,16 @@
         (if (eq ?frec mucha) then TRUE)
 )
 
+(deffunction directed_public ""
+        (?est ?book)
+        (bind ?publicoDirigido (send ?book get-publicoDirigido))
+        (if (and (eq ?est primaria) (eq ?publicoDirigido infantil)) then TRUE else FALSE)
+        (if (and (eq ?est secundaria) (or (eq ?publicoDirigido infantil) (eq ?publicoDirigido juvenil))) then TRUE else FALSE)
+        (if (and (eq ?est bachillerato) (or (eq ?publicoDirigido juvenil) (eq ?publicoDirigido adulto))) then TRUE else FALSE)
+        (if (and (eq ?est universidad) (or (eq ?publicoDirigido juvenil) (eq ?publicoDirigido adulto))) then TRUE else FALSE)
+        (if (and (eq ?est formacionProfesional) (or (eq ?publicoDirigido juvenil) (eq ?publicoDirigido adulto))) then TRUE else FALSE)
+)
+
 ;;;**********************
 ;;;MAIN
 ;;;**********************
@@ -1420,6 +1430,28 @@
         (printout t "El lector con frecuencia (" ?frec ") tiene preferencia por el conjunto de libros : " (instance-name ?recm) crlf)
         (send ?recm put-puntuacion (+ ?pt 50))
         (assert (valorPaginas ?recm))
+)
+
+(defrule plusEstudiosLector
+        (Estudios ?est)
+        ?recm <- (object (is-a Recomendacion) (libro ?book) (puntuacion ?pt))
+        (test (directed_public ?est ?book))
+        (not (valorEstudios ?recm))
+        =>
+        (printout t "El lector con estudios (" ?est ") tiene preferencia por el conjunto de libros : " (instance-name ?recm) crlf)
+        (send ?recm put-puntuacion (+ ?pt 50))
+        (assert (valorEstudios ?recm))
+)
+
+(defrule plusLectorAutorMismaNacionalidad
+        (Nacionalidad ?nac)
+        ?recm <- (object (is-a Recomendacion) (libro ?book) (puntuacion ?pt))
+        (test (eq ?nac (send ?book get-nacionalidad)))
+        (not (valorNac ?recm))
+        =>
+        (printout t "El lector con nacionalidad (" ?nac ") tiene preferencia por el conjunto de libros : " (instance-name ?recm) crlf)
+        (send ?recm put-puntuacion (+ ?pt 50))
+        (assert (valorNac ?recm))
 )
 
 (defrule focusPresentacion
