@@ -1159,9 +1159,14 @@
 	(format t "%s" ?pregunta)  
 	(bind ?resposta (readline))  
 	(bind ?res (str-explode ?resposta))
-	;(foreach ?value ?res do 
-	;(if (not(member ?value ?valores_posibles)
-	;)
+	(loop-for-count (?i 1 (length$ ?res)) do 
+		(if (not(member (nth$ ?i ?res) ?valores_posibles)) then
+			(printout t "El valor " (nth$ ?i ?res) " no es un valido" crlf)
+			(bind ?valor (pregunta-numerica "Introduce un nuevo valor " 1 (length$ ?valores_posibles)))
+			(bind $?res (delete$ ?res ?i ?i))
+			(bind $?res (insert$ ?res ?i ?valor))
+		)
+	)
 	?res
 )
 
@@ -1203,6 +1208,16 @@
         (if (and (eq ?frec poca) (< ?pagsLibro 199)) then TRUE else FALSE)
         (if (and (eq ?frec media) (< ?pagsLibro 399)) then TRUE else FALSE)
         (if (eq ?frec mucha) then TRUE)
+)
+
+(deffunction directed_public ""
+        (?est ?book)
+        (bind ?publicoDirigido (send ?book get-publicoDirigido))
+        (if (and (eq ?est primaria) (eq ?publicoDirigido infantil)) then TRUE else FALSE)
+        (if (and (eq ?est secundaria) (or (eq ?publicoDirigido infantil) (eq ?publicoDirigido juvenil))) then TRUE else FALSE)
+        (if (and (eq ?est bachillerato) (or (eq ?publicoDirigido juvenil) (eq ?publicoDirigido adulto))) then TRUE else FALSE)
+        (if (and (eq ?est universidad) (or (eq ?publicoDirigido juvenil) (eq ?publicoDirigido adulto))) then TRUE else FALSE)
+        (if (and (eq ?est formacionProfesional) (or (eq ?publicoDirigido juvenil) (eq ?publicoDirigido adulto))) then TRUE else FALSE)
 )
 
 ;;;**********************
@@ -1264,16 +1279,25 @@
 	(assert (Estudios (nth$ ?resp ?lista)))
 )
 
+(defrule pregunta-nacionalidad "Pregunta para saber la nacionalidad"
+	(nuevo-lector)
+	=>
+	(bind ?resp (pregunta-general "Cual es tu nacionalidad? "))
+	(assert (Nacionalidad ?resp))
+)
+
 (defrule pregunta-idioma "Pregunta para saber el idioma preferido"
 	(nuevo-lector)
 	=>
 	(printout t "Escoje tus idiomas favoritos para los libros: " crlf)
 	(printout t "0. Indefinido" crlf)
 	(bind ?lista (slot-allowed-values Libro idioma))
+	(bind $?valores_permitidos (create$ 0))
 	(loop-for-count (?i 1 (length$ ?lista)) do
 		(printout t ?i ". " (nth$ ?i ?lista) crlf)
+		(bind $?valores_permitidos (insert$ ?valores_permitidos (+ (length$ ?valores_permitidos) 1) ?i))
 	)
-	(bind ?resp (pregunta-lista "Escribe los identificadores separados por espacios: "))
+	(bind ?resp (pregunta-lista "Escribe los identificadores separados por espacios: " $?valores_permitidos))
 	(if (not (member 0 ?resp))
 		then
 		(progn$ (?it ?resp)
@@ -1302,7 +1326,7 @@
 	else (assert (Frecuencia muchisima))))
 )
 
-(defrule pregunta-lugar "Pregunta para horas de lectura"
+(defrule pregunta-lugar "Pregunta para saber el lugar de lectura"
 	(nuevo-lector)
 	=>
 	(bind ?resp (pregunta-general "En que sitio sueles leer normalmente? Ni -> No importa "))
@@ -1329,17 +1353,18 @@
 	=>
 	(printout t "Cuales de los siguientes generos te gustan?" crlf)
 	(bind ?lista (find-all-instances ((?p Genero)) TRUE))
+	(bind $?valores_permitidos (create$ 0))
 	(loop-for-count (?i 1 (length$ ?lista)) do
 		(printout t ?i ". " (send (nth$ ?i ?lista) get-nombre) crlf)
+		(bind $?valores_permitidos (insert$ ?valores_permitidos (+ (length$ ?valores_permitidos) 1) ?i))
 	)
-	(bind ?resp (pregunta-lista "Escribe los identificadores separados por espacios: "))
+	(bind ?resp (pregunta-lista "Escribe los identificadores separados por espacios: " $?valores_permitidos))
 	(if (not (member 0 ?resp))
 		then
 		(progn$ (?it ?resp)
 			(assert (genero (send (nth$ ?it ?lista) get-nombre)))
 		)
 	)
-	
 	(assert (pregunta-generos))
 )
 
@@ -1350,10 +1375,13 @@
 	(test (> (length$ ?lista) 0))
 	=>
 	(printout t "Obteniendo lista del genero " ?gen crlf)
+	(printout t "De los siguientes libros, cuales te has leido?" crlf)
+	(bind $?valores_permitidos (create$ 0))
 	(loop-for-count (?i 1 (length$ ?lista)) do
 		(printout t ?i ". " (send (nth$ ?i ?lista) get-titulo) crlf)
+		(bind $?valores_permitidos (insert$ ?valores_permitidos (+ (length$ ?valores_permitidos) 1) ?i))
 	)
-	(bind ?resp (pregunta-lista "Escribe los identificadores separados por espacios: 0->Ninguno "))
+	(bind ?resp (pregunta-lista "Escribe los identificadores separados por espacios: 0->Ninguno " $?valores_permitidos))
 	(if (not (member 0 ?resp))
 		then
 		(progn$ (?it ?resp)
@@ -1576,6 +1604,28 @@
 	(printout t "Al lector le gustan los libros clasicos (< 1950) : " (instance-name ?recm) crlf)
 	(send ?recm put-puntuacion (+ ?pt 50))
 	(assert (valorClasico ?recm))
+)
+
+(defrule plusEstudiosLector
+        (Estudios ?est)
+        ?recm <- (object (is-a Recomendacion) (libro ?book) (puntuacion ?pt))
+        (test (directed_public ?est ?book))
+        (not (valorEstudios ?recm))
+        =>
+        (printout t "El lector con estudios (" ?est ") tiene preferencia por el conjunto de libros : " (instance-name ?recm) crlf)
+        (send ?recm put-puntuacion (+ ?pt 50))
+        (assert (valorEstudios ?recm))
+)
+
+(defrule plusLectorAutorMismaNacionalidad
+        (Nacionalidad ?nac)
+        ?recm <- (object (is-a Recomendacion) (libro ?book) (puntuacion ?pt))
+        (test (eq ?nac (send ?book get-nacionalidad)))
+        (not (valorNac ?recm))
+        =>
+        (printout t "El lector con nacionalidad (" ?nac ") tiene preferencia por el conjunto de libros : " (instance-name ?recm) crlf)
+        (send ?recm put-puntuacion (+ ?pt 50))
+        (assert (valorNac ?recm))
 )
 
 (defrule focusPresentacion
