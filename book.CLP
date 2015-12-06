@@ -1300,7 +1300,7 @@
 	(printout t (send ?self:libro imprimir))
 	(printout t crlf)
 	;Max puntuacion = 200
-	(format t "Nivel de recomendacion: %d %% %n" (/ (* ?self:puntuacion 100) 200))
+	(format t "Nivel de recomendacion: %d %% %n" (/ (* ?self:puntuacion 100) 500))
 	(printout t crlf)
 	(printout t "-----------------------------------" crlf)
 )
@@ -1373,16 +1373,18 @@
 	(?gen ?book)
 	(bind ?list (send ?book get-generos))
 	(progn$ (?it ?list)
-		(if (eq (str-cat ?gen) (send ?it get-nombre) ) then TRUE else FALSE)
+		(if (eq (str-cat ?gen) (send ?it get-nombre) ) then TRUE)
 	)
+	FALSE
 )
 
 (deffunction author_in_book ""
 	(?aut ?book)
 	(bind ?list (send ?book get-escritoPor))
 	(progn$ (?it ?list)
-		(if (eq (str-cat ?aut) (send ?it get-nombreAutor)) then TRUE else FALSE)
+		(if (eq (str-cat ?aut) (send ?it get-nombreAutor)) then TRUE)
 	)
+	FALSE
 )
 
 (deffunction pages_in_book ""
@@ -1805,11 +1807,11 @@
 (defrule plusLectorAutorMismaNacionalidad
         (Nacionalidad ?nac)
         ?recm <- (object (is-a Recomendacion) (libro ?book) (puntuacion ?pt))
-		?autor<-(object (is-a Autor) (nacionalidad ?nac))
-		(member$ ?autor (send ?book get-escritoPor))
+		?autor<-(object (is-a Autor) (nombreAutor ?nombre) (nacionalidad ?nac))
+		(test (author_in_book ?nombre ?book))
         (not (valorNac ?recm))
         =>
-        (printout t "El lector con nacionalidad (" ?nac ") tiene preferencia por el conjunto de libros : " (instance-name ?recm) crlf)
+        (printout t "-------El lector con nacionalidad " ?nac " tiene preferencia por el conjunto de libros : " (instance-name ?recm) crlf)
         (send ?recm put-puntuacion (+ ?pt 50))
         (assert (valorNac ?recm))
 )
