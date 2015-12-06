@@ -1,4 +1,4 @@
-; Fri Dec 04 18:16:24 GMT 2015
+; Sun Dec 06 17:08:47 GMT 2015
 ; 
 ;+ (version "3.4.8")
 ;+ (build "Build 629")
@@ -19,15 +19,15 @@
 		(type INSTANCE)
 ;+		(allowed-classes Genero)
 		(create-accessor read-write))
-	(single-slot momento
-		(type SYMBOL)
-		(allowed-values ma%C3%B1ana mediodia tarde noche)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
 	(multislot catalogo
 		(type INSTANCE)
 ;+		(allowed-classes Libro)
 		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write))
+	(single-slot momento
+		(type SYMBOL)
+		(allowed-values ma%C3%B1ana mediodia tarde noche)
+;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot titulo
 		(type STRING)
@@ -57,11 +57,6 @@
 		(allowed-values fisica online)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot populares
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
 	(multislot librosLeidos
 		(type INSTANCE)
 ;+		(allowed-classes Libro)
@@ -78,11 +73,11 @@
 		(type INTEGER)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot nombre
+	(single-slot ISBN
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot ISBN
+	(single-slot nombre
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
@@ -140,14 +135,14 @@
 		(allowed-values poca media mucha)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
+	(multislot librosEscritos
+		(type INSTANCE)
+;+		(allowed-classes Libro)
+		(create-accessor read-write))
 	(single-slot numPaginas
 		(type INTEGER)
 		(default 0)
 ;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(multislot librosEscritos
-		(type INSTANCE)
-;+		(allowed-classes Libro)
 		(create-accessor read-write))
 	(multislot generos
 		(type INSTANCE)
@@ -156,6 +151,20 @@
 	(single-slot nombreEstablecimiento
 		(type STRING)
 ;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot bestseller
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot idiomasPreferidos
+		(type SYMBOL)
+		(allowed-values Espanol Ingles Catalan Frances)
+		(create-accessor read-write))
+	(single-slot clasicos
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot publicoDirigido
 		(type SYMBOL)
@@ -193,13 +202,13 @@
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot ISBN
-		(type STRING)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
 	(single-slot publicoDirigido
 		(type SYMBOL)
 		(allowed-values Infantil Juvenil Adulto)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot ISBN
+		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot fechaPublicacion
@@ -215,14 +224,14 @@
 		(type INSTANCE)
 ;+		(allowed-classes Autor)
 		(create-accessor read-write))
-	(multislot generos
-		(type INSTANCE)
-;+		(allowed-classes Genero)
-		(create-accessor read-write))
 	(single-slot idioma
 		(type SYMBOL)
 		(allowed-values Ingles Espanol Catalan Frances Aleman)
 ;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot generos
+		(type INSTANCE)
+;+		(allowed-classes Genero)
 		(create-accessor read-write)))
 
 (defclass Persona
@@ -259,6 +268,11 @@
 		(allowed-values ma%C3%B1ana mediodia tarde noche)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
+	(single-slot bestseller
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(multislot autoresFavoritos
 		(type INSTANCE)
 ;+		(allowed-classes Autor)
@@ -267,12 +281,16 @@
 		(type INSTANCE)
 ;+		(allowed-classes Genero)
 		(create-accessor read-write))
+	(multislot idiomasPreferidos
+		(type SYMBOL)
+		(allowed-values Espanol Ingles Catalan Frances)
+		(create-accessor read-write))
 	(single-slot frecuencia
 		(type SYMBOL)
 		(allowed-values poca media mucha)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot populares
+	(single-slot clasicos
 		(type SYMBOL)
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
@@ -285,13 +303,13 @@
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(multislot librosEscritos
-		(type INSTANCE)
-;+		(allowed-classes Libro)
-		(create-accessor read-write))
 	(multislot generoExperto
 		(type INSTANCE)
 ;+		(allowed-classes Genero)
+		(create-accessor read-write))
+	(multislot librosEscritos
+		(type INSTANCE)
+;+		(allowed-classes Libro)
 		(create-accessor read-write)))
 
 (defclass Genero
