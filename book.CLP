@@ -1,4 +1,4 @@
-; Sun Dec 06 17:08:47 GMT 2015
+; Sun Dec 06 17:17:29 GMT 2015
 ; 
 ;+ (version "3.4.8")
 ;+ (build "Build 629")
@@ -332,9 +332,8 @@
 		(type INSTANCE)
 ;+		(allowed-classes Libro)
 		(create-accessor read-write)))
-		
 (definstances instancias
-	; Sun Dec 06 17:08:47 GMT 2015
+	; Sun Dec 06 17:17:29 GMT 2015
 ; 
 ;+ (version "3.4.8")
 ;+ (build "Build 629")

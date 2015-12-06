@@ -1,4 +1,4 @@
-; Sun Dec 06 15:46:41 GMT 2015
+; Sun Dec 06 18:17:19 GMT 2015
 ; 
 ;+ (version "3.4.8")
 ;+ (build "Build 629")
@@ -20,9 +20,9 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[PrimeraOntologia_ProjectKB_Class10081]
-		[PrimeraOntologia_ProjectKB_Class10082]
-		[PrimeraOntologia_ProjectKB_Class10083]))
+		[PrimeraOntologia_ProjectKB_Class10012]
+		[PrimeraOntologia_ProjectKB_Class10013]
+		[PrimeraOntologia_ProjectKB_Class10014]))
 
 ([CLSES_TAB] of  Widget
 
@@ -66,6 +66,9 @@
 	(is_hidden FALSE)
 	(widget_class_name "edu.stanford.smi.protege.widget.InstancesTab"))
 
+([KB_412145_Class3] of  Map
+)
+
 ([KB_624881_Class0] of  String
 
 	(name "factory_class_name")
@@ -74,9 +77,9 @@
 ([KB_624881_Class1] of  Map
 
 	(entries
-		[PrimeraOntologia_ProjectKB_Class10084]
-		[PrimeraOntologia_ProjectKB_Class10085]
-		[PrimeraOntologia_ProjectKB_Class10086]))
+		[PrimeraOntologia_ProjectKB_Class10015]
+		[PrimeraOntologia_ProjectKB_Class10016]
+		[PrimeraOntologia_ProjectKB_Class10017]))
 
 ([KB_624881_Class119] of  String
 
@@ -169,9 +172,6 @@
 ([KB_624881_Class98] of  Property_List
 
 	(properties [PrimeraOntologia_ProjectKB_Class121]))
-
-([KB_661015_Class3] of  Map
-)
 
 ([LAYOUT_PROPERTIES] of  Property_List
 
@@ -297,36 +297,36 @@
 ([PrimeraOntologia_ProjectKB_Class10011] of  Property_List
 )
 
-([PrimeraOntologia_ProjectKB_Class10081] of  String
+([PrimeraOntologia_ProjectKB_Class10012] of  String
 
 	(name ":INSTANCE-ANNOTATION")
 	(string_value "%3AANNOTATION-TEXT"))
 
-([PrimeraOntologia_ProjectKB_Class10082] of  String
+([PrimeraOntologia_ProjectKB_Class10013] of  String
 
 	(name ":META-CLASS")
 	(string_value "%3ANAME"))
 
-([PrimeraOntologia_ProjectKB_Class10083] of  String
+([PrimeraOntologia_ProjectKB_Class10014] of  String
 
 	(name ":PAL-CONSTRAINT")
 	(string_value "%3APAL-NAME"))
 
-([PrimeraOntologia_ProjectKB_Class10084] of  Map_Entry
+([PrimeraOntologia_ProjectKB_Class10015] of  Map_Entry
 
 	(key "suppress_instance_counting")
 	(key_class "java.lang.String")
 	(value "false")
 	(value_class "java.lang.String"))
 
-([PrimeraOntologia_ProjectKB_Class10085] of  Map_Entry
+([PrimeraOntologia_ProjectKB_Class10016] of  Map_Entry
 
 	(key "change_tracking_active")
 	(key_class "java.lang.String")
 	(value "false")
 	(value_class "java.lang.String"))
 
-([PrimeraOntologia_ProjectKB_Class10086] of  Map_Entry
+([PrimeraOntologia_ProjectKB_Class10017] of  Map_Entry
 
 	(key "add_name_on_instance_form")
 	(key_class "java.lang.String")
