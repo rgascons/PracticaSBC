@@ -1,4 +1,4 @@
-; Sun Dec 06 18:17:19 GMT 2015
+; Sun Dec 06 21:39:27 GMT 2015
 ; 
 ;+ (version "3.4.8")
 ;+ (build "Build 629")
@@ -8,6 +8,7 @@
 	(librosEscritos
 		[PrimeraOntologia_SabuesoBaskerville]
 		[PrimeraOntologia_CanonHolmesiano])
+	(nacionalidad "Ingles")
 	(nombreAutor "Arthur Conan Doyle"))
 
 ([PrimeraOntologia_AGrandes] of  Autor
@@ -60,6 +61,7 @@
 ([PrimeraOntologia_AMerritt] of  Autor
 
 	(librosEscritos [PrimeraOntologia_ArdeBruja])
+	(nacionalidad "Estadounidense")
 	(nombreAutor "Abraham Merritt"))
 
 ([PrimeraOntologia_Antirresurreccion] of  Libro
@@ -113,11 +115,13 @@
 ([PrimeraOntologia_AVillaro] of  Autor
 
 	(librosEscritos [PrimeraOntologia_BibliaAndorrana])
+	(nacionalidad "Espanol")
 	(nombreAutor "Albert Villaro"))
 
 ([PrimeraOntologia_BEastonEllis] of  Autor
 
 	(librosEscritos [PrimeraOntologia_AmericanPsycho])
+	(nacionalidad "Estadounidense")
 	(nombreAutor "Bret Easton Ellis"))
 
 ([PrimeraOntologia_BesosPan] of  Libro
@@ -149,11 +153,13 @@
 	(librosEscritos
 		[PrimeraOntologia_Alzamiento]
 		[PrimeraOntologia_MarMuerto])
+	(nacionalidad "Estadounidense")
 	(nombreAutor "Brian Keene"))
 
 ([PrimeraOntologia_BSanderson] of  Autor
 
 	(librosEscritos [PrimeraOntologia_ImperioFinal])
+	(nacionalidad "Estadounidense")
 	(nombreAutor "Brandon Sanderson"))
 
 ([PrimeraOntologia_CadaDia] of  Libro
@@ -225,6 +231,7 @@
 ([PrimeraOntologia_CMcCarthy] of  Autor
 
 	(librosEscritos [PrimeraOntologia_Carretera])
+	(nacionalidad "Estadounidense")
 	(nombreAutor "Cormac McCarthy"))
 
 ([PrimeraOntologia_CrimenesCalleMorgue] of  Libro
@@ -259,18 +266,21 @@
 ([PrimeraOntologia_DHammett] of  Autor
 
 	(librosEscritos [PrimeraOntologia_HalconMaltes])
+	(nacionalidad "Estadounidense")
 	(nombreAutor "Dashiell Hammett"))
 
 ([PrimeraOntologia_DHLawrence] of  Autor
 
 	(librosEscritos [PrimeraOntologia_AmanteChatterley])
-	(nombreAutor "David H Lawrence"))
+	(nacionalidad "Ingles")
+	(nombreAutor "David Herbert Lawrence"))
 
 ([PrimeraOntologia_EAPoe] of  Autor
 
 	(librosEscritos
 		[PrimeraOntologia_CrimenesCalleMorgue]
 		[PrimeraOntologia_GatoNegro])
+	(nacionalidad "Estadounidense")
 	(nombreAutor "Edgar Allan Poe"))
 
 ([PrimeraOntologia_EBueso] of  Autor
@@ -313,6 +323,7 @@
 		[PrimeraOntologia_CyborgWife]
 		[PrimeraOntologia_StreamThorn]
 		[PrimeraOntologia_Sorcerer])
+	(nacionalidad "Sealandes")
 	(nombreAutor "Etirekor"))
 
 ([PrimeraOntologia_FantasiaMagia] of  Genero
@@ -361,6 +372,7 @@
 ([PrimeraOntologia_GBataille] of  Autor
 
 	(librosEscritos [PrimeraOntologia_HistoriaOjo])
+	(nacionalidad "Frances")
 	(nombreAutor "Georges Bataille"))
 
 ([PrimeraOntologia_GoldenCompass] of  Libro
@@ -377,6 +389,7 @@
 ([PrimeraOntologia_GRRMartin] of  Autor
 
 	(librosEscritos [PrimeraOntologia_ImperioFinal])
+	(nacionalidad "Estadounidense")
 	(nombreAutor "George R. R. Martin"))
 
 ([PrimeraOntologia_HalconMaltes] of  Libro
@@ -390,6 +403,7 @@
 ([PrimeraOntologia_HHowey] of  Autor
 
 	(librosEscritos [PrimeraOntologia_Wool])
+	(nacionalidad "Estadounidense")
 	(nombreAutor "Hugh Howey"))
 
 ([PrimeraOntologia_HistoriaOjo] of  Libro
@@ -423,6 +437,7 @@
 ([PrimeraOntologia_IAsimov] of  Autor
 
 	(librosEscritos [PrimeraOntologia_FinEternidad])
+	(nacionalidad "Ruso-estadounidense")
 	(nombreAutor "Isaac Asimov"))
 
 ([PrimeraOntologia_ImperioFinal] of  Libro
@@ -458,21 +473,25 @@
 ([PrimeraOntologia_JFBardin] of  Autor
 
 	(librosEscritos [PrimeraOntologia_SalirInfierno])
+	(nacionalidad "Estadounidense")
 	(nombreAutor "John Franklin Bardin"))
 
 ([PrimeraOntologia_JMRamiro] of  Autor
 
 	(librosEscritos [PrimeraOntologia_AntologiaZ])
+	(nacionalidad "Espanol")
 	(nombreAutor "Jose Martin Ramiro"))
 
 ([PrimeraOntologia_JRBiedma] of  Autor
 
 	(librosEscritos [PrimeraOntologia_Antirresurreccion])
+	(nacionalidad "Espanol")
 	(nombreAutor "Juan Ramon Biedma"))
 
 ([PrimeraOntologia_JRRTolkien] of  Autor
 
 	(librosEscritos [PrimeraOntologia_Hobbit])
+	(nacionalidad "Ingles")
 	(nombreAutor "J.R.R. Tolkien"))
 
 ([PrimeraOntologia_JuegoEnder] of  Libro
@@ -503,6 +522,7 @@
 	(librosEscritos
 		[PrimeraOntologia_MiguelStrogoff]
 		[PrimeraOntologia_IslaMisteriosa])
+	(nacionalidad "Frances")
 	(nombreAutor "Julio Verne"))
 
 ([PrimeraOntologia_KissingWoman] of  Libro

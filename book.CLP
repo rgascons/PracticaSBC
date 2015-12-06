@@ -1,4 +1,4 @@
-; Sun Dec 06 17:17:29 GMT 2015
+; Sun Dec 06 21:39:27 GMT 2015
 ; 
 ;+ (version "3.4.8")
 ;+ (build "Build 629")
@@ -332,8 +332,9 @@
 		(type INSTANCE)
 ;+		(allowed-classes Libro)
 		(create-accessor read-write)))
+		
 (definstances instancias
-	; Sun Dec 06 17:17:29 GMT 2015
+	; Sun Dec 06 21:39:27 GMT 2015
 ; 
 ;+ (version "3.4.8")
 ;+ (build "Build 629")
@@ -343,6 +344,7 @@
 	(librosEscritos
 		[PrimeraOntologia_SabuesoBaskerville]
 		[PrimeraOntologia_CanonHolmesiano])
+	(nacionalidad "Ingles")
 	(nombreAutor "Arthur Conan Doyle"))
 
 ([PrimeraOntologia_AGrandes] of  Autor
@@ -395,6 +397,7 @@
 ([PrimeraOntologia_AMerritt] of  Autor
 
 	(librosEscritos [PrimeraOntologia_ArdeBruja])
+	(nacionalidad "Estadounidense")
 	(nombreAutor "Abraham Merritt"))
 
 ([PrimeraOntologia_Antirresurreccion] of  Libro
@@ -448,11 +451,13 @@
 ([PrimeraOntologia_AVillaro] of  Autor
 
 	(librosEscritos [PrimeraOntologia_BibliaAndorrana])
+	(nacionalidad "Espanol")
 	(nombreAutor "Albert Villaro"))
 
 ([PrimeraOntologia_BEastonEllis] of  Autor
 
 	(librosEscritos [PrimeraOntologia_AmericanPsycho])
+	(nacionalidad "Estadounidense")
 	(nombreAutor "Bret Easton Ellis"))
 
 ([PrimeraOntologia_BesosPan] of  Libro
@@ -484,11 +489,13 @@
 	(librosEscritos
 		[PrimeraOntologia_Alzamiento]
 		[PrimeraOntologia_MarMuerto])
+	(nacionalidad "Estadounidense")
 	(nombreAutor "Brian Keene"))
 
 ([PrimeraOntologia_BSanderson] of  Autor
 
 	(librosEscritos [PrimeraOntologia_ImperioFinal])
+	(nacionalidad "Estadounidense")
 	(nombreAutor "Brandon Sanderson"))
 
 ([PrimeraOntologia_CadaDia] of  Libro
@@ -560,6 +567,7 @@
 ([PrimeraOntologia_CMcCarthy] of  Autor
 
 	(librosEscritos [PrimeraOntologia_Carretera])
+	(nacionalidad "Estadounidense")
 	(nombreAutor "Cormac McCarthy"))
 
 ([PrimeraOntologia_CrimenesCalleMorgue] of  Libro
@@ -594,18 +602,21 @@
 ([PrimeraOntologia_DHammett] of  Autor
 
 	(librosEscritos [PrimeraOntologia_HalconMaltes])
+	(nacionalidad "Estadounidense")
 	(nombreAutor "Dashiell Hammett"))
 
 ([PrimeraOntologia_DHLawrence] of  Autor
 
 	(librosEscritos [PrimeraOntologia_AmanteChatterley])
-	(nombreAutor "David H Lawrence"))
+	(nacionalidad "Ingles")
+	(nombreAutor "David Herbert Lawrence"))
 
 ([PrimeraOntologia_EAPoe] of  Autor
 
 	(librosEscritos
 		[PrimeraOntologia_CrimenesCalleMorgue]
 		[PrimeraOntologia_GatoNegro])
+	(nacionalidad "Estadounidense")
 	(nombreAutor "Edgar Allan Poe"))
 
 ([PrimeraOntologia_EBueso] of  Autor
@@ -648,6 +659,7 @@
 		[PrimeraOntologia_CyborgWife]
 		[PrimeraOntologia_StreamThorn]
 		[PrimeraOntologia_Sorcerer])
+	(nacionalidad "Sealandes")
 	(nombreAutor "Etirekor"))
 
 ([PrimeraOntologia_FantasiaMagia] of  Genero
@@ -696,6 +708,7 @@
 ([PrimeraOntologia_GBataille] of  Autor
 
 	(librosEscritos [PrimeraOntologia_HistoriaOjo])
+	(nacionalidad "Frances")
 	(nombreAutor "Georges Bataille"))
 
 ([PrimeraOntologia_GoldenCompass] of  Libro
@@ -712,6 +725,7 @@
 ([PrimeraOntologia_GRRMartin] of  Autor
 
 	(librosEscritos [PrimeraOntologia_ImperioFinal])
+	(nacionalidad "Estadounidense")
 	(nombreAutor "George R. R. Martin"))
 
 ([PrimeraOntologia_HalconMaltes] of  Libro
@@ -725,6 +739,7 @@
 ([PrimeraOntologia_HHowey] of  Autor
 
 	(librosEscritos [PrimeraOntologia_Wool])
+	(nacionalidad "Estadounidense")
 	(nombreAutor "Hugh Howey"))
 
 ([PrimeraOntologia_HistoriaOjo] of  Libro
@@ -758,6 +773,7 @@
 ([PrimeraOntologia_IAsimov] of  Autor
 
 	(librosEscritos [PrimeraOntologia_FinEternidad])
+	(nacionalidad "Ruso-estadounidense")
 	(nombreAutor "Isaac Asimov"))
 
 ([PrimeraOntologia_ImperioFinal] of  Libro
@@ -793,21 +809,25 @@
 ([PrimeraOntologia_JFBardin] of  Autor
 
 	(librosEscritos [PrimeraOntologia_SalirInfierno])
+	(nacionalidad "Estadounidense")
 	(nombreAutor "John Franklin Bardin"))
 
 ([PrimeraOntologia_JMRamiro] of  Autor
 
 	(librosEscritos [PrimeraOntologia_AntologiaZ])
+	(nacionalidad "Espanol")
 	(nombreAutor "Jose Martin Ramiro"))
 
 ([PrimeraOntologia_JRBiedma] of  Autor
 
 	(librosEscritos [PrimeraOntologia_Antirresurreccion])
+	(nacionalidad "Espanol")
 	(nombreAutor "Juan Ramon Biedma"))
 
 ([PrimeraOntologia_JRRTolkien] of  Autor
 
 	(librosEscritos [PrimeraOntologia_Hobbit])
+	(nacionalidad "Ingles")
 	(nombreAutor "J.R.R. Tolkien"))
 
 ([PrimeraOntologia_JuegoEnder] of  Libro
@@ -838,6 +858,7 @@
 	(librosEscritos
 		[PrimeraOntologia_MiguelStrogoff]
 		[PrimeraOntologia_IslaMisteriosa])
+	(nacionalidad "Frances")
 	(nombreAutor "Julio Verne"))
 
 ([PrimeraOntologia_KissingWoman] of  Libro
@@ -1299,7 +1320,7 @@
 	(printout t (send ?self:libro imprimir))
 	(printout t crlf)
 	;Max puntuacion = 200
-	(format t "Nivel de recomendacion: %d %% %n" (/ (* ?self:puntuacion 100) 200))
+	(format t "Nivel de recomendacion: %d %% %n" (/ (* ?self:puntuacion 100) 500))
 	(printout t crlf)
 	(printout t "-----------------------------------" crlf)
 )
@@ -1344,7 +1365,7 @@
 	(loop-for-count (?i 1 (length$ ?res)) do 
 		(if (not(member (nth$ ?i ?res) ?valores_posibles)) then
 			(printout t "El valor " (nth$ ?i ?res) " no es un valido" crlf)
-			(bind ?valor (pregunta-numerica "Introduce un nuevo valor " 1 (length$ ?valores_posibles)))
+			(bind ?valor (pregunta-numerica "Introduce un nuevo valor " 1 (- (length$ ?valores_posibles) 1)))
 			(bind $?res (delete$ ?res ?i ?i))
 			(bind $?res (insert$ ?res ?i ?valor))
 		)
@@ -1371,17 +1392,29 @@
 (deffunction genre_in_book ""
 	(?gen ?book)
 	(bind ?list (send ?book get-generos))
-	(progn$ (?it ?list)
-		(if (eq (str-cat ?gen) (send ?it get-nombre) ) then TRUE else FALSE)
+	(bind ?i 1)
+	(bind ?b FALSE)
+	(while (and (not ?b) (<= ?i (length$ ?list)))
+		(if (eq (str-cat ?gen) (send (nth$ ?i ?list) get-nombre)) then
+			(bind ?b TRUE)
+		else (bind ?i (+ ?i 1))
+		)
 	)
+	?b
 )
 
 (deffunction author_in_book ""
 	(?aut ?book)
 	(bind ?list (send ?book get-escritoPor))
-	(progn$ (?it ?list)
-		(if (eq (str-cat ?aut) (send ?it get-nombreAutor)) then TRUE else FALSE)
+	(bind ?i 1)
+	(bind ?b FALSE)
+	(while (and (not ?b) (<= ?i (length$ ?list)))
+		(if (eq (str-cat ?aut) (send (nth$ ?i ?list) get-nombreAutor)) then
+			(bind ?b TRUE)
+		else (bind ?i (+ ?i 1))
+		)
 	)
+	?b
 )
 
 (deffunction pages_in_book ""
@@ -1658,7 +1691,7 @@
 	(bind $?lista (find-all-instances((?inst Libro)) TRUE))
 	(printout t "Obteniendo libros..." crlf)
 	(loop-for-count (?i 1 (length$ ?lista)) do
-		(bind ?book (nth$ ?i ?lista)) 
+		(bind ?book (nth$ ?i ?lista))
 		(bind ?nR (sym-cat R**(send ?book get-titulo)))	 
 		(bind ?inst (make-instance ?nR of Recomendacion (libro ?book) (puntuacion 0) ))
 	)
@@ -1804,10 +1837,11 @@
 (defrule plusLectorAutorMismaNacionalidad
         (Nacionalidad ?nac)
         ?recm <- (object (is-a Recomendacion) (libro ?book) (puntuacion ?pt))
-        (test (eq ?nac (send ?book get-nacionalidad)))
+		?autor<-(object (is-a Autor) (nombreAutor ?nombre) (nacionalidad ?nac))
+		(test (author_in_book ?nombre ?book))
         (not (valorNac ?recm))
         =>
-        (printout t "El lector con nacionalidad (" ?nac ") tiene preferencia por el conjunto de libros : " (instance-name ?recm) crlf)
+        (printout t "-------El lector con nacionalidad " ?nac " tiene preferencia por el conjunto de libros : " (instance-name ?recm) crlf)
         (send ?recm put-puntuacion (+ ?pt 50))
         (assert (valorNac ?recm))
 )
