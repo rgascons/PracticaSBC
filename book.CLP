@@ -1,4 +1,4 @@
-; Sat Dec 05 18:42:13 GMT 2015
+; Sun Dec 06 17:08:47 GMT 2015
 ; 
 ;+ (version "3.4.8")
 ;+ (build "Build 629")
@@ -334,7 +334,7 @@
 		(create-accessor read-write)))
 		
 (definstances instancias
-	; Sat Dec 05 18:42:13 GMT 2015
+	; Sun Dec 06 17:08:47 GMT 2015
 ; 
 ;+ (version "3.4.8")
 ;+ (build "Build 629")
@@ -349,11 +349,13 @@
 ([PrimeraOntologia_AGrandes] of  Autor
 
 	(librosEscritos [PrimeraOntologia_BesosPan])
+	(nacionalidad "Espanol")
 	(nombreAutor "Almudena Grandes"))
 
 ([PrimeraOntologia_AlexGomez] of  Autor
 
 	(librosEscritos [PrimeraOntologia_AntologiaZ])
+	(nacionalidad "Espanol")
 	(nombreAutor "Alex Gomez"))
 
 ([PrimeraOntologia_Alzamiento] of  Libro
@@ -510,6 +512,17 @@
 	(puntuacion 4)
 	(titulo "Canon Holmesiano"))
 
+([PrimeraOntologia_Carretera] of  Libro
+
+	(escritoPor [PrimeraOntologia_CMcCarthy])
+	(fechaPublicacion 2006)
+	(generos [PrimeraOntologia_CFApocalipsis])
+	(idioma Espanol)
+	(numPaginas 216)
+	(publicoDirigido Adulto)
+	(puntuacion 5)
+	(titulo "La carretera"))
+
 ([PrimeraOntologia_CasaRiverton] of  Libro
 
 	(escritoPor [PrimeraOntologia_KMorton])
@@ -524,26 +537,31 @@
 	(generos [PrimeraOntologia_CFApocalipsis])
 	(idioma Espanol)
 	(numPaginas 288)
+	(publicoDirigido Juvenil)
+	(puntuacion 5)
 	(titulo "Cenital"))
 
 ([PrimeraOntologia_CFApocalipsis] of  Genero
 
 	(generosRelacionados [PrimeraOntologia_CFFuturista])
+	(librosRepresentativos
+		[PrimeraOntologia_Wool]
+		[PrimeraOntologia_Carretera]
+		[PrimeraOntologia_JuegosHambre])
 	(nombre "Ciencia Ficcion Apocaliptica"))
 
 ([PrimeraOntologia_CFFuturista] of  Genero
 
 	(generosRelacionados [PrimeraOntologia_CFApocalipsis])
-	(librosRepresentativos [PrimeraOntologia_ImperioFinal])
+	(librosRepresentativos
+		[PrimeraOntologia_JuegoEnder]
+		[PrimeraOntologia_Neuromante])
 	(nombre "Ciencia Ficcion Futurista"))
 
-([PrimeraOntologia_Class24] of  Autor
+([PrimeraOntologia_CMcCarthy] of  Autor
 
-	(nombreAutor "Elbrecht"))
-
-([PrimeraOntologia_Class34] of  Autor
-
-	(nombreAutor "Larerijar"))
+	(librosEscritos [PrimeraOntologia_Carretera])
+	(nombreAutor "Cormac McCarthy"))
 
 ([PrimeraOntologia_CrimenesCalleMorgue] of  Libro
 
@@ -594,7 +612,28 @@
 ([PrimeraOntologia_EBueso] of  Autor
 
 	(librosEscritos [PrimeraOntologia_Cenital])
+	(nacionalidad "Espanol")
 	(nombreAutor "Emilio Bueso"))
+
+([PrimeraOntologia_Einsamkeit] of  Libro
+
+	(bestSeller TRUE)
+	(escritoPor [PrimeraOntologia_Elbrecht])
+	(fechaPublicacion 2014)
+	(generos [PrimeraOntologia_Novela])
+	(idioma Aleman)
+	(numPaginas 570)
+	(publicoDirigido Adulto)
+	(puntuacion 5)
+	(titulo "Die Einsamkeit"))
+
+([PrimeraOntologia_Elbrecht] of  Autor
+
+	(edad 25)
+	(estudios universidad)
+	(librosEscritos [PrimeraOntologia_Einsamkeit])
+	(nacionalidad "Alemania")
+	(nombreAutor "Elbrecht Karel"))
 
 ([PrimeraOntologia_Erotica] of  Genero
 
@@ -614,6 +653,10 @@
 
 ([PrimeraOntologia_FantasiaMagia] of  Genero
 
+	(librosRepresentativos
+		[PrimeraOntologia_Magicians]
+		[PrimeraOntologia_ImperioFinal]
+		[PrimeraOntologia_GoldenCompass])
 	(nombre "Fantasia Magica"))
 
 ([PrimeraOntologia_FantasiaMedieval] of  Genero
@@ -623,6 +666,9 @@
 
 ([PrimeraOntologia_FantasiaSuperheroes] of  Genero
 
+	(librosRepresentativos
+		[PrimeraOntologia_MundoDioses]
+		[PrimeraOntologia_Steelheart])
 	(nombre "Fantasia Superheroica"))
 
 ([PrimeraOntologia_FinEternidad] of  Libro
@@ -653,6 +699,17 @@
 	(librosEscritos [PrimeraOntologia_HistoriaOjo])
 	(nombreAutor "Georges Bataille"))
 
+([PrimeraOntologia_GoldenCompass] of  Libro
+
+	(escritoPor [PrimeraOntologia_PPullman])
+	(fechaPublicacion 1995)
+	(generos [PrimeraOntologia_FantasiaMagia])
+	(idioma Ingles)
+	(numPaginas 399)
+	(publicoDirigido Juvenil)
+	(puntuacion 4)
+	(titulo "The Golden Compass"))
+
 ([PrimeraOntologia_GRRMartin] of  Autor
 
 	(librosEscritos [PrimeraOntologia_ImperioFinal])
@@ -665,6 +722,11 @@
 	(idioma Espanol)
 	(numPaginas 0)
 	(titulo "El halcon maltes"))
+
+([PrimeraOntologia_HHowey] of  Autor
+
+	(librosEscritos [PrimeraOntologia_Wool])
+	(nombreAutor "Hugh Howey"))
 
 ([PrimeraOntologia_HistoriaOjo] of  Libro
 
@@ -725,6 +787,8 @@
 
 	(escritoPor [PrimeraOntologia_SAAllen])
 	(generos [PrimeraOntologia_Romance])
+	(idioma Espanol)
+	(publicoDirigido Adulto)
 	(titulo "El jardín de los hechizos"))
 
 ([PrimeraOntologia_JFBardin] of  Autor
@@ -746,6 +810,29 @@
 
 	(librosEscritos [PrimeraOntologia_Hobbit])
 	(nombreAutor "J.R.R. Tolkien"))
+
+([PrimeraOntologia_JuegoEnder] of  Libro
+
+	(escritoPor [PrimeraOntologia_OSCard])
+	(fechaPublicacion 1985)
+	(generos [PrimeraOntologia_CFFuturista])
+	(idioma Espanol)
+	(numPaginas 368)
+	(publicoDirigido Juvenil)
+	(puntuacion 4)
+	(titulo "El juego de Ender"))
+
+([PrimeraOntologia_JuegosHambre] of  Libro
+
+	(bestSeller TRUE)
+	(escritoPor [PrimeraOntologia_SCollins])
+	(fechaPublicacion 2009)
+	(generos [PrimeraOntologia_CFApocalipsis])
+	(idioma Espanol)
+	(numPaginas 400)
+	(publicoDirigido Juvenil)
+	(puntuacion 4)
+	(titulo "Los juegos del hambre"))
 
 ([PrimeraOntologia_JVerne] of  Autor
 
@@ -769,6 +856,10 @@
 		[PrimeraOntologia_CasaRiverton])
 	(nombreAutor "Kate Morton"))
 
+([PrimeraOntologia_Larelijar] of  Autor
+
+	(nombreAutor "Larerijar"))
+
 ([PrimeraOntologia_Lector1] of  Lector
 
 	(autoresFavoritos [PrimeraOntologia_IAsimov])
@@ -781,7 +872,8 @@
 		[PrimeraOntologia_Novela]
 		[PrimeraOntologia_CFFuturista])
 	(idiomasPreferidos Espanol)
-	(momento tarde))
+	(momento tarde)
+	(nacionalidad "Espanol"))
 
 ([PrimeraOntologia_Lector2] of  Lector
 
@@ -789,12 +881,18 @@
 		[PrimeraOntologia_ACDoyle]
 		[PrimeraOntologia_EAPoe])
 	(clasicos TRUE)
-	(DNI "23451")
+	(DNI "23456")
 	(edad 17)
 	(estudios secundaria)
-	(frecuencia media)
+	(frecuencia mucha)
 	(generosPreferidos [PrimeraOntologia_Policial])
-	(momento tarde))
+	(momento ma%C3%B1ana)
+	(nacionalidad "Ingles"))
+
+([PrimeraOntologia_LGrossman] of  Autor
+
+	(librosEscritos [PrimeraOntologia_Magicians])
+	(nombreAutor "Lev Grossman"))
 
 ([PrimeraOntologia_Loikath] of  Autor
 
@@ -817,12 +915,24 @@
 	(publicoDirigido Juvenil)
 	(titulo "Looking at infinity"))
 
+([PrimeraOntologia_Magicians] of  Libro
+
+	(escritoPor [PrimeraOntologia_LGrossman])
+	(fechaPublicacion 2009)
+	(generos [PrimeraOntologia_FantasiaSuperheroes])
+	(idioma Ingles)
+	(numPaginas 402)
+	(publicoDirigido Juvenil)
+	(puntuacion 4)
+	(titulo "The magicians"))
+
 ([PrimeraOntologia_MarMuerto] of  Libro
 
 	(bestSeller FALSE)
 	(escritoPor [PrimeraOntologia_BKeene])
 	(fechaPublicacion 2010)
 	(generos [PrimeraOntologia_Zombis])
+	(idioma Espanol)
 	(numPaginas 0)
 	(puntuacion 3)
 	(titulo "Mar muerto"))
@@ -836,6 +946,8 @@
 
 	(escritoPor [PrimeraOntologia_JVerne])
 	(generos [PrimeraOntologia_Aventuras])
+	(idioma Espanol)
+	(publicoDirigido Adulto)
 	(titulo "Miguel Strogoff"))
 
 ([PrimeraOntologia_MTorchwood] of  Autor
@@ -843,10 +955,32 @@
 	(librosEscritos [PrimeraOntologia_CryingFairy])
 	(nombreAutor "Mijan Torchwood"))
 
+([PrimeraOntologia_MundoDioses] of  Libro
+
+	(escritoPor [PrimeraOntologia_RMarinTrenchera])
+	(fechaPublicacion 1997)
+	(generos [PrimeraOntologia_FantasiaSuperheroes])
+	(idioma Espanol)
+	(numPaginas 353)
+	(publicoDirigido Juvenil)
+	(puntuacion 4)
+	(titulo "Mundo de dioses"))
+
 ([PrimeraOntologia_NDragnic] of  Autor
 
 	(librosEscritos [PrimeraOntologia_CadaDia])
 	(nombreAutor "Nataša Dragnic"))
+
+([PrimeraOntologia_Neuromante] of  Libro
+
+	(escritoPor [PrimeraOntologia_WGibson])
+	(fechaPublicacion 1984)
+	(generos [PrimeraOntologia_CFFuturista])
+	(idioma Espanol)
+	(numPaginas 320)
+	(publicoDirigido Juvenil)
+	(puntuacion 5)
+	(titulo "Neuromante"))
 
 ([PrimeraOntologia_NJerouax] of  Autor
 
@@ -860,6 +994,11 @@
 		[PrimeraOntologia_RegresoCaton]
 		[PrimeraOntologia_Francamente])
 	(nombre "Novela"))
+
+([PrimeraOntologia_OSCard] of  Autor
+
+	(librosEscritos [PrimeraOntologia_JuegoEnder])
+	(nombreAutor "Orson Scott Card"))
 
 ([PrimeraOntologia_PercyJackson] of  Libro
 
@@ -875,6 +1014,7 @@
 
 	(escritoPor [PrimeraOntologia_WilkieCollins])
 	(generos [PrimeraOntologia_Policial])
+	(idioma Espanol)
 	(titulo "La piedra lunar"))
 
 ([PrimeraOntologia_Policial] of  Genero
@@ -884,6 +1024,11 @@
 		[PrimeraOntologia_SabuesoBaskerville]
 		[PrimeraOntologia_CrimenesCalleMorgue])
 	(nombre "Policial"))
+
+([PrimeraOntologia_PPullman] of  Autor
+
+	(librosEscritos [PrimeraOntologia_GoldenCompass])
+	(nombreAutor "Phillip Pullman"))
 
 ([PrimeraOntologia_PresuntoInocente] of  Libro
 
@@ -904,6 +1049,11 @@
 
 	(librosEscritos [PrimeraOntologia_Francamente])
 	(nombreAutor "Richard Ford"))
+
+([PrimeraOntologia_RMarinTrenchera] of  Autor
+
+	(librosEscritos [PrimeraOntologia_MundoDioses])
+	(nombreAutor "Rafael Marin Trenchera"))
 
 ([PrimeraOntologia_Romance] of  Genero
 
@@ -934,6 +1084,11 @@
 	(escritoPor [PrimeraOntologia_JFBardin])
 	(generos [PrimeraOntologia_Horror])
 	(titulo "Al salir del infierno"))
+
+([PrimeraOntologia_SCollins] of  Autor
+
+	(librosEscritos [PrimeraOntologia_JuegosHambre])
+	(nombreAutor "Suzanne Collins"))
 
 ([PrimeraOntologia_SevardoAguilar] of  Autor
 
@@ -971,6 +1126,17 @@
 		[PrimeraOntologia_Suspense])
 	(idioma Ingles)
 	(titulo "The Souls's Winter"))
+
+([PrimeraOntologia_Steelheart] of  Libro
+
+	(escritoPor [PrimeraOntologia_BSanderson])
+	(fechaPublicacion 2013)
+	(generos [PrimeraOntologia_FantasiaSuperheroes])
+	(idioma Ingles)
+	(numPaginas 386)
+	(publicoDirigido Juvenil)
+	(puntuacion 5)
+	(titulo "Steelheart"))
 
 ([PrimeraOntologia_StreamThorn] of  Libro
 
@@ -1011,9 +1177,11 @@
 
 ([PrimeraOntologia_VacantMale] of  Libro
 
+	(bestSeller TRUE)
 	(escritoPor [PrimeraOntologia_Tardotram])
 	(generos [PrimeraOntologia_CFFuturista])
 	(idioma Ingles)
+	(publicoDirigido Juvenil)
 	(titulo "The Vacant Male"))
 
 ([PrimeraOntologia_VNabokov] of  Autor
@@ -1034,6 +1202,11 @@
 		[PrimeraOntologia_Slaves])
 	(nombreAutor "Wicea Genadi"))
 
+([PrimeraOntologia_WGibson] of  Autor
+
+	(librosEscritos [PrimeraOntologia_Neuromante])
+	(nombreAutor "William Gibson"))
+
 ([PrimeraOntologia_Wicemar] of  Autor
 
 	(nombreAutor "Wicemar Darunt"))
@@ -1042,6 +1215,16 @@
 
 	(librosEscritos [PrimeraOntologia_PiedraLunar])
 	(nombreAutor "Wilkie Collins"))
+
+([PrimeraOntologia_Wool] of  Libro
+
+	(escritoPor [PrimeraOntologia_HHowey])
+	(fechaPublicacion 2011)
+	(idioma Ingles)
+	(numPaginas 580)
+	(publicoDirigido Juvenil)
+	(puntuacion 4)
+	(titulo "Wool"))
 
 ([PrimeraOntologia_WScott] of  Autor
 
@@ -1259,7 +1442,7 @@
 	=>
 	(bind ?ed (pregunta-numerica "Que edad tienes?" 0 150))
 	
-	(send ?ed put-edad)
+	(send [lectorN] put-edad ?ed)
 	(if (< ?ed 12) then (assert (perfil Infantil)))
 	(if (and (>= ?ed 12)(<= ?ed 24)) then (assert (perfil Juvenil)))
 	(if (> ?ed 24) then (assert(perfil Adulto)))
@@ -1363,6 +1546,10 @@
 		then
 		(progn$ (?it ?resp)
 			(assert (genero (send (nth$ ?it ?lista) get-nombre)))
+			(bind $?alter (send (nth$ ?it ?lista) get-generosRelacionados))
+			(progn$ (?i $?alter)
+				(assert (Alter (send ?i get-nombre)))
+			)
 		)
 	)
 	(assert (pregunta-generos))
@@ -1371,7 +1558,7 @@
 (defrule pregunta-libros "Pregunta para saber los libros que le gustan"
 	(pregunta-generos)
 	(genero ?gen)
-	?g<-(object (is-a Genero) (nombre ?gen) (librosRepresentativos $?lista))
+	?g <-(object (is-a Genero) (nombre ?gen) (librosRepresentativos $?lista))
 	(test (> (length$ ?lista) 0))
 	=>
 	(printout t "Obteniendo lista del genero " ?gen crlf)
@@ -1416,6 +1603,7 @@
 		(idiomasPreferidos $?list-idi)
 		(bestseller ?bs)
 		(clasicos ?cla)
+		(nacionalidad ?nac)
 	)
 	=>
 	(if (< ?edad 12) then (assert (perfil Infantil)))
@@ -1435,6 +1623,9 @@
 	
 	(progn$ (?it $?list-gen)
 		(assert (genero (send ?it get-nombre)))
+		(progn$ (?it2 (send ?it get-generosRelacionados))
+			(assert (Alter (send ?it2 get-nombre)))
+		)
 	)
 	
 	(progn$ (?it $?list-idi)
@@ -1443,6 +1634,8 @@
 	
 	(assert (bestseller ?bs))
 	(assert (Clasicos ?cla))
+	(assert (Nacionalidad ?nac))
+	
 	
 	(assert(fin-preguntas))
 )
@@ -1506,14 +1699,6 @@
 	(send ?recm delete)
 )
 
-;(defrule descartarLibrosCortos "Descarta los libros más cortos para aquellos que leen con mucha frecuencia"
-;	(libros-obtenidos)
-;	(Frecuencia muchisima)
-;	?book <- (object (is-a Libro) (numPaginas ?np))
-;	?recm <- (object (is-a Recomendacion) (libro ?book))
-;)
-
-
 (defrule descartarLibrosLeidos ""
 	(libros-obtenidos)
 	(LibroLeido ?rbook)
@@ -1529,10 +1714,10 @@
 ;;;**********
 
 (defrule plusIdioma "Valorar más si el libro está en un idioma preferido"
-	(not (Idioma indef))
 	(Idioma ?idi)
-	?book <- (object (is-a Libro) (idioma ?idi) (puntuacion ?pt))
-	?recm <- (object (is-a Recomendacion) (libro ?book))
+	(test (not (eq ?idi indef)))
+	?recm <- (object (is-a Recomendacion) (libro ?book) (puntuacion ?pt))
+	(test (eq (send ?book get-idioma) ?idi))
 	(not (valorIdioma ?recm))
 	=>
 	(printout t "El libro " (instance-name ?recm) " esta escrito en " ?idi crlf)
@@ -1558,7 +1743,7 @@
 	(not (valorPublico ?recm))
 	=>
 	(printout t "Pertenece al perfil del lector (" ?perf ") : " (instance-name ?recm) crlf)
-	(send ?recm put-puntuacion (+ ?pt 50))
+	(send ?recm put-puntuacion (+ ?pt 25))
 	(assert (valorPublico ?recm))
 )
 
@@ -1613,7 +1798,7 @@
         (not (valorEstudios ?recm))
         =>
         (printout t "El lector con estudios (" ?est ") tiene preferencia por el conjunto de libros : " (instance-name ?recm) crlf)
-        (send ?recm put-puntuacion (+ ?pt 50))
+        (send ?recm put-puntuacion (+ ?pt 25))
         (assert (valorEstudios ?recm))
 )
 
