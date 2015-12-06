@@ -1060,7 +1060,7 @@
 	(loop-for-count (?i 1 (length$ ?res)) do 
 		(if (not(member (nth$ ?i ?res) ?valores_posibles)) then
 			(printout t "El valor " (nth$ ?i ?res) " no es un valido" crlf)
-			(bind ?valor (pregunta-numerica "Introduce un nuevo valor " 1 (length$ ?valores_posibles)))
+			(bind ?valor (pregunta-numerica "Introduce un nuevo valor " 1 (- (length$ ?valores_posibles) 1)))
 			(bind $?res (delete$ ?res ?i ?i))
 			(bind $?res (insert$ ?res ?i ?valor))
 		)
@@ -1453,7 +1453,8 @@
 (defrule plusLectorAutorMismaNacionalidad
         (Nacionalidad ?nac)
         ?recm <- (object (is-a Recomendacion) (libro ?book) (puntuacion ?pt))
-        (test (eq ?nac (send ?book get-nacionalidad)))
+		?autor<-(object (is-a Autor) (nacionalidad ?nac))
+		(member$ ?autor (send ?book get-escritoPor))
         (not (valorNac ?recm))
         =>
         (printout t "El lector con nacionalidad (" ?nac ") tiene preferencia por el conjunto de libros : " (instance-name ?recm) crlf)
