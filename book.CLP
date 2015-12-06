@@ -1372,19 +1372,29 @@
 (deffunction genre_in_book ""
 	(?gen ?book)
 	(bind ?list (send ?book get-generos))
-	(progn$ (?it ?list)
-		(if (eq (str-cat ?gen) (send ?it get-nombre) ) then TRUE)
+	(bind ?i 1)
+	(bind ?b FALSE)
+	(while (and (not ?b) (<= ?i (length$ ?list)))
+		(if (eq (str-cat ?gen) (send (nth$ ?i ?list) get-nombre)) then
+			(bind ?b TRUE)
+		else (bind ?i (+ ?i 1))
+		)
 	)
-	FALSE
+	?b
 )
 
 (deffunction author_in_book ""
 	(?aut ?book)
 	(bind ?list (send ?book get-escritoPor))
-	(progn$ (?it ?list)
-		(if (eq (str-cat ?aut) (send ?it get-nombreAutor)) then TRUE)
+	(bind ?i 1)
+	(bind ?b FALSE)
+	(while (and (not ?b) (<= ?i (length$ ?list)))
+		(if (eq (str-cat ?aut) (send (nth$ ?i ?list) get-nombreAutor)) then
+			(bind ?b TRUE)
+		else (bind ?i (+ ?i 1))
+		)
 	)
-	FALSE
+	?b
 )
 
 (deffunction pages_in_book ""
@@ -1661,7 +1671,7 @@
 	(bind $?lista (find-all-instances((?inst Libro)) TRUE))
 	(printout t "Obteniendo libros..." crlf)
 	(loop-for-count (?i 1 (length$ ?lista)) do
-		(bind ?book (nth$ ?i ?lista)) 
+		(bind ?book (nth$ ?i ?lista))
 		(bind ?nR (sym-cat R**(send ?book get-titulo)))	 
 		(bind ?inst (make-instance ?nR of Recomendacion (libro ?book) (puntuacion 0) ))
 	)
