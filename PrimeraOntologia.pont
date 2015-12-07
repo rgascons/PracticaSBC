@@ -1,4 +1,4 @@
-; Fri Dec 04 18:16:24 GMT 2015
+; Mon Dec 07 10:26:45 GMT 2015
 ; 
 ;+ (version "3.4.8")
 ;+ (build "Build 629")
@@ -56,11 +56,6 @@
 		(type SYMBOL)
 		(allowed-values fisica online)
 ;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot populares
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(multislot librosLeidos
 		(type INSTANCE)
@@ -157,9 +152,28 @@
 		(type STRING)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
+	(single-slot bestseller
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot idiomasPreferidos
+		(type SYMBOL)
+		(allowed-values Espanol Ingles Catalan Frances)
+		(create-accessor read-write))
 	(single-slot publicoDirigido
 		(type SYMBOL)
 		(allowed-values Infantil Juvenil Adulto)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot clasicos
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot critico
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot fechaPublicacion
@@ -263,6 +277,11 @@
 		(type INSTANCE)
 ;+		(allowed-classes Autor)
 		(create-accessor read-write))
+	(single-slot bestseller
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(multislot generosPreferidos
 		(type INSTANCE)
 ;+		(allowed-classes Genero)
@@ -272,7 +291,16 @@
 		(allowed-values poca media mucha)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot populares
+	(multislot idiomasPreferidos
+		(type SYMBOL)
+		(allowed-values Espanol Ingles Catalan Frances)
+		(create-accessor read-write))
+	(single-slot clasicos
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot critico
 		(type SYMBOL)
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)

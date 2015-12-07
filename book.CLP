@@ -1,5 +1,4 @@
 ; Segunda practica IA
-; 
 ; Autores:
 ; Anselmo López Cuenta
 ; Camilo Castro Ortega
@@ -21,15 +20,15 @@
 		(type INSTANCE)
 ;+		(allowed-classes Genero)
 		(create-accessor read-write))
-	(multislot catalogo
-		(type INSTANCE)
-;+		(allowed-classes Libro)
-		(cardinality 1 ?VARIABLE)
-		(create-accessor read-write))
 	(single-slot momento
 		(type SYMBOL)
 		(allowed-values ma%C3%B1ana mediodia tarde noche)
 ;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot catalogo
+		(type INSTANCE)
+;+		(allowed-classes Libro)
+		(cardinality 1 ?VARIABLE)
 		(create-accessor read-write))
 	(single-slot titulo
 		(type STRING)
@@ -59,11 +58,6 @@
 		(allowed-values fisica online)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot populares
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
 	(multislot librosLeidos
 		(type INSTANCE)
 ;+		(allowed-classes Libro)
@@ -80,11 +74,11 @@
 		(type INTEGER)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot ISBN
+	(single-slot nombre
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot nombre
+	(single-slot ISBN
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
@@ -142,14 +136,14 @@
 		(allowed-values poca media mucha)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(multislot librosEscritos
-		(type INSTANCE)
-;+		(allowed-classes Libro)
-		(create-accessor read-write))
 	(single-slot numPaginas
 		(type INTEGER)
 		(default 0)
 ;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot librosEscritos
+		(type INSTANCE)
+;+		(allowed-classes Libro)
 		(create-accessor read-write))
 	(multislot generos
 		(type INSTANCE)
@@ -159,9 +153,28 @@
 		(type STRING)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
+	(single-slot bestseller
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot idiomasPreferidos
+		(type SYMBOL)
+		(allowed-values Espanol Ingles Catalan Frances)
+		(create-accessor read-write))
 	(single-slot publicoDirigido
 		(type SYMBOL)
 		(allowed-values Infantil Juvenil Adulto)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot clasicos
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot critico
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot fechaPublicacion
@@ -195,13 +208,13 @@
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
+	(single-slot ISBN
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(single-slot publicoDirigido
 		(type SYMBOL)
 		(allowed-values Infantil Juvenil Adulto)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot ISBN
-		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot fechaPublicacion
@@ -217,14 +230,14 @@
 		(type INSTANCE)
 ;+		(allowed-classes Autor)
 		(create-accessor read-write))
+	(multislot generos
+		(type INSTANCE)
+;+		(allowed-classes Genero)
+		(create-accessor read-write))
 	(single-slot idioma
 		(type SYMBOL)
 		(allowed-values Ingles Espanol Catalan Frances Aleman)
 ;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(multislot generos
-		(type INSTANCE)
-;+		(allowed-classes Genero)
 		(create-accessor read-write)))
 
 (defclass Persona
@@ -265,6 +278,11 @@
 		(type INSTANCE)
 ;+		(allowed-classes Autor)
 		(create-accessor read-write))
+	(single-slot bestseller
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(multislot generosPreferidos
 		(type INSTANCE)
 ;+		(allowed-classes Genero)
@@ -274,7 +292,16 @@
 		(allowed-values poca media mucha)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot populares
+	(multislot idiomasPreferidos
+		(type SYMBOL)
+		(allowed-values Espanol Ingles Catalan Frances)
+		(create-accessor read-write))
+	(single-slot clasicos
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot critico
 		(type SYMBOL)
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
@@ -287,13 +314,13 @@
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(multislot generoExperto
-		(type INSTANCE)
-;+		(allowed-classes Genero)
-		(create-accessor read-write))
 	(multislot librosEscritos
 		(type INSTANCE)
 ;+		(allowed-classes Libro)
+		(create-accessor read-write))
+	(multislot generoExperto
+		(type INSTANCE)
+;+		(allowed-classes Genero)
 		(create-accessor read-write)))
 
 (defclass Genero
@@ -316,9 +343,9 @@
 		(type INSTANCE)
 ;+		(allowed-classes Libro)
 		(create-accessor read-write)))
-
+		
 (definstances instancias
-	; Fri Dec 04 12:20:07 GMT 2015
+	; Mon Dec 07 10:26:45 GMT 2015
 ; 
 ;+ (version "3.4.8")
 ;+ (build "Build 629")
@@ -328,16 +355,19 @@
 	(librosEscritos
 		[PrimeraOntologia_SabuesoBaskerville]
 		[PrimeraOntologia_CanonHolmesiano])
+	(nacionalidad "Ingles")
 	(nombreAutor "Arthur Conan Doyle"))
 
 ([PrimeraOntologia_AGrandes] of  Autor
 
 	(librosEscritos [PrimeraOntologia_BesosPan])
+	(nacionalidad "Espanol")
 	(nombreAutor "Almudena Grandes"))
 
 ([PrimeraOntologia_AlexGomez] of  Autor
 
 	(librosEscritos [PrimeraOntologia_AntologiaZ])
+	(nacionalidad "Espanol")
 	(nombreAutor "Alex Gomez"))
 
 ([PrimeraOntologia_Alzamiento] of  Libro
@@ -348,38 +378,48 @@
 	(idioma Espanol)
 	(numPaginas 280)
 	(puntuacion 4)
-	(titulo "El Alzamiento"))
+	(titulo "El alzamiento"))
 
 ([PrimeraOntologia_AmanteChatterley] of  Libro
 
+	(bestSeller FALSE)
 	(escritoPor [PrimeraOntologia_DHLawrence])
+	(fechaPublicacion 2009)
 	(generos [PrimeraOntologia_Erotica])
 	(idioma Espanol)
+	(numPaginas 432)
 	(publicoDirigido Adulto)
+	(puntuacion 2)
 	(titulo "El amante de Lady Chatterley"))
 
 ([PrimeraOntologia_AmericanPsycho] of  Libro
 
 	(bestSeller FALSE)
 	(escritoPor [PrimeraOntologia_BEastonEllis])
+	(fechaPublicacion 1991)
 	(generos [PrimeraOntologia_Horror])
 	(idioma Ingles)
 	(ISBN "978-0-679-73577-9")
 	(numPaginas 400)
 	(publicoDirigido Adulto)
+	(puntuacion 3)
 	(titulo "American Psycho"))
 
 ([PrimeraOntologia_AMerritt] of  Autor
 
 	(librosEscritos [PrimeraOntologia_ArdeBruja])
+	(nacionalidad "Estadounidense")
 	(nombreAutor "Abraham Merritt"))
 
 ([PrimeraOntologia_Antirresurreccion] of  Libro
 
 	(escritoPor [PrimeraOntologia_JRBiedma])
+	(fechaPublicacion 2011)
 	(generos [PrimeraOntologia_Zombis])
 	(idioma Espanol)
-	(titulo "Antirresurrección"))
+	(numPaginas 320)
+	(puntuacion 3)
+	(titulo "Antirresurreccion"))
 
 ([PrimeraOntologia_AntologiaZ] of  Libro
 
@@ -387,14 +427,23 @@
 	(escritoPor
 		[PrimeraOntologia_AlexGomez]
 		[PrimeraOntologia_JMRamiro])
+	(fechaPublicacion 2010)
 	(generos [PrimeraOntologia_Zombis])
 	(idioma Espanol)
-	(titulo "Antología Z"))
+	(numPaginas 326)
+	(publicoDirigido Juvenil)
+	(puntuacion 4)
+	(titulo "Antologia Z"))
 
 ([PrimeraOntologia_ArdeBruja] of  Libro
 
 	(escritoPor [PrimeraOntologia_AMerritt])
+	(fechaPublicacion 1994)
 	(generos [PrimeraOntologia_Horror])
+	(idioma Espanol)
+	(numPaginas 224)
+	(publicoDirigido Adulto)
+	(puntuacion 2)
 	(titulo "¡Arde, bruja, arde!"))
 
 ([PrimeraOntologia_Asterius] of  Autor
@@ -410,46 +459,93 @@
 		[PrimeraOntologia_Hobbit])
 	(nombre "Aventuras"))
 
+([PrimeraOntologia_AVillaro] of  Autor
+
+	(librosEscritos [PrimeraOntologia_BibliaAndorrana])
+	(nacionalidad "Espanol")
+	(nombreAutor "Albert Villaro"))
+
 ([PrimeraOntologia_BEastonEllis] of  Autor
 
 	(librosEscritos [PrimeraOntologia_AmericanPsycho])
+	(nacionalidad "Estadounidense")
 	(nombreAutor "Bret Easton Ellis"))
 
 ([PrimeraOntologia_BesosPan] of  Libro
 
 	(escritoPor [PrimeraOntologia_AGrandes])
+	(fechaPublicacion 2015)
 	(generos [PrimeraOntologia_Novela])
+	(idioma Espanol)
 	(ISBN "9788490661918")
+	(numPaginas 336)
+	(publicoDirigido Adulto)
+	(puntuacion 4)
 	(titulo "Los besos en el pan"))
+
+([PrimeraOntologia_BibliaAndorrana] of  Libro
+
+	(bestSeller TRUE)
+	(escritoPor [PrimeraOntologia_AVillaro])
+	(fechaPublicacion 2015)
+	(generos [PrimeraOntologia_Policial])
+	(idioma Catalan)
+	(numPaginas 304)
+	(publicoDirigido Adulto)
+	(puntuacion 3)
+	(titulo "La Biblia Andorrana"))
 
 ([PrimeraOntologia_BKeene] of  Autor
 
 	(librosEscritos
 		[PrimeraOntologia_Alzamiento]
 		[PrimeraOntologia_MarMuerto])
+	(nacionalidad "Estadounidense")
 	(nombreAutor "Brian Keene"))
 
 ([PrimeraOntologia_BSanderson] of  Autor
 
 	(librosEscritos [PrimeraOntologia_ImperioFinal])
+	(nacionalidad "Estadounidense")
 	(nombreAutor "Brandon Sanderson"))
 
 ([PrimeraOntologia_CadaDia] of  Libro
 
 	(escritoPor [PrimeraOntologia_NDragnic])
+	(fechaPublicacion 2012)
 	(generos [PrimeraOntologia_Romance])
-	(titulo "Cada día, cada hora"))
+	(idioma Aleman)
+	(numPaginas 288)
+	(publicoDirigido Adulto)
+	(puntuacion 5)
+	(titulo "Cada dia, cada hora"))
 
 ([PrimeraOntologia_CanonHolmesiano] of  Libro
 
 	(escritoPor [PrimeraOntologia_ACDoyle])
 	(generos [PrimeraOntologia_Suspense])
+	(idioma Ingles)
+	(publicoDirigido Adulto)
+	(puntuacion 4)
 	(titulo "Canon Holmesiano"))
+
+([PrimeraOntologia_Carretera] of  Libro
+
+	(escritoPor [PrimeraOntologia_CMcCarthy])
+	(fechaPublicacion 2006)
+	(generos [PrimeraOntologia_CFApocalipsis])
+	(idioma Espanol)
+	(numPaginas 216)
+	(publicoDirigido Adulto)
+	(puntuacion 5)
+	(titulo "La carretera"))
 
 ([PrimeraOntologia_CasaRiverton] of  Libro
 
 	(escritoPor [PrimeraOntologia_KMorton])
 	(generos [PrimeraOntologia_Novela])
+	(idioma Espanol)
+	(publicoDirigido Adulto)
 	(titulo "La casa de Riverton"))
 
 ([PrimeraOntologia_Cenital] of  Libro
@@ -458,26 +554,32 @@
 	(generos [PrimeraOntologia_CFApocalipsis])
 	(idioma Espanol)
 	(numPaginas 288)
+	(publicoDirigido Juvenil)
+	(puntuacion 5)
 	(titulo "Cenital"))
 
 ([PrimeraOntologia_CFApocalipsis] of  Genero
 
 	(generosRelacionados [PrimeraOntologia_CFFuturista])
+	(librosRepresentativos
+		[PrimeraOntologia_Wool]
+		[PrimeraOntologia_Carretera]
+		[PrimeraOntologia_JuegosHambre])
 	(nombre "Ciencia Ficcion Apocaliptica"))
 
 ([PrimeraOntologia_CFFuturista] of  Genero
 
 	(generosRelacionados [PrimeraOntologia_CFApocalipsis])
-	(librosRepresentativos [PrimeraOntologia_ImperioFinal])
+	(librosRepresentativos
+		[PrimeraOntologia_JuegoEnder]
+		[PrimeraOntologia_Neuromante])
 	(nombre "Ciencia Ficcion Futurista"))
 
-([PrimeraOntologia_Class24] of  Autor
+([PrimeraOntologia_CMcCarthy] of  Autor
 
-	(nombreAutor "Elbrecht"))
-
-([PrimeraOntologia_Class34] of  Autor
-
-	(nombreAutor "Larerijar"))
+	(librosEscritos [PrimeraOntologia_Carretera])
+	(nacionalidad "Estadounidense")
+	(nombreAutor "Cormac McCarthy"))
 
 ([PrimeraOntologia_CrimenesCalleMorgue] of  Libro
 
@@ -489,8 +591,12 @@
 ([PrimeraOntologia_CryingFairy] of  Libro
 
 	(escritoPor [PrimeraOntologia_MTorchwood])
+	(fechaPublicacion 2006)
 	(generos [PrimeraOntologia_Aventuras])
 	(idioma Ingles)
+	(numPaginas 204)
+	(publicoDirigido Infantil)
+	(puntuacion 1)
 	(titulo "The Crying Fairy"))
 
 ([PrimeraOntologia_CyborgWife] of  Libro
@@ -507,24 +613,48 @@
 ([PrimeraOntologia_DHammett] of  Autor
 
 	(librosEscritos [PrimeraOntologia_HalconMaltes])
+	(nacionalidad "Estadounidense")
 	(nombreAutor "Dashiell Hammett"))
 
 ([PrimeraOntologia_DHLawrence] of  Autor
 
 	(librosEscritos [PrimeraOntologia_AmanteChatterley])
-	(nombreAutor "David H Lawrence"))
+	(nacionalidad "Ingles")
+	(nombreAutor "David Herbert Lawrence"))
 
 ([PrimeraOntologia_EAPoe] of  Autor
 
 	(librosEscritos
 		[PrimeraOntologia_CrimenesCalleMorgue]
 		[PrimeraOntologia_GatoNegro])
+	(nacionalidad "Estadounidense")
 	(nombreAutor "Edgar Allan Poe"))
 
 ([PrimeraOntologia_EBueso] of  Autor
 
 	(librosEscritos [PrimeraOntologia_Cenital])
+	(nacionalidad "Espanol")
 	(nombreAutor "Emilio Bueso"))
+
+([PrimeraOntologia_Einsamkeit] of  Libro
+
+	(bestSeller TRUE)
+	(escritoPor [PrimeraOntologia_Elbrecht])
+	(fechaPublicacion 2014)
+	(generos [PrimeraOntologia_Novela])
+	(idioma Aleman)
+	(numPaginas 570)
+	(publicoDirigido Adulto)
+	(puntuacion 5)
+	(titulo "Die Einsamkeit"))
+
+([PrimeraOntologia_Elbrecht] of  Autor
+
+	(edad 25)
+	(estudios universidad)
+	(librosEscritos [PrimeraOntologia_Einsamkeit])
+	(nacionalidad "Alemania")
+	(nombreAutor "Elbrecht Karel"))
 
 ([PrimeraOntologia_Erotica] of  Genero
 
@@ -540,10 +670,15 @@
 		[PrimeraOntologia_CyborgWife]
 		[PrimeraOntologia_StreamThorn]
 		[PrimeraOntologia_Sorcerer])
+	(nacionalidad "Sealandes")
 	(nombreAutor "Etirekor"))
 
 ([PrimeraOntologia_FantasiaMagia] of  Genero
 
+	(librosRepresentativos
+		[PrimeraOntologia_Magicians]
+		[PrimeraOntologia_ImperioFinal]
+		[PrimeraOntologia_GoldenCompass])
 	(nombre "Fantasia Magica"))
 
 ([PrimeraOntologia_FantasiaMedieval] of  Genero
@@ -553,6 +688,9 @@
 
 ([PrimeraOntologia_FantasiaSuperheroes] of  Genero
 
+	(librosRepresentativos
+		[PrimeraOntologia_MundoDioses]
+		[PrimeraOntologia_Steelheart])
 	(nombre "Fantasia Superheroica"))
 
 ([PrimeraOntologia_FinEternidad] of  Libro
@@ -581,11 +719,24 @@
 ([PrimeraOntologia_GBataille] of  Autor
 
 	(librosEscritos [PrimeraOntologia_HistoriaOjo])
+	(nacionalidad "Frances")
 	(nombreAutor "Georges Bataille"))
+
+([PrimeraOntologia_GoldenCompass] of  Libro
+
+	(escritoPor [PrimeraOntologia_PPullman])
+	(fechaPublicacion 1995)
+	(generos [PrimeraOntologia_FantasiaMagia])
+	(idioma Ingles)
+	(numPaginas 399)
+	(publicoDirigido Juvenil)
+	(puntuacion 4)
+	(titulo "The Golden Compass"))
 
 ([PrimeraOntologia_GRRMartin] of  Autor
 
 	(librosEscritos [PrimeraOntologia_ImperioFinal])
+	(nacionalidad "Estadounidense")
 	(nombreAutor "George R. R. Martin"))
 
 ([PrimeraOntologia_HalconMaltes] of  Libro
@@ -595,6 +746,12 @@
 	(idioma Espanol)
 	(numPaginas 0)
 	(titulo "El halcon maltes"))
+
+([PrimeraOntologia_HHowey] of  Autor
+
+	(librosEscritos [PrimeraOntologia_Wool])
+	(nacionalidad "Estadounidense")
+	(nombreAutor "Hugh Howey"))
 
 ([PrimeraOntologia_HistoriaOjo] of  Libro
 
@@ -627,6 +784,7 @@
 ([PrimeraOntologia_IAsimov] of  Autor
 
 	(librosEscritos [PrimeraOntologia_FinEternidad])
+	(nacionalidad "Ruso-estadounidense")
 	(nombreAutor "Isaac Asimov"))
 
 ([PrimeraOntologia_ImperioFinal] of  Libro
@@ -645,40 +803,73 @@
 ([PrimeraOntologia_Ivanhoe] of  Libro
 
 	(escritoPor [PrimeraOntologia_WScott])
+	(fechaPublicacion 1819)
 	(generos [PrimeraOntologia_Aventuras])
+	(idioma Ingles)
+	(numPaginas 346)
 	(titulo "Ivanhoe"))
 
 ([PrimeraOntologia_JardinHechizos] of  Libro
 
 	(escritoPor [PrimeraOntologia_SAAllen])
 	(generos [PrimeraOntologia_Romance])
+	(idioma Espanol)
+	(publicoDirigido Adulto)
 	(titulo "El jardín de los hechizos"))
 
 ([PrimeraOntologia_JFBardin] of  Autor
 
 	(librosEscritos [PrimeraOntologia_SalirInfierno])
+	(nacionalidad "Estadounidense")
 	(nombreAutor "John Franklin Bardin"))
 
 ([PrimeraOntologia_JMRamiro] of  Autor
 
 	(librosEscritos [PrimeraOntologia_AntologiaZ])
-	(nombreAutor "José Martín Ramiro"))
+	(nacionalidad "Espanol")
+	(nombreAutor "Jose Martin Ramiro"))
 
 ([PrimeraOntologia_JRBiedma] of  Autor
 
 	(librosEscritos [PrimeraOntologia_Antirresurreccion])
-	(nombreAutor "Juan Ramón Biedma"))
+	(nacionalidad "Espanol")
+	(nombreAutor "Juan Ramon Biedma"))
 
 ([PrimeraOntologia_JRRTolkien] of  Autor
 
 	(librosEscritos [PrimeraOntologia_Hobbit])
+	(nacionalidad "Ingles")
 	(nombreAutor "J.R.R. Tolkien"))
+
+([PrimeraOntologia_JuegoEnder] of  Libro
+
+	(escritoPor [PrimeraOntologia_OSCard])
+	(fechaPublicacion 1985)
+	(generos [PrimeraOntologia_CFFuturista])
+	(idioma Espanol)
+	(numPaginas 368)
+	(publicoDirigido Juvenil)
+	(puntuacion 4)
+	(titulo "El juego de Ender"))
+
+([PrimeraOntologia_JuegosHambre] of  Libro
+
+	(bestSeller TRUE)
+	(escritoPor [PrimeraOntologia_SCollins])
+	(fechaPublicacion 2009)
+	(generos [PrimeraOntologia_CFApocalipsis])
+	(idioma Espanol)
+	(numPaginas 400)
+	(publicoDirigido Juvenil)
+	(puntuacion 4)
+	(titulo "Los juegos del hambre"))
 
 ([PrimeraOntologia_JVerne] of  Autor
 
 	(librosEscritos
 		[PrimeraOntologia_MiguelStrogoff]
 		[PrimeraOntologia_IslaMisteriosa])
+	(nacionalidad "Frances")
 	(nombreAutor "Julio Verne"))
 
 ([PrimeraOntologia_KissingWoman] of  Libro
@@ -695,6 +886,45 @@
 		[PrimeraOntologia_HorasDistantes]
 		[PrimeraOntologia_CasaRiverton])
 	(nombreAutor "Kate Morton"))
+
+([PrimeraOntologia_Larelijar] of  Autor
+
+	(nombreAutor "Larerijar"))
+
+([PrimeraOntologia_Lector1] of  Lector
+
+	(autoresFavoritos [PrimeraOntologia_IAsimov])
+	(bestseller TRUE)
+	(critico TRUE)
+	(DNI "12345")
+	(edad 12)
+	(estudios primaria)
+	(frecuencia media)
+	(generosPreferidos
+		[PrimeraOntologia_Novela]
+		[PrimeraOntologia_CFFuturista])
+	(idiomasPreferidos Espanol)
+	(momento tarde)
+	(nacionalidad "Espanol"))
+
+([PrimeraOntologia_Lector2] of  Lector
+
+	(autoresFavoritos
+		[PrimeraOntologia_ACDoyle]
+		[PrimeraOntologia_EAPoe])
+	(clasicos TRUE)
+	(DNI "23456")
+	(edad 17)
+	(estudios secundaria)
+	(frecuencia mucha)
+	(generosPreferidos [PrimeraOntologia_Policial])
+	(momento ma%C3%B1ana)
+	(nacionalidad "Ingles"))
+
+([PrimeraOntologia_LGrossman] of  Autor
+
+	(librosEscritos [PrimeraOntologia_Magicians])
+	(nombreAutor "Lev Grossman"))
 
 ([PrimeraOntologia_Loikath] of  Autor
 
@@ -717,12 +947,24 @@
 	(publicoDirigido Juvenil)
 	(titulo "Looking at infinity"))
 
+([PrimeraOntologia_Magicians] of  Libro
+
+	(escritoPor [PrimeraOntologia_LGrossman])
+	(fechaPublicacion 2009)
+	(generos [PrimeraOntologia_FantasiaSuperheroes])
+	(idioma Ingles)
+	(numPaginas 402)
+	(publicoDirigido Juvenil)
+	(puntuacion 4)
+	(titulo "The magicians"))
+
 ([PrimeraOntologia_MarMuerto] of  Libro
 
 	(bestSeller FALSE)
 	(escritoPor [PrimeraOntologia_BKeene])
 	(fechaPublicacion 2010)
 	(generos [PrimeraOntologia_Zombis])
+	(idioma Espanol)
 	(numPaginas 0)
 	(puntuacion 3)
 	(titulo "Mar muerto"))
@@ -736,6 +978,8 @@
 
 	(escritoPor [PrimeraOntologia_JVerne])
 	(generos [PrimeraOntologia_Aventuras])
+	(idioma Espanol)
+	(publicoDirigido Adulto)
 	(titulo "Miguel Strogoff"))
 
 ([PrimeraOntologia_MTorchwood] of  Autor
@@ -743,10 +987,32 @@
 	(librosEscritos [PrimeraOntologia_CryingFairy])
 	(nombreAutor "Mijan Torchwood"))
 
+([PrimeraOntologia_MundoDioses] of  Libro
+
+	(escritoPor [PrimeraOntologia_RMarinTrenchera])
+	(fechaPublicacion 1997)
+	(generos [PrimeraOntologia_FantasiaSuperheroes])
+	(idioma Espanol)
+	(numPaginas 353)
+	(publicoDirigido Juvenil)
+	(puntuacion 4)
+	(titulo "Mundo de dioses"))
+
 ([PrimeraOntologia_NDragnic] of  Autor
 
 	(librosEscritos [PrimeraOntologia_CadaDia])
 	(nombreAutor "Nataša Dragnic"))
+
+([PrimeraOntologia_Neuromante] of  Libro
+
+	(escritoPor [PrimeraOntologia_WGibson])
+	(fechaPublicacion 1984)
+	(generos [PrimeraOntologia_CFFuturista])
+	(idioma Espanol)
+	(numPaginas 320)
+	(publicoDirigido Juvenil)
+	(puntuacion 5)
+	(titulo "Neuromante"))
 
 ([PrimeraOntologia_NJerouax] of  Autor
 
@@ -761,6 +1027,11 @@
 		[PrimeraOntologia_Francamente])
 	(nombre "Novela"))
 
+([PrimeraOntologia_OSCard] of  Autor
+
+	(librosEscritos [PrimeraOntologia_JuegoEnder])
+	(nombreAutor "Orson Scott Card"))
+
 ([PrimeraOntologia_PercyJackson] of  Libro
 
 	(bestSeller TRUE)
@@ -768,12 +1039,14 @@
 	(generos [PrimeraOntologia_CFFuturista])
 	(idioma Espanol)
 	(ISBN "9788498382068")
+	(publicoDirigido Juvenil)
 	(titulo "LA MALDICION DEL TITAN. Percy Jackson y los dioses del Olimpo III"))
 
 ([PrimeraOntologia_PiedraLunar] of  Libro
 
 	(escritoPor [PrimeraOntologia_WilkieCollins])
 	(generos [PrimeraOntologia_Policial])
+	(idioma Espanol)
 	(titulo "La piedra lunar"))
 
 ([PrimeraOntologia_Policial] of  Genero
@@ -783,6 +1056,11 @@
 		[PrimeraOntologia_SabuesoBaskerville]
 		[PrimeraOntologia_CrimenesCalleMorgue])
 	(nombre "Policial"))
+
+([PrimeraOntologia_PPullman] of  Autor
+
+	(librosEscritos [PrimeraOntologia_GoldenCompass])
+	(nombreAutor "Phillip Pullman"))
 
 ([PrimeraOntologia_PresuntoInocente] of  Libro
 
@@ -803,6 +1081,11 @@
 
 	(librosEscritos [PrimeraOntologia_Francamente])
 	(nombreAutor "Richard Ford"))
+
+([PrimeraOntologia_RMarinTrenchera] of  Autor
+
+	(librosEscritos [PrimeraOntologia_MundoDioses])
+	(nombreAutor "Rafael Marin Trenchera"))
 
 ([PrimeraOntologia_Romance] of  Genero
 
@@ -833,6 +1116,11 @@
 	(escritoPor [PrimeraOntologia_JFBardin])
 	(generos [PrimeraOntologia_Horror])
 	(titulo "Al salir del infierno"))
+
+([PrimeraOntologia_SCollins] of  Autor
+
+	(librosEscritos [PrimeraOntologia_JuegosHambre])
+	(nombreAutor "Suzanne Collins"))
 
 ([PrimeraOntologia_SevardoAguilar] of  Autor
 
@@ -870,6 +1158,17 @@
 		[PrimeraOntologia_Suspense])
 	(idioma Ingles)
 	(titulo "The Souls's Winter"))
+
+([PrimeraOntologia_Steelheart] of  Libro
+
+	(escritoPor [PrimeraOntologia_BSanderson])
+	(fechaPublicacion 2013)
+	(generos [PrimeraOntologia_FantasiaSuperheroes])
+	(idioma Ingles)
+	(numPaginas 386)
+	(publicoDirigido Juvenil)
+	(puntuacion 5)
+	(titulo "Steelheart"))
 
 ([PrimeraOntologia_StreamThorn] of  Libro
 
@@ -910,14 +1209,17 @@
 
 ([PrimeraOntologia_VacantMale] of  Libro
 
+	(bestSeller TRUE)
 	(escritoPor [PrimeraOntologia_Tardotram])
 	(generos [PrimeraOntologia_CFFuturista])
 	(idioma Ingles)
+	(publicoDirigido Juvenil)
 	(titulo "The Vacant Male"))
 
 ([PrimeraOntologia_VNabokov] of  Autor
 
 	(librosEscritos [PrimeraOntologia_Lolita])
+	(nacionalidad "Ruso")
 	(nombreAutor "Vladimir Nabokov"))
 
 ([PrimeraOntologia_VoyagersWife] of  Libro
@@ -933,6 +1235,12 @@
 		[PrimeraOntologia_Slaves])
 	(nombreAutor "Wicea Genadi"))
 
+([PrimeraOntologia_WGibson] of  Autor
+
+	(librosEscritos [PrimeraOntologia_Neuromante])
+	(nacionalidad "Estadounidense-canadiense")
+	(nombreAutor "William Gibson"))
+
 ([PrimeraOntologia_Wicemar] of  Autor
 
 	(nombreAutor "Wicemar Darunt"))
@@ -941,6 +1249,16 @@
 
 	(librosEscritos [PrimeraOntologia_PiedraLunar])
 	(nombreAutor "Wilkie Collins"))
+
+([PrimeraOntologia_Wool] of  Libro
+
+	(escritoPor [PrimeraOntologia_HHowey])
+	(fechaPublicacion 2011)
+	(idioma Ingles)
+	(numPaginas 580)
+	(publicoDirigido Juvenil)
+	(puntuacion 4)
+	(titulo "Wool"))
 
 ([PrimeraOntologia_WScott] of  Autor
 
@@ -964,7 +1282,6 @@
 	(nombre "Zombis"))
 
 )
-
 ;;;**************
 ;;;Codigo CLIPS
 ;;;**************
@@ -1017,7 +1334,7 @@
 	(printout t (send ?self:libro imprimir))
 	(printout t crlf)
 	;Max puntuacion = 200
-	(format t "Nivel de recomendacion: %d %% %n" (/ (* ?self:puntuacion 100) 200))
+	(format t "Nivel de recomendacion: %d %% %n" (/ (* ?self:puntuacion 100) 500))
 	(printout t crlf)
 	(printout t "-----------------------------------" crlf)
 )
@@ -1042,7 +1359,7 @@
 
 ;;; Funcion para hacer una pregunta con respuesta booleana
 (deffunction pregunta-booleana (?pregunta)
-	(format t "%s (s/n)" ?pregunta)
+	(format t "%s (s/n) " ?pregunta)
 	(bind ?resp (read))
 	(while (not (or (eq ?resp s)(eq ?resp n)(eq ?resp si)(eq ?resp no))) do
 		(format t "%s (s/n)" ?pregunta)
@@ -1059,9 +1376,14 @@
 	(format t "%s" ?pregunta)  
 	(bind ?resposta (readline))  
 	(bind ?res (str-explode ?resposta))
-	;(foreach ?value ?res do 
-	;(if (not(member ?value ?valores_posibles)
-	;)
+	(loop-for-count (?i 1 (length$ ?res)) do 
+		(if (not(member (nth$ ?i ?res) ?valores_posibles)) then
+			(printout t "El valor " (nth$ ?i ?res) " no es un valido" crlf)
+			(bind ?valor (pregunta-numerica "Introduce un nuevo valor " 1 (- (length$ ?valores_posibles) 1)))
+			(bind $?res (delete$ ?res ?i ?i))
+			(bind $?res (insert$ ?res ?i ?valor))
+		)
+	)
 	?res
 )
 
@@ -1084,17 +1406,29 @@
 (deffunction genre_in_book ""
 	(?gen ?book)
 	(bind ?list (send ?book get-generos))
-	(progn$ (?it ?list)
-		(if (eq (str-cat ?gen) (send ?it get-nombre) ) then TRUE else FALSE)
+	(bind ?i 1)
+	(bind ?b FALSE)
+	(while (and (not ?b) (<= ?i (length$ ?list)))
+		(if (eq (str-cat ?gen) (send (nth$ ?i ?list) get-nombre)) then
+			(bind ?b TRUE)
+		else (bind ?i (+ ?i 1))
+		)
 	)
+	?b
 )
 
 (deffunction author_in_book ""
 	(?aut ?book)
 	(bind ?list (send ?book get-escritoPor))
-	(progn$ (?it ?list)
-		(if (eq (str-cat ?aut) (send ?it get-nombreAutor)) then TRUE else FALSE)
+	(bind ?i 1)
+	(bind ?b FALSE)
+	(while (and (not ?b) (<= ?i (length$ ?list)))
+		(if (eq (str-cat ?aut) (send (nth$ ?i ?list) get-nombreAutor)) then
+			(bind ?b TRUE)
+		else (bind ?i (+ ?i 1))
+		)
 	)
+	?b
 )
 
 (deffunction pages_in_book ""
@@ -1137,8 +1471,10 @@
 	(start)
 	=>
 	(bind ?dni (pregunta-general "Cual es tu DNI? "))
-	(if (any-instancep ((?p Lector)) (eq (str-compare ?p:DNI ?dni) 0))
-	then (assert (usuario-lector))
+	(if (any-instancep ((?p Lector)) (eq (send ?p get-DNI) (str-cat ?dni)) )
+	then 
+	(bind ?d (str-cat ?dni))
+	(assert (usuario-lector ?d))
 	else 
 	(bind ?lector (make-instance lectorN of Lector))
 	(send ?lector put-DNI ?dni)
@@ -1151,9 +1487,12 @@
 	(nuevo-lector)
 	=>
 	(bind ?ed (pregunta-numerica "Que edad tienes?" 0 150))
-	(if (< ?ed 12) then (assert (perfil infantil)))
-	(if (and (>= ?ed 12)(<= ?ed 24)) then (assert (perfil juvenil)))
-	(if (> ?ed 24) then (assert(perfil adulto)))
+	
+	;(send [lectorN] put-edad ?ed)
+	(if (< ?ed 12) then (assert (perfil Infantil)))
+	(if (and (>= ?ed 12)(<= ?ed 24)) then (assert (perfil Juvenil)))
+	(if (> ?ed 24) then (assert(perfil Adulto)))
+	
 	(if (< ?ed 18) then (assert (menor_de_edad)) )
 )
 
@@ -1172,7 +1511,7 @@
 (defrule pregunta-nacionalidad "Pregunta para saber la nacionalidad"
 	(nuevo-lector)
 	=>
-	(bind ?resp (pregunta-general "Cual es tu nacionalidad?"))
+	(bind ?resp (pregunta-general "Cual es tu nacionalidad? "))
 	(assert (Nacionalidad ?resp))
 )
 
@@ -1182,15 +1521,12 @@
 	(printout t "Escoje tus idiomas favoritos para los libros: " crlf)
 	(printout t "0. Indefinido" crlf)
 	(bind ?lista (slot-allowed-values Libro idioma))
-	(bind $?valores_permitidos (create$))
+	(bind $?valores_permitidos (create$ 0))
 	(loop-for-count (?i 1 (length$ ?lista)) do
 		(printout t ?i ". " (nth$ ?i ?lista) crlf)
-		(insert$ ?valores_permitidos ?i (+ (length$ ?valores_permitidos) 1))
+		(bind $?valores_permitidos (insert$ ?valores_permitidos (+ (length$ ?valores_permitidos) 1) ?i))
 	)
-	(loop-for-count (?i 1 (length$ ?valores_permitidos)) do
-		(printout t ?i crlf)
-	)
-	(bind ?resp (pregunta-lista "Escribe los identificadores separados por espacios: " ?valores_permitidos))
+	(bind ?resp (pregunta-lista "Escribe los identificadores separados por espacios: " $?valores_permitidos))
 	(if (not (member 0 ?resp))
 		then
 		(progn$ (?it ?resp)
@@ -1234,19 +1570,39 @@
 	(assert (bestseller ?resp))
 )
 
+(defrule pregunta-clasicos ""
+	(nuevo-lector)
+	=>
+	(bind ?resp (pregunta-booleana "Te gustan los libros clasicos (hasta 1960)?"))
+	(assert (Clasicos ?resp))
+)
+
+(defrule pregunta-criticos "Pregunta para saber si se valora la puntuación de un libro"
+	(nuevo-lector)
+	=>
+	(bind ?resp (pregunta-booleana "Le das importancia a las críticas de un libro?"))
+	(assert (Critica ?resp))
+)
+
 (defrule pregunta-generos "Pregunta para saber generos preferidos"
 	(nuevo-lector)
 	=>
 	(printout t "Cuales de los siguientes generos te gustan?" crlf)
 	(bind ?lista (find-all-instances ((?p Genero)) TRUE))
+	(bind $?valores_permitidos (create$ 0))
 	(loop-for-count (?i 1 (length$ ?lista)) do
 		(printout t ?i ". " (send (nth$ ?i ?lista) get-nombre) crlf)
+		(bind $?valores_permitidos (insert$ ?valores_permitidos (+ (length$ ?valores_permitidos) 1) ?i))
 	)
-	(bind ?resp (pregunta-lista "Escribe los identificadores separados por espacios: "))
+	(bind ?resp (pregunta-lista "Escribe los identificadores separados por espacios: " $?valores_permitidos))
 	(if (not (member 0 ?resp))
 		then
 		(progn$ (?it ?resp)
 			(assert (genero (send (nth$ ?it ?lista) get-nombre)))
+			(bind $?alter (send (nth$ ?it ?lista) get-generosRelacionados))
+			(progn$ (?i $?alter)
+				(assert (Alter (send ?i get-nombre)))
+			)
 		)
 	)
 	(assert (pregunta-generos))
@@ -1255,14 +1611,17 @@
 (defrule pregunta-libros "Pregunta para saber los libros que le gustan"
 	(pregunta-generos)
 	(genero ?gen)
-	?g<-(object (is-a Genero) (nombre ?gen) (librosRepresentativos $?lista))
+	?g <-(object (is-a Genero) (nombre ?gen) (librosRepresentativos $?lista))
 	(test (> (length$ ?lista) 0))
 	=>
 	(printout t "Obteniendo lista del genero " ?gen crlf)
+	(printout t "De los siguientes libros, cuales te has leido?" crlf)
+	(bind $?valores_permitidos (create$ 0))
 	(loop-for-count (?i 1 (length$ ?lista)) do
 		(printout t ?i ". " (send (nth$ ?i ?lista) get-titulo) crlf)
+		(bind $?valores_permitidos (insert$ ?valores_permitidos (+ (length$ ?valores_permitidos) 1) ?i))
 	)
-	(bind ?resp (pregunta-lista "Escribe los identificadores separados por espacios: 0->Ninguno "))
+	(bind ?resp (pregunta-lista "Escribe los identificadores separados por espacios: 0->Ninguno " $?valores_permitidos))
 	(if (not (member 0 ?resp))
 		then
 		(progn$ (?it ?resp)
@@ -1282,12 +1641,62 @@
 	=>
 	(bind ?resp (pregunta-booleana "Quieres ver los libros de generos que estan de moda?"))
 	(assert (modas ?resp))
-	(assert (pregunta-modas))
+	(assert (fin-preguntas))
 )
 
 
+(defrule suposiciones
+	(usuario-lector ?dni)
+	?lect <- (object (is-a Lector)
+		(DNI ?dni)
+		(edad ?edad)
+		(frecuencia ?freq)
+		(autoresFavoritos $?list-aut)
+		(generosPreferidos $?list-gen)
+		(idiomasPreferidos $?list-idi)
+		(bestseller ?bs)
+		(clasicos ?cla)
+		(nacionalidad ?nac)
+		(critico ?cri)
+	)
+	=>
+	(if (< ?edad 12) then (assert (perfil Infantil)))
+	(if (and (>= ?edad 12)(<= ?edad 24)) then (assert (perfil Juvenil)))
+	(if (> ?edad 24) then (assert(perfil Adulto)))
+	
+	(if (< ?edad 18) then (assert (menor_de_edad)))
+	
+	(if (eq ?freq poca) then (assert (Frecuencia poca))
+	else (if (eq ?freq media) then (assert (Frecuencia normal))
+	else (assert (Frecuencia muchisima)))
+	)
+	
+	(progn$ (?it $?list-aut)
+		(assert (Autor (send ?it get-nombreAutor)))
+	)
+	
+	(progn$ (?it $?list-gen)
+		(assert (genero (send ?it get-nombre)))
+		(progn$ (?it2 (send ?it get-generosRelacionados))
+			(assert (Alter (send ?it2 get-nombre)))
+		)
+	)
+	
+	(progn$ (?it $?list-idi)
+		(assert (Idioma ?it ))
+	)
+	
+	(assert (bestseller ?bs))
+	(assert (Clasicos ?cla))
+	(assert (Nacionalidad ?nac))
+	(assert (Critica ?cri))
+	
+	
+	(assert(fin-preguntas))
+)
+
 (defrule focusFiltrado
-	(pregunta-modas)
+	(fin-preguntas)
 	=>
 	(focus filtrado)
 )
@@ -1305,7 +1714,7 @@
 	(bind $?lista (find-all-instances((?inst Libro)) TRUE))
 	(printout t "Obteniendo libros..." crlf)
 	(loop-for-count (?i 1 (length$ ?lista)) do
-		(bind ?book (nth$ ?i ?lista)) 
+		(bind ?book (nth$ ?i ?lista))
 		(bind ?nR (sym-cat R**(send ?book get-titulo)))	 
 		(bind ?inst (make-instance ?nR of Recomendacion (libro ?book) (puntuacion 0) ))
 	)
@@ -1329,7 +1738,7 @@
 	?recm <- (object (is-a Recomendacion) (libro ?book) )
 	(test (genre_in_book Erotica ?book))
 	=>
-	(printout t "Eliminado por ser inadecuado para niños: " (instance-name ?recm) crlf)
+	(printout t "Eliminado por ser inadecuado para menores de edad: " (instance-name ?recm) crlf)
 	(send ?recm delete)
 )
 
@@ -1344,14 +1753,6 @@
 	(printout t "Eliminado por pertenecer a un genero de moda: " (instance-name ?recm) crlf)
 	(send ?recm delete)
 )
-
-;(defrule descartarLibrosCortos "Descarta los libros más cortos para aquellos que leen con mucha frecuencia"
-;	(libros-obtenidos)
-;	(Frecuencia muchisima)
-;	?book <- (object (is-a Libro) (numPaginas ?np))
-;	?recm <- (object (is-a Recomendacion) (libro ?book))
-;)
-
 
 (defrule descartarLibrosLeidos ""
 	(libros-obtenidos)
@@ -1368,10 +1769,10 @@
 ;;;**********
 
 (defrule plusIdioma "Valorar más si el libro está en un idioma preferido"
-	(not (Idioma indef))
 	(Idioma ?idi)
-	?book <- (object (is-a Libro) (idioma ?idi) (puntuacion ?pt))
-	?recm <- (object (is-a Recomendacion) (libro ?book))
+	(test (not (eq ?idi indef)))
+	?recm <- (object (is-a Recomendacion) (libro ?book) (puntuacion ?pt))
+	(test (eq (send ?book get-idioma) ?idi))
 	(not (valorIdioma ?recm))
 	=>
 	(printout t "El libro " (instance-name ?recm) " esta escrito en " ?idi crlf)
@@ -1390,6 +1791,17 @@
 	(assert (valorGenero ?recm))
 )
 
+(defrule plusAlter
+	(Alter ?alt)
+	?recm <- (object (is-a Recomendacion) (libro ?book) (puntuacion ?pt))
+	(test (genre_in_book ?alt ?book))
+	(not (valorAlter ?recm))
+	=>
+	(printout t "Pertenece a generos similares a los elegidos: " (instance-name ?recm) crlf)
+	(send ?recm put-puntuacion (+ ?pt 25))
+	(assert (valorAlter ?recm))
+)
+
 (defrule plusPublico
 	(perfil ?perf)
 	?recm <- (object (is-a Recomendacion) (libro ?book) (puntuacion ?pt))
@@ -1397,7 +1809,7 @@
 	(not (valorPublico ?recm))
 	=>
 	(printout t "Pertenece al perfil del lector (" ?perf ") : " (instance-name ?recm) crlf)
-	(send ?recm put-puntuacion (+ ?pt 50))
+	(send ?recm put-puntuacion (+ ?pt 25))
 	(assert (valorPublico ?recm))
 )
 
@@ -1424,14 +1836,36 @@
 )
 
 (defrule plusFreqNumPag
-        (Frecuencia ?frec)
-        ?recm <- (object (is-a Recomendacion) (libro ?book) (puntuacion ?pt))
-        (test (pages_in_book ?frec ?book))
-        (not (valorPaginas ?recm))
-        =>
-        (printout t "El lector con frecuencia (" ?frec ") tiene preferencia por el conjunto de libros : " (instance-name ?recm) crlf)
-        (send ?recm put-puntuacion (+ ?pt 50))
-        (assert (valorPaginas ?recm))
+	(Frecuencia ?frec)
+	?recm <- (object (is-a Recomendacion) (libro ?book) (puntuacion ?pt))
+	(test (pages_in_book ?frec ?book))
+	(not (valorPaginas ?recm))
+	=>
+	(printout t "El lector con frecuencia (" ?frec ") tiene preferencia por el conjunto de libros : " (instance-name ?recm) crlf)
+	(send ?recm put-puntuacion (+ ?pt 50))
+	(assert (valorPaginas ?recm))
+)
+
+(defrule plusClasicos
+	(Clasicos TRUE)
+	?recm <- (object (is-a Recomendacion) (libro ?book) (puntuacion ?pt))
+	(test (< (send ?book get-fechaPublicacion) 1960))
+	(not (valorClasico ?recm))
+	=>
+	(printout t "Al lector le gustan los libros clasicos (< 1960) : " (instance-name ?recm) crlf)
+	(send ?recm put-puntuacion (+ ?pt 50))
+	(assert (valorClasico ?recm))
+)
+
+(defrule plusModernos
+	(Clasicos FALSE)
+	?recm <- (object (is-a Recomendacion) (libro ?book) (puntuacion ?pt))
+	(test (>= (send ?book get-fechaPublicacion) 1960))
+	(not (valorModerno ?recm))
+	=>
+	(printout t "Al lector le gustan los libros modernos (< 1960) : " (instance-name ?recm) crlf)
+	(send ?recm put-puntuacion (+ ?pt 50))
+	(assert (valorModerno ?recm))
 )
 
 (defrule plusEstudiosLector
@@ -1441,19 +1875,31 @@
         (not (valorEstudios ?recm))
         =>
         (printout t "El lector con estudios (" ?est ") tiene preferencia por el conjunto de libros : " (instance-name ?recm) crlf)
-        (send ?recm put-puntuacion (+ ?pt 50))
+        (send ?recm put-puntuacion (+ ?pt 25))
         (assert (valorEstudios ?recm))
 )
 
 (defrule plusLectorAutorMismaNacionalidad
         (Nacionalidad ?nac)
         ?recm <- (object (is-a Recomendacion) (libro ?book) (puntuacion ?pt))
-        (test (eq ?nac (send ?book get-nacionalidad)))
+		?autor<-(object (is-a Autor) (nombreAutor ?nombre) (nacionalidad ?nac))
+		(test (author_in_book ?nombre ?book))
         (not (valorNac ?recm))
         =>
-        (printout t "El lector con nacionalidad (" ?nac ") tiene preferencia por el conjunto de libros : " (instance-name ?recm) crlf)
+        (printout t "-------El lector con nacionalidad " ?nac " tiene preferencia por el conjunto de libros : " (instance-name ?recm) crlf)
         (send ?recm put-puntuacion (+ ?pt 50))
         (assert (valorNac ?recm))
+)
+
+(defrule plusCritico
+	(Critica TRUE)
+	?recm <- (object (is-a Recomendacion) (libro ?book) (puntuacion ?pt))
+	(not (valorCritico ?recm))
+	=>
+	(bind ?star (send ?book get-puntuacion))
+	(printout t "El libro " (send ?book get-titulo) " tiene una puntuacion de " ?star "." crlf)
+	(send ?recm put-puntuacion (+ ?pt (* ?star 20)))
+	(assert (valorCritico ?recm))
 )
 
 (defrule focusPresentacion
