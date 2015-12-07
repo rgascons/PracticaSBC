@@ -1,4 +1,4 @@
-; Mon Dec 07 19:53:09 GMT 2015
+; Mon Dec 07 21:34:37 GMT 2015
 ; 
 ;+ (version "3.4.8")
 ;+ (build "Build 629")
@@ -19,15 +19,15 @@
 		(type INSTANCE)
 ;+		(allowed-classes Genero)
 		(create-accessor read-write))
-	(single-slot momento
-		(type SYMBOL)
-		(allowed-values ma%C3%B1ana mediodia tarde noche)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
 	(multislot catalogo
 		(type INSTANCE)
 ;+		(allowed-classes Libro)
 		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write))
+	(single-slot momento
+		(type SYMBOL)
+		(allowed-values ma%C3%B1ana mediodia tarde noche)
+;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot titulo
 		(type STRING)
@@ -73,11 +73,11 @@
 		(type INTEGER)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot nombre
+	(single-slot ISBN
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot ISBN
+	(single-slot nombre
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
@@ -131,19 +131,19 @@
 		(allowed-values poca media mucha)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot libro
+	(multislot librosEscritos
 		(type INSTANCE)
 ;+		(allowed-classes Libro)
-;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot numPaginas
 		(type INTEGER)
 		(default 0)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(multislot librosEscritos
+	(single-slot libro
 		(type INSTANCE)
 ;+		(allowed-classes Libro)
+;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(multislot generos
 		(type INSTANCE)
@@ -162,23 +162,23 @@
 		(type SYMBOL)
 		(allowed-values Espanol Ingles Catalan Frances)
 		(create-accessor read-write))
-	(single-slot publicoDirigido
-		(type SYMBOL)
-		(allowed-values Infantil Juvenil Adulto)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
 	(single-slot clasicos
 		(type SYMBOL)
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot critico
+	(single-slot publicoDirigido
 		(type SYMBOL)
-		(allowed-values FALSE TRUE)
+		(allowed-values Infantil Juvenil Adulto)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot fechaPublicacion
 		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot critico
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot nacionalidad
@@ -208,13 +208,13 @@
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot ISBN
-		(type STRING)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
 	(single-slot publicoDirigido
 		(type SYMBOL)
 		(allowed-values Infantil Juvenil Adulto)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot ISBN
+		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot fechaPublicacion
@@ -230,14 +230,14 @@
 		(type INSTANCE)
 ;+		(allowed-classes Autor)
 		(create-accessor read-write))
-	(multislot generos
-		(type INSTANCE)
-;+		(allowed-classes Genero)
-		(create-accessor read-write))
 	(single-slot idioma
 		(type SYMBOL)
 		(allowed-values Ingles Espanol Catalan Frances Aleman)
 ;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot generos
+		(type INSTANCE)
+;+		(allowed-classes Genero)
 		(create-accessor read-write)))
 
 (defclass Persona
@@ -274,27 +274,27 @@
 		(allowed-values ma%C3%B1ana mediodia tarde noche)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(multislot autoresFavoritos
-		(type INSTANCE)
-;+		(allowed-classes Autor)
-		(create-accessor read-write))
 	(single-slot bestseller
 		(type SYMBOL)
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
+	(multislot autoresFavoritos
+		(type INSTANCE)
+;+		(allowed-classes Autor)
+		(create-accessor read-write))
 	(multislot generosPreferidos
 		(type INSTANCE)
 ;+		(allowed-classes Genero)
+		(create-accessor read-write))
+	(multislot idiomasPreferidos
+		(type SYMBOL)
+		(allowed-values Espanol Ingles Catalan Frances)
 		(create-accessor read-write))
 	(single-slot frecuencia
 		(type SYMBOL)
 		(allowed-values poca media mucha)
 ;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(multislot idiomasPreferidos
-		(type SYMBOL)
-		(allowed-values Espanol Ingles Catalan Frances)
 		(create-accessor read-write))
 	(single-slot clasicos
 		(type SYMBOL)
@@ -314,13 +314,13 @@
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(multislot librosEscritos
-		(type INSTANCE)
-;+		(allowed-classes Libro)
-		(create-accessor read-write))
 	(multislot generoExperto
 		(type INSTANCE)
 ;+		(allowed-classes Genero)
+		(create-accessor read-write))
+	(multislot librosEscritos
+		(type INSTANCE)
+;+		(allowed-classes Libro)
 		(create-accessor read-write)))
 
 (defclass Genero
@@ -345,7 +345,7 @@
 		(create-accessor read-write)))
 		
 (definstances instancias
-	; Mon Dec 07 19:53:09 GMT 2015
+	; Mon Dec 07 21:34:37 GMT 2015
 ; 
 ;+ (version "3.4.8")
 ;+ (build "Build 629")
@@ -392,7 +392,7 @@
 		[PrimeraOntologia_Horror])
 	(idiomasPreferidos Ingles Catalan)
 	(momento tarde)
-	(nacionalidad "Ingles"))
+	(nacionalidad "Estadounidense"))
 
 ([Lector4] of  Lector
 
@@ -403,6 +403,7 @@
 	(clasicos FALSE)
 	(critico TRUE)
 	(DNI "44444")
+	(edad 52)
 	(estudios formacionProfesional)
 	(frecuencia mucha)
 	(generosPreferidos
@@ -418,6 +419,7 @@
 
 	(clasicos TRUE)
 	(DNI "55555")
+	(edad 54)
 	(estudios universidad)
 	(frecuencia media)
 	(momento mediodia)
@@ -428,6 +430,7 @@
 	(autoresFavoritos [PrimeraOntologia_RMarinTrenchera])
 	(critico TRUE)
 	(DNI "64371")
+	(edad 28)
 	(estudios bachillerato)
 	(frecuencia mucha)
 	(generosPreferidos
@@ -638,6 +641,7 @@
 ([PrimeraOntologia_Cenital] of  Libro
 
 	(escritoPor [PrimeraOntologia_EBueso])
+	(fechaPublicacion 2010)
 	(generos [PrimeraOntologia_CFApocalipsis])
 	(idioma Espanol)
 	(numPaginas 288)
@@ -671,8 +675,12 @@
 ([PrimeraOntologia_CrimenesCalleMorgue] of  Libro
 
 	(escritoPor [PrimeraOntologia_EAPoe])
+	(fechaPublicacion 1841)
 	(generos [PrimeraOntologia_Policial])
 	(idioma Espanol)
+	(numPaginas 38)
+	(publicoDirigido Adulto)
+	(puntuacion 4)
 	(titulo "Los crímenes de la calle Morgue"))
 
 ([PrimeraOntologia_CryingFairy] of  Libro
@@ -840,9 +848,12 @@
 ([PrimeraOntologia_HalconMaltes] of  Libro
 
 	(escritoPor [PrimeraOntologia_DHammett])
+	(fechaPublicacion 1930)
 	(generos [PrimeraOntologia_Suspense])
 	(idioma Espanol)
-	(numPaginas 0)
+	(numPaginas 263)
+	(publicoDirigido Adulto)
+	(puntuacion 5)
 	(titulo "El halcon maltes"))
 
 ([PrimeraOntologia_HHowey] of  Autor
@@ -861,7 +872,12 @@
 ([PrimeraOntologia_Hobbit] of  Libro
 
 	(escritoPor [PrimeraOntologia_JRRTolkien])
+	(fechaPublicacion 1937)
 	(generos [PrimeraOntologia_Aventuras])
+	(idioma Espanol)
+	(numPaginas 366)
+	(publicoDirigido Adulto)
+	(puntuacion 4)
 	(titulo "El Hobbit"))
 
 ([PrimeraOntologia_HorasDistantes] of  Libro
@@ -1015,18 +1031,23 @@
 ([PrimeraOntologia_Lolita] of  Libro
 
 	(escritoPor [PrimeraOntologia_VNabokov])
+	(fechaPublicacion 1955)
 	(generos [PrimeraOntologia_Erotica])
 	(idioma Espanol)
+	(numPaginas 378)
 	(publicoDirigido Adulto)
+	(puntuacion 4)
 	(titulo "Lolita"))
 
 ([PrimeraOntologia_LookingInfinity] of  Libro
 
 	(escritoPor [PrimeraOntologia_WGenadi])
+	(fechaPublicacion 2012)
 	(generos [PrimeraOntologia_CFFuturista])
 	(idioma Ingles)
 	(numPaginas 300)
 	(publicoDirigido Juvenil)
+	(puntuacion 5)
 	(titulo "Looking at infinity"))
 
 ([PrimeraOntologia_Magicians] of  Libro
@@ -1059,9 +1080,12 @@
 ([PrimeraOntologia_MiguelStrogoff] of  Libro
 
 	(escritoPor [PrimeraOntologia_JVerne])
+	(fechaPublicacion 1876)
 	(generos [PrimeraOntologia_Aventuras])
 	(idioma Espanol)
+	(numPaginas 204)
 	(publicoDirigido Adulto)
+	(puntuacion 5)
 	(titulo "Miguel Strogoff"))
 
 ([PrimeraOntologia_MTorchwood] of  Autor
@@ -1118,10 +1142,13 @@
 
 	(bestSeller TRUE)
 	(escritoPor [PrimeraOntologia_RRiordan])
+	(fechaPublicacion 2007)
 	(generos [PrimeraOntologia_CFFuturista])
 	(idioma Espanol)
 	(ISBN "9788498382068")
+	(numPaginas 320)
 	(publicoDirigido Juvenil)
+	(puntuacion 3)
 	(titulo "LA MALDICION DEL TITAN. Percy Jackson y los dioses del Olimpo III"))
 
 ([PrimeraOntologia_PiedraLunar] of  Libro
@@ -1153,10 +1180,13 @@
 ([PrimeraOntologia_RegresoCaton] of  Libro
 
 	(escritoPor [PrimeraOntologia_MAsensi])
+	(fechaPublicacion 2015)
 	(generos [PrimeraOntologia_Novela])
 	(idioma Espanol)
 	(ISBN "9788408145820")
 	(numPaginas 610)
+	(publicoDirigido Adulto)
+	(puntuacion 4)
 	(titulo "El regreso del Caton"))
 
 ([PrimeraOntologia_RFord] of  Autor
@@ -1190,7 +1220,12 @@
 ([PrimeraOntologia_SabuesoBaskerville] of  Libro
 
 	(escritoPor [PrimeraOntologia_ACDoyle])
+	(fechaPublicacion 1902)
 	(generos [PrimeraOntologia_Policial])
+	(idioma Espanol)
+	(numPaginas 256)
+	(publicoDirigido Adulto)
+	(puntuacion 5)
 	(titulo "El sabueso de Baskerville"))
 
 ([PrimeraOntologia_SalirInfierno] of  Libro
@@ -1293,9 +1328,12 @@
 
 	(bestSeller TRUE)
 	(escritoPor [PrimeraOntologia_Tardotram])
+	(fechaPublicacion 1975)
 	(generos [PrimeraOntologia_CFFuturista])
 	(idioma Ingles)
+	(numPaginas 165)
 	(publicoDirigido Juvenil)
+	(puntuacion 2)
 	(titulo "The Vacant Male"))
 
 ([PrimeraOntologia_VNabokov] of  Autor
