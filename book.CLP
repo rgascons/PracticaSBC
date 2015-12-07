@@ -1,4 +1,4 @@
-; Mon Dec 07 10:26:45 GMT 2015
+; Mon Dec 07 18:30:23 GMT 2015
 ; 
 ;+ (version "3.4.8")
 ;+ (build "Build 629")
@@ -90,10 +90,6 @@
 		(allowed-values Ingles Espanol Catalan Frances Aleman)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(multislot exclusivas
-		(type INSTANCE)
-;+		(allowed-classes Libro)
-		(create-accessor read-write))
 	(single-slot PrimeraOntologia_Class0
 		(type STRING)
 ;+		(cardinality 0 1)
@@ -133,6 +129,11 @@
 	(single-slot frecuencia
 		(type SYMBOL)
 		(allowed-values poca media mucha)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot libro
+		(type INSTANCE)
+;+		(allowed-classes Libro)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot numPaginas
@@ -342,9 +343,8 @@
 		(type INSTANCE)
 ;+		(allowed-classes Libro)
 		(create-accessor read-write)))
-		
 (definstances instancias
-	; Mon Dec 07 10:26:45 GMT 2015
+	; Mon Dec 07 18:30:23 GMT 2015
 ; 
 ;+ (version "3.4.8")
 ;+ (build "Build 629")
@@ -707,6 +707,17 @@
 	(numPaginas 232)
 	(titulo "Francamente, Frank"))
 
+([PrimeraOntologia_Fundacion] of  Libro
+
+	(escritoPor [PrimeraOntologia_IAsimov])
+	(fechaPublicacion 1951)
+	(generos [PrimeraOntologia_CFFuturista])
+	(idioma Espanol)
+	(numPaginas 255)
+	(publicoDirigido Adulto)
+	(puntuacion 5)
+	(titulo "Fundacion"))
+
 ([PrimeraOntologia_GatoNegro] of  Libro
 
 	(escritoPor [PrimeraOntologia_EAPoe])
@@ -782,7 +793,10 @@
 
 ([PrimeraOntologia_IAsimov] of  Autor
 
-	(librosEscritos [PrimeraOntologia_FinEternidad])
+	(librosEscritos
+		[PrimeraOntologia_FinEternidad]
+		[PrimeraOntologia_IRobot]
+		[PrimeraOntologia_Fundacion])
 	(nacionalidad "Ruso-estadounidense")
 	(nombreAutor "Isaac Asimov"))
 
@@ -792,6 +806,17 @@
 	(generos [PrimeraOntologia_CFFuturista])
 	(idioma Espanol)
 	(titulo "El Imperio Final"))
+
+([PrimeraOntologia_IRobot] of  Libro
+
+	(escritoPor [PrimeraOntologia_IAsimov])
+	(fechaPublicacion 1950)
+	(generos [PrimeraOntologia_CFFuturista])
+	(idioma Ingles)
+	(numPaginas 250)
+	(publicoDirigido Adulto)
+	(puntuacion 3)
+	(titulo "I, Robot"))
 
 ([PrimeraOntologia_IslaMisteriosa] of  Libro
 
@@ -918,6 +943,12 @@
 	(frecuencia mucha)
 	(generosPreferidos [PrimeraOntologia_Policial])
 	(momento ma%C3%B1ana)
+	(nacionalidad "Ingles"))
+
+([PrimeraOntologia_Lector3] of  Lector
+
+	(edad 25)
+	(estudios universidad)
 	(nacionalidad "Ingles"))
 
 ([PrimeraOntologia_LGrossman] of  Autor
@@ -1294,9 +1325,6 @@
 		(create-accessor read-write))
 	(slot puntuacion
 		(type INTEGER)
-		(create-accessor read-write))
-	(multislot justificaciones
-		(type STRING)
 		(create-accessor read-write))
 )
 
