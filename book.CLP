@@ -1,7 +1,9 @@
-; Mon Dec 07 18:30:23 GMT 2015
-; 
-;+ (version "3.4.8")
-;+ (build "Build 629")
+; Segunda practica IA
+; Autores:
+; Anselmo López Cuenta
+; Camilo Castro Ortega
+; Ricard Gascons Gascon
+
 
 
 (defclass %3ACLIPS_TOP_LEVEL_SLOT_CLASS "Fake class to save top-level slot information"
