@@ -1,9 +1,7 @@
-; Segunda practica IA
-; Autores:
-; Anselmo López Cuenta
-; Camilo Castro Ortega
-; Ricard Gascons Gascon
-
+; Mon Dec 07 19:53:09 GMT 2015
+; 
+;+ (version "3.4.8")
+;+ (build "Build 629")
 
 
 (defclass %3ACLIPS_TOP_LEVEL_SLOT_CLASS "Fake class to save top-level slot information"
@@ -345,11 +343,99 @@
 		(type INSTANCE)
 ;+		(allowed-classes Libro)
 		(create-accessor read-write)))
+		
 (definstances instancias
-	; Mon Dec 07 18:30:23 GMT 2015
+	; Mon Dec 07 19:53:09 GMT 2015
 ; 
 ;+ (version "3.4.8")
 ;+ (build "Build 629")
+
+([Lector1] of  Lector
+
+	(autoresFavoritos [PrimeraOntologia_IAsimov])
+	(bestseller TRUE)
+	(critico TRUE)
+	(DNI "12345")
+	(edad 12)
+	(estudios primaria)
+	(frecuencia media)
+	(generosPreferidos
+		[PrimeraOntologia_Novela]
+		[PrimeraOntologia_CFFuturista])
+	(idiomasPreferidos Espanol)
+	(momento tarde)
+	(nacionalidad "Espanol"))
+
+([Lector2] of  Lector
+
+	(autoresFavoritos
+		[PrimeraOntologia_ACDoyle]
+		[PrimeraOntologia_EAPoe])
+	(clasicos TRUE)
+	(DNI "23456")
+	(edad 17)
+	(estudios secundaria)
+	(frecuencia mucha)
+	(generosPreferidos [PrimeraOntologia_Policial])
+	(momento ma%C3%B1ana)
+	(nacionalidad "Ingles"))
+
+([Lector3] of  Lector
+
+	(autoresFavoritos [PrimeraOntologia_JVerne])
+	(DNI "13337")
+	(edad 25)
+	(estudios universidad)
+	(frecuencia poca)
+	(generosPreferidos
+		[PrimeraOntologia_Zombis]
+		[PrimeraOntologia_Horror])
+	(idiomasPreferidos Ingles Catalan)
+	(momento tarde)
+	(nacionalidad "Ingles"))
+
+([Lector4] of  Lector
+
+	(autoresFavoritos
+		[PrimeraOntologia_SevardoAguilar]
+		[PrimeraOntologia_AlexGomez])
+	(bestseller TRUE)
+	(clasicos FALSE)
+	(critico TRUE)
+	(DNI "44444")
+	(estudios formacionProfesional)
+	(frecuencia mucha)
+	(generosPreferidos
+		[PrimeraOntologia_Horror]
+		[PrimeraOntologia_Policial]
+		[PrimeraOntologia_Erotica])
+	(idiomasPreferidos Ingles)
+	(momento mediodia)
+	(nacionalidad "Espanol")
+	(tiempoDisponible 23))
+
+([Lector5] of  Lector
+
+	(clasicos TRUE)
+	(DNI "55555")
+	(estudios universidad)
+	(frecuencia media)
+	(momento mediodia)
+	(nacionalidad "Espanol"))
+
+([Lector6] of  Lector
+
+	(autoresFavoritos [PrimeraOntologia_RMarinTrenchera])
+	(critico TRUE)
+	(DNI "64371")
+	(estudios bachillerato)
+	(frecuencia mucha)
+	(generosPreferidos
+		[PrimeraOntologia_Policial]
+		[PrimeraOntologia_CFFuturista])
+	(idiomasPreferidos Catalan)
+	(momento noche)
+	(nacionalidad "Gallifrey"))
 
 ([PrimeraOntologia_ACDoyle] of  Autor
 
@@ -481,7 +567,7 @@
 	(ISBN "9788490661918")
 	(numPaginas 336)
 	(publicoDirigido Adulto)
-	(puntuacion 4)
+	(puntuacion 3)
 	(titulo "Los besos en el pan"))
 
 ([PrimeraOntologia_BibliaAndorrana] of  Libro
@@ -916,42 +1002,6 @@
 ([PrimeraOntologia_Larelijar] of  Autor
 
 	(nombreAutor "Larerijar"))
-
-([PrimeraOntologia_Lector1] of  Lector
-
-	(autoresFavoritos [PrimeraOntologia_IAsimov])
-	(bestseller TRUE)
-	(critico TRUE)
-	(DNI "12345")
-	(edad 12)
-	(estudios primaria)
-	(frecuencia media)
-	(generosPreferidos
-		[PrimeraOntologia_Novela]
-		[PrimeraOntologia_CFFuturista])
-	(idiomasPreferidos Espanol)
-	(momento tarde)
-	(nacionalidad "Espanol"))
-
-([PrimeraOntologia_Lector2] of  Lector
-
-	(autoresFavoritos
-		[PrimeraOntologia_ACDoyle]
-		[PrimeraOntologia_EAPoe])
-	(clasicos TRUE)
-	(DNI "23456")
-	(edad 17)
-	(estudios secundaria)
-	(frecuencia mucha)
-	(generosPreferidos [PrimeraOntologia_Policial])
-	(momento ma%C3%B1ana)
-	(nacionalidad "Ingles"))
-
-([PrimeraOntologia_Lector3] of  Lector
-
-	(edad 25)
-	(estudios universidad)
-	(nacionalidad "Ingles"))
 
 ([PrimeraOntologia_LGrossman] of  Autor
 
