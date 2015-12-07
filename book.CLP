@@ -1329,12 +1329,12 @@
 	(printout t crlf)
 )
 
-(defmessage-handler Recomendacion imprimir ()
+(defmessage-handler Recomendacion imprimir (?max)
 	(printout t "-----------------------------------" crlf)
 	(printout t (send ?self:libro imprimir))
 	(printout t crlf)
-	;Max puntuacion = 200
-	(format t "Nivel de recomendacion: %d %% %n" (/ (* ?self:puntuacion 100) 500))
+	;Max puntuacion = 550
+	(format t "Nivel de recomendacion: %d %% %n" (/ (* ?self:puntuacion 100) ?max))
 	(printout t crlf)
 	(printout t "-----------------------------------" crlf)
 )
@@ -1351,7 +1351,7 @@
 	(format t "%s [%d, %d] " ?pregunta ?rangini ?rangfi) 
 	(bind ?respuesta (read)) 
 	(while (not(and(>= ?respuesta ?rangini)(<= ?respuesta ?rangfi))) do 
-		(format t "¿%s? [%d, %d] " ?pregunta ?rangini ?rangfi) 
+		(format t "%s [%d, %d] " ?pregunta ?rangini ?rangfi) 
 		(bind ?respuesta (read)) 
 	) 
 	?respuesta
@@ -1480,24 +1480,25 @@
 	(send ?lector put-DNI ?dni)
 	(assert(nuevo-lector))
 	)
+	(assert(Maximo 625))
 )
 
 ;;; Pregunta para conocer la edad
 (defrule pregunta-edad ""
 	(nuevo-lector)
+	(not (perfil ?))
 	=>
 	(bind ?ed (pregunta-numerica "Que edad tienes?" 0 150))
-	
 	;(send [lectorN] put-edad ?ed)
 	(if (< ?ed 12) then (assert (perfil Infantil)))
 	(if (and (>= ?ed 12)(<= ?ed 24)) then (assert (perfil Juvenil)))
 	(if (> ?ed 24) then (assert(perfil Adulto)))
-	
 	(if (< ?ed 18) then (assert (menor_de_edad)) )
 )
 
 (defrule pregunta-estudios "Pregunta para saber los estudios"
 	(nuevo-lector)
+	(not (Estudios $))
 	=>
 	(printout t "Cual es tu maximo nivel de estudios?" crlf)
 	(bind ?lista (slot-allowed-values Lector estudios))
@@ -1517,6 +1518,8 @@
 
 (defrule pregunta-idioma "Pregunta para saber el idioma preferido"
 	(nuevo-lector)
+	?m<-(Maximo ?max)
+	(not (Idioma ?))
 	=>
 	(printout t "Escoje tus idiomas favoritos para los libros: " crlf)
 	(printout t "0. Indefinido" crlf)
@@ -1532,7 +1535,10 @@
 		(progn$ (?it ?resp)
 			(assert (Idioma (nth$ ?it ?lista)))
 		)
-		else (assert (Idioma indef))
+		else 
+			(retract ?m)
+			(assert (Maximo (- ?max 100)))
+			(assert (Idioma indef))
 	)
 )
 
@@ -1565,9 +1571,15 @@
 
 (defrule pregunta-bestseller ""
 	(nuevo-lector)
+	?m<- (Maximo ?max)
+	(not (bestseller ?))
 	=>
 	(bind ?resp (pregunta-booleana "Te interesan los libros mas vendidos?"))
 	(assert (bestseller ?resp))
+	(if (eq ?resp FALSE) then 
+		(retract ?m)
+		(assert (Maximo(- ?max 50)))
+	)
 )
 
 (defrule pregunta-clasicos ""
@@ -1579,13 +1591,21 @@
 
 (defrule pregunta-criticos "Pregunta para saber si se valora la puntuación de un libro"
 	(nuevo-lector)
+	?m<- (Maximo ?max)
+	(not (Critica ?))
 	=>
-	(bind ?resp (pregunta-booleana "Le das importancia a las críticas de un libro?"))
+	(bind ?resp (pregunta-booleana "Le das importancia a las criticas de un libro?"))
+	(if (eq ?resp FALSE) then 
+		(retract ?m)
+		(assert (Maximo(- ?max 100)))
+	)
 	(assert (Critica ?resp))
 )
 
 (defrule pregunta-generos "Pregunta para saber generos preferidos"
 	(nuevo-lector)
+	?m<- (Maximo ?max)
+	(not (pregunta-generos))
 	=>
 	(printout t "Cuales de los siguientes generos te gustan?" crlf)
 	(bind ?lista (find-all-instances ((?p Genero)) TRUE))
@@ -1604,6 +1624,9 @@
 				(assert (Alter (send ?i get-nombre)))
 			)
 		)
+		else
+			(retract ?m)
+			(assert (Maximo (- ?max 100)))
 	)
 	(assert (pregunta-generos))
 )
@@ -1613,6 +1636,7 @@
 	(genero ?gen)
 	?g <-(object (is-a Genero) (nombre ?gen) (librosRepresentativos $?lista))
 	(test (> (length$ ?lista) 0))
+	(not (LibroLeido ?))
 	=>
 	(printout t "Obteniendo lista del genero " ?gen crlf)
 	(printout t "De los siguientes libros, cuales te has leido?" crlf)
@@ -1636,12 +1660,11 @@
 )
 
 (defrule pregunta-modas ""
-	(pregunta-generos)
 	(nuevo-lector)
 	=>
 	(bind ?resp (pregunta-booleana "Quieres ver los libros de generos que estan de moda?"))
 	(assert (modas ?resp))
-	(assert (fin-preguntas))
+	(assert(fin-preguntas))
 )
 
 
@@ -1760,7 +1783,7 @@
 	?recm <- (object (is-a Recomendacion) (libro ?book))
 	(test (eq ?rbook (send ?book get-titulo)))
 	=>
-	(printout t "Eliminado por ser haber sido leído por el usuario: " (instance-name ?book) crlf)
+	(printout t "Eliminado por ser haber sido leido por el usuario: " (instance-name ?book) crlf)
 	(send ?recm delete)
 )
 
@@ -1886,7 +1909,7 @@
 		(test (author_in_book ?nombre ?book))
         (not (valorNac ?recm))
         =>
-        (printout t "-------El lector con nacionalidad " ?nac " tiene preferencia por el conjunto de libros : " (instance-name ?recm) crlf)
+        (printout t "El lector con nacionalidad " ?nac " tiene preferencia por el conjunto de libros : " (instance-name ?recm) crlf)
         (send ?recm put-puntuacion (+ ?pt 50))
         (assert (valorNac ?recm))
 )
@@ -1950,9 +1973,10 @@
 
 (defrule presentar ""
 	(lista-rec-ordenada (recomendaciones $?lista))
+	(Maximo ?max)
 	=>
 	(progn$ (?it ?lista)
-		(send ?it imprimir)
+		(send ?it imprimir ?max)
 		(printout t crlf)
 	)
 )
