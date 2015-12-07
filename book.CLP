@@ -1,4 +1,4 @@
-; Sun Dec 06 21:39:27 GMT 2015
+; Mon Dec 07 10:26:45 GMT 2015
 ; 
 ;+ (version "3.4.8")
 ;+ (build "Build 629")
@@ -19,15 +19,15 @@
 		(type INSTANCE)
 ;+		(allowed-classes Genero)
 		(create-accessor read-write))
-	(multislot catalogo
-		(type INSTANCE)
-;+		(allowed-classes Libro)
-		(cardinality 1 ?VARIABLE)
-		(create-accessor read-write))
 	(single-slot momento
 		(type SYMBOL)
 		(allowed-values ma%C3%B1ana mediodia tarde noche)
 ;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot catalogo
+		(type INSTANCE)
+;+		(allowed-classes Libro)
+		(cardinality 1 ?VARIABLE)
 		(create-accessor read-write))
 	(single-slot titulo
 		(type STRING)
@@ -73,11 +73,11 @@
 		(type INTEGER)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot ISBN
+	(single-slot nombre
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot nombre
+	(single-slot ISBN
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
@@ -135,14 +135,14 @@
 		(allowed-values poca media mucha)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(multislot librosEscritos
-		(type INSTANCE)
-;+		(allowed-classes Libro)
-		(create-accessor read-write))
 	(single-slot numPaginas
 		(type INTEGER)
 		(default 0)
 ;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot librosEscritos
+		(type INSTANCE)
+;+		(allowed-classes Libro)
 		(create-accessor read-write))
 	(multislot generos
 		(type INSTANCE)
@@ -161,14 +161,19 @@
 		(type SYMBOL)
 		(allowed-values Espanol Ingles Catalan Frances)
 		(create-accessor read-write))
+	(single-slot publicoDirigido
+		(type SYMBOL)
+		(allowed-values Infantil Juvenil Adulto)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(single-slot clasicos
 		(type SYMBOL)
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot publicoDirigido
+	(single-slot critico
 		(type SYMBOL)
-		(allowed-values Infantil Juvenil Adulto)
+		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot fechaPublicacion
@@ -202,13 +207,13 @@
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
+	(single-slot ISBN
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(single-slot publicoDirigido
 		(type SYMBOL)
 		(allowed-values Infantil Juvenil Adulto)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot ISBN
-		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot fechaPublicacion
@@ -224,14 +229,14 @@
 		(type INSTANCE)
 ;+		(allowed-classes Autor)
 		(create-accessor read-write))
+	(multislot generos
+		(type INSTANCE)
+;+		(allowed-classes Genero)
+		(create-accessor read-write))
 	(single-slot idioma
 		(type SYMBOL)
 		(allowed-values Ingles Espanol Catalan Frances Aleman)
 ;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(multislot generos
-		(type INSTANCE)
-;+		(allowed-classes Genero)
 		(create-accessor read-write)))
 
 (defclass Persona
@@ -268,29 +273,34 @@
 		(allowed-values ma%C3%B1ana mediodia tarde noche)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
+	(multislot autoresFavoritos
+		(type INSTANCE)
+;+		(allowed-classes Autor)
+		(create-accessor read-write))
 	(single-slot bestseller
 		(type SYMBOL)
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(multislot autoresFavoritos
-		(type INSTANCE)
-;+		(allowed-classes Autor)
-		(create-accessor read-write))
 	(multislot generosPreferidos
 		(type INSTANCE)
 ;+		(allowed-classes Genero)
-		(create-accessor read-write))
-	(multislot idiomasPreferidos
-		(type SYMBOL)
-		(allowed-values Espanol Ingles Catalan Frances)
 		(create-accessor read-write))
 	(single-slot frecuencia
 		(type SYMBOL)
 		(allowed-values poca media mucha)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
+	(multislot idiomasPreferidos
+		(type SYMBOL)
+		(allowed-values Espanol Ingles Catalan Frances)
+		(create-accessor read-write))
 	(single-slot clasicos
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot critico
 		(type SYMBOL)
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
@@ -303,13 +313,13 @@
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(multislot generoExperto
-		(type INSTANCE)
-;+		(allowed-classes Genero)
-		(create-accessor read-write))
 	(multislot librosEscritos
 		(type INSTANCE)
 ;+		(allowed-classes Libro)
+		(create-accessor read-write))
+	(multislot generoExperto
+		(type INSTANCE)
+;+		(allowed-classes Genero)
 		(create-accessor read-write)))
 
 (defclass Genero
@@ -334,7 +344,7 @@
 		(create-accessor read-write)))
 		
 (definstances instancias
-	; Sun Dec 06 21:39:27 GMT 2015
+	; Mon Dec 07 10:26:45 GMT 2015
 ; 
 ;+ (version "3.4.8")
 ;+ (build "Build 629")
@@ -884,6 +894,7 @@
 
 	(autoresFavoritos [PrimeraOntologia_IAsimov])
 	(bestseller TRUE)
+	(critico TRUE)
 	(DNI "12345")
 	(edad 12)
 	(estudios primaria)
@@ -1207,6 +1218,7 @@
 ([PrimeraOntologia_VNabokov] of  Autor
 
 	(librosEscritos [PrimeraOntologia_Lolita])
+	(nacionalidad "Ruso")
 	(nombreAutor "Vladimir Nabokov"))
 
 ([PrimeraOntologia_VoyagersWife] of  Libro
@@ -1225,6 +1237,7 @@
 ([PrimeraOntologia_WGibson] of  Autor
 
 	(librosEscritos [PrimeraOntologia_Neuromante])
+	(nacionalidad "Estadounidense-canadiense")
 	(nombreAutor "William Gibson"))
 
 ([PrimeraOntologia_Wicemar] of  Autor
@@ -1474,7 +1487,7 @@
 	=>
 	(bind ?ed (pregunta-numerica "Que edad tienes?" 0 150))
 	
-	(send [lectorN] put-edad ?ed)
+	;(send [lectorN] put-edad ?ed)
 	(if (< ?ed 12) then (assert (perfil Infantil)))
 	(if (and (>= ?ed 12)(<= ?ed 24)) then (assert (perfil Juvenil)))
 	(if (> ?ed 24) then (assert(perfil Adulto)))
@@ -1559,8 +1572,15 @@
 (defrule pregunta-clasicos ""
 	(nuevo-lector)
 	=>
-	(bind ?resp (pregunta-booleana "Te gustan los libros clasicos (hasta 1950)?"))
+	(bind ?resp (pregunta-booleana "Te gustan los libros clasicos (hasta 1960)?"))
 	(assert (Clasicos ?resp))
+)
+
+(defrule pregunta-criticos "Pregunta para saber si se valora la puntuación de un libro"
+	(nuevo-lector)
+	=>
+	(bind ?resp (pregunta-booleana "Le das importancia a las críticas de un libro?"))
+	(assert (Critica ?resp))
 )
 
 (defrule pregunta-generos "Pregunta para saber generos preferidos"
@@ -1636,6 +1656,7 @@
 		(bestseller ?bs)
 		(clasicos ?cla)
 		(nacionalidad ?nac)
+		(critico ?cri)
 	)
 	=>
 	(if (< ?edad 12) then (assert (perfil Infantil)))
@@ -1667,6 +1688,7 @@
 	(assert (bestseller ?bs))
 	(assert (Clasicos ?cla))
 	(assert (Nacionalidad ?nac))
+	(assert (Critica ?cri))
 	
 	
 	(assert(fin-preguntas))
@@ -1815,12 +1837,23 @@
 (defrule plusClasicos
 	(Clasicos TRUE)
 	?recm <- (object (is-a Recomendacion) (libro ?book) (puntuacion ?pt))
-	(test (< (send ?book get-fechaPublicacion) 1950))
+	(test (< (send ?book get-fechaPublicacion) 1960))
 	(not (valorClasico ?recm))
 	=>
-	(printout t "Al lector le gustan los libros clasicos (< 1950) : " (instance-name ?recm) crlf)
+	(printout t "Al lector le gustan los libros clasicos (< 1960) : " (instance-name ?recm) crlf)
 	(send ?recm put-puntuacion (+ ?pt 50))
 	(assert (valorClasico ?recm))
+)
+
+(defrule plusModernos
+	(Clasicos FALSE)
+	?recm <- (object (is-a Recomendacion) (libro ?book) (puntuacion ?pt))
+	(test (>= (send ?book get-fechaPublicacion) 1960))
+	(not (valorModerno ?recm))
+	=>
+	(printout t "Al lector le gustan los libros modernos (< 1960) : " (instance-name ?recm) crlf)
+	(send ?recm put-puntuacion (+ ?pt 50))
+	(assert (valorModerno ?recm))
 )
 
 (defrule plusEstudiosLector
@@ -1844,6 +1877,17 @@
         (printout t "-------El lector con nacionalidad " ?nac " tiene preferencia por el conjunto de libros : " (instance-name ?recm) crlf)
         (send ?recm put-puntuacion (+ ?pt 50))
         (assert (valorNac ?recm))
+)
+
+(defrule plusCritico
+	(Critica TRUE)
+	?recm <- (object (is-a Recomendacion) (libro ?book) (puntuacion ?pt))
+	(not (valorCritico ?recm))
+	=>
+	(bind ?star (send ?book get-puntuacion))
+	(printout t "El libro " (send ?book get-titulo) " tiene una puntuacion de " ?star "." crlf)
+	(send ?recm put-puntuacion (+ ?pt (* ?star 20)))
+	(assert (valorCritico ?recm))
 )
 
 (defrule focusPresentacion
