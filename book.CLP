@@ -1790,6 +1790,17 @@
 	(assert (valorGenero ?recm))
 )
 
+(defrule plusAlter
+	(Alter ?alt)
+	?recm <- (object (is-a Recomendacion) (libro ?book) (puntuacion ?pt))
+	(test (genre_in_book ?alt ?book))
+	(not (valorAlter ?recm))
+	=>
+	(printout t "Pertenece a generos similares a los elegidos: " (instance-name ?recm) crlf)
+	(send ?recm put-puntuacion (+ ?pt 25))
+	(assert (valorAlter ?recm))
+)
+
 (defrule plusPublico
 	(perfil ?perf)
 	?recm <- (object (is-a Recomendacion) (libro ?book) (puntuacion ?pt))
