@@ -1634,7 +1634,7 @@
 (defrule pregunta-frecuencia "Pregunta para frecuencia de lectura"
 	(nuevo-lector)
 	=>
-	(bind ?resp (pregunta-numerica "En un mes cuantos dias sueles leer? " 0 24))
+	(bind ?resp (pregunta-numerica "En un mes cuantos dias sueles leer? " 0 30))
 	(if (and (>= ?resp 0) (<= ?resp 12)) then (assert (Frecuencia poca))
 	else (if (and (> ?resp 12) (<= ?resp 18)) then (assert (Frecuencia normal))  	
 	else (assert (Frecuencia muchisima))))
@@ -1715,7 +1715,6 @@
 	(genero ?gen)
 	?g <-(object (is-a Genero) (nombre ?gen) (librosRepresentativos $?lista))
 	(test (> (length$ ?lista) 0))
-	(not (LibroLeido ?))
 	=>
 	(printout t "Obteniendo lista del genero " ?gen crlf)
 	(printout t "De los siguientes libros, cuales te has leido?" crlf)
@@ -1738,12 +1737,23 @@
 	)
 )
 
+(defrule eliminar-max-libros ""
+	(not (LibroLeido ?))
+	?m<-(Maximo ?max)
+	(not (elim))
+	=>
+	(retract ?m)
+	(assert (Maximo (- ?max 100)))
+	(assert (elim))
+)
+
 (defrule pregunta-modas ""
 	(nuevo-lector)
 	=>
 	(bind ?resp (pregunta-booleana "Quieres ver los libros de generos que estan de moda?"))
 	(assert (modas ?resp))
 	(assert(fin-preguntas))
+	
 )
 
 
