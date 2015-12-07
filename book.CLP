@@ -1705,7 +1705,7 @@
 		)
 		else
 			(retract ?m)
-			(assert (Maximo (- ?max 100)))
+			(assert (Maximo (- ?max 125)))
 	)
 	(assert (pregunta-generos))
 )
@@ -1762,6 +1762,7 @@
 		(critico ?cri)
 	)
 	=>
+	(bind ?max 625)
 	(if (< ?edad 12) then (assert (perfil Infantil)))
 	(if (and (>= ?edad 12)(<= ?edad 24)) then (assert (perfil Juvenil)))
 	(if (> ?edad 24) then (assert(perfil Adulto)))
@@ -1776,6 +1777,7 @@
 	(progn$ (?it $?list-aut)
 		(assert (Autor (send ?it get-nombreAutor)))
 	)
+	(if (eq (length$ ?list-aut) 0) then (bind ?max (- ?max 50)))
 	
 	(progn$ (?it $?list-gen)
 		(assert (genero (send ?it get-nombre)))
@@ -1784,16 +1786,20 @@
 		)
 	)
 	
+	(if (eq (length$ ?list-gen) 0) then (bind ?max (- ?max 125)))
+	
 	(progn$ (?it $?list-idi)
 		(assert (Idioma ?it ))
 	)
+	(if (eq (length$ ?list-idi) 0) then (bind ?max (- ?max 100)))
 	
 	(assert (bestseller ?bs))
+	(if (eq ?bs FALSE) then (bind ?max (- ?max 50)))
 	(assert (Clasicos ?cla))
 	(assert (Nacionalidad ?nac))
 	(assert (Critica ?cri))
-	
-	
+	(if (eq ?cri FALSE) then (bind ?max (- ?max 100)))
+	(assert (Maximo ?max))
 	(assert(fin-preguntas))
 )
 
